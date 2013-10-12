@@ -9,7 +9,6 @@ public class PrimzahlAlgorithmen {
 	//Kontruktor
 	public PrimzahlAlgorithmen() {
 		super();
-		zaehler = 0;
 	}
 	
 	//Methoden
@@ -18,7 +17,8 @@ public class PrimzahlAlgorithmen {
 	 * @param n Problemgroesse
 	 */
 	public void searchPrimSlow(int n){
-		
+		zaehler = 0;
+		//ToDo
 	}
 
 	/**
@@ -26,7 +26,8 @@ public class PrimzahlAlgorithmen {
 	 * @param n Problemgroesse
 	 */
 	public void searchPrimFast(int n){
-		
+		zaehler = 0;
+		//ToDo
 	}
 	
 	/**
@@ -34,7 +35,8 @@ public class PrimzahlAlgorithmen {
 	 * @param n Problemgroesse
 	 */
 	public void searchPrimSiebDesEratosthenes(int n){
-		
+		zaehler = 0;
+		//ToDo
 	}
 	
 	/**
@@ -43,8 +45,13 @@ public class PrimzahlAlgorithmen {
 	 * @return
 	 */
 	public boolean primality(int n){
-		//todo
+		zaehler = 0;
+		//ToDo
 		return false;
 		
+	}
+
+	public int getZaehler() {
+		return zaehler;
 	}
 }
