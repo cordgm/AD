@@ -23,8 +23,12 @@ public class PrimzahlAlgorithmen {
 		for(int i = 0; i < n ; i++)
 			zahlen[i] = true;
 		for(int i = 2; i < n; i++){
-			for(int j = 2; j < n; j++)
-				if((i%j == 0) && (j!=i) ) zahlen[i] = false;
+			for(int j = 2; j < n; j++){
+				if((i%j == 0) && (j!=i)){
+					zahlen[i] = false;
+					zaehler++;
+				}
+			}
 		}
 	}
 
@@ -38,8 +42,12 @@ public class PrimzahlAlgorithmen {
 		for(int i = 0; i < n ; i++)
 			zahlen[i] = true;
 		for(int i = 2; i < n; i++){
-			for(int j = 2; j < i; j++)
-				if((i%j == 0) && (j!=i) ) zahlen[i] = false;
+			for(int j = 2; j < i; j++){
+				if((i%j == 0) && (j!=i)){
+					zahlen[i] = false;
+					zaehler++;
+				}
+			}
 		}
 	}
 	
@@ -49,12 +57,14 @@ public class PrimzahlAlgorithmen {
 	 */
 	public void searchPrimSiebDesEratosthenes(int n){
 		zaehler = 0;
-		for(int i=0 ; i < n ; i++)
+		for(int i = 0 ; i < n ; i++)
 			zahlen[i] = true;
-		for(int i=2 ; i < Math.sqrt(n) ; i++){
+		for(int i = 2 ; i < Math.sqrt(n) ; i++){
 			if (zahlen[i] == true){
-				for (int j = 2 ; i*j < n ; j++)
+				for (int j = 2 ; i*j < n ; j++){
 					zahlen[i*j] = false;
+					zaehler++;
+				}
 			}	
 		}
 	}
@@ -73,5 +83,14 @@ public class PrimzahlAlgorithmen {
 
 	public int getZaehler() {
 		return zaehler;
+	}
+	
+	public void showPrim(int n){
+		System.out.println("Primzahlen von 2 bis "+n);
+		for(int i = 0; i < n; i++){
+			if(zahlen[i] == true){
+				System.out.print(zahlen[i]+" ,");
+			}
+		}
 	}
 }
