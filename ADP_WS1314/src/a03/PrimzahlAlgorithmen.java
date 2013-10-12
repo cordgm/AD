@@ -71,16 +71,26 @@ public class PrimzahlAlgorithmen {
 	
 	/**
 	 * Primzahleigenschaft feststellen
+	 * false = keine Primzahl,
+	 * true = eine Primzahl,
 	 * @param n Problemgroesse
-	 * @return
+	 * @return boolean 
 	 */
-	public boolean primality(int n){
+	public boolean primality(int n) {
 		zaehler = 0;
-		//ToDo
-		return false;
 		
+		if(n > 1) {
+		    for(int moeglicheTeiler=2; (moeglicheTeiler < Math.sqrt(n)); moeglicheTeiler++) {
+		        
+		      if (n % moeglicheTeiler == 0) return false; //keine Primzahl
+		              
+		      zaehler++;
+		    } 
+		}
+		return true;		
 	}
-
+	  
+	   
 	public int getZaehler() {
 		return zaehler;
 	}
