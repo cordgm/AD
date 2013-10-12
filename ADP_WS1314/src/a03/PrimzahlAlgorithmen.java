@@ -14,11 +14,18 @@ public class PrimzahlAlgorithmen {
 	//Methoden
 	/**
 	 * langsames Primzahl suchen
+	 * Alle Elemte im Array zahlen auf die true steht sind Primzahlen
 	 * @param n Problemgroesse
 	 */
 	public void searchPrimSlow(int n){
 		zaehler = 0;
-		//ToDo
+		zahlen = new boolean[n];
+		for(int i = 0; i < n ; i++)
+			zahlen[i] = true;
+		for(int i = 2; i < n; i++){
+			for(int j = 2; j < n; j++)
+				if((i%j == 0) && (j!=i) ) zahlen[i] = false;
+		}
 	}
 
 	/**
@@ -27,7 +34,13 @@ public class PrimzahlAlgorithmen {
 	 */
 	public void searchPrimFast(int n){
 		zaehler = 0;
-		//ToDo
+		zahlen = new boolean[n];
+		for(int i = 0; i < n ; i++)
+			zahlen[i] = true;
+		for(int i = 2; i < n; i++){
+			for(int j = 2; j < i; j++)
+				if((i%j == 0) && (j!=i) ) zahlen[i] = false;
+		}
 	}
 	
 	/**
@@ -36,7 +49,14 @@ public class PrimzahlAlgorithmen {
 	 */
 	public void searchPrimSiebDesEratosthenes(int n){
 		zaehler = 0;
-		//ToDo
+		for(int i=0 ; i < n ; i++)
+			zahlen[i] = true;
+		for(int i=2 ; i < Math.sqrt(n) ; i++){
+			if (zahlen[i] == true){
+				for (int j = 2 ; i*j < n ; j++)
+					zahlen[i*j] = false;
+			}	
+		}
 	}
 	
 	/**
