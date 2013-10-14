@@ -97,9 +97,14 @@ public class PrimzahlAlgorithmen {
 	
 	public void showPrim(int n){
 		System.out.println("Primzahlen von 2 bis "+n);
+		int primCount = 0;
 		for(int i = 0; i < n; i++){
 			if(zahlen[i] == true){
-				System.out.print(zahlen[i]+" ,");
+				if(primCount%10 == 0){
+					System.out.println("");
+				}
+				primCount++;
+				System.out.print(i+" ,");
 			}
 		}
 	}
