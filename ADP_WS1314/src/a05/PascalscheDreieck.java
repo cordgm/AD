@@ -6,6 +6,13 @@ public class PascalscheDreieck {
 	private int aufwandZaehlerRekusiv;
 	private int aufwandZaehlerSchneller;
 	
+	private void printZeile(int[] zeile){
+		System.out.println("Die " + zeile.length + "te Zeile:");
+		for(int i = 0; i < zeile.length; i++){
+			System.out.print(zeile[i] + " ");
+		}
+	}
+	
 	/**
 	 * 
 	 * @param n
@@ -30,13 +37,19 @@ public class PascalscheDreieck {
 	 * @param n
 	 */
 	public void schneller(int n){
-		if(n>=0){
-			
+		if(n<0){
+			System.err.println("Ungültige Zeilenangabe!");
+			return;			
 		}
+		int[] zeile = new int[n];
+		for(int i = 0; i < n; i++){
+			zeile[i] = fakultaet(n) / (fakultaet(i) * fakultaet(n-i));
+		}
+
 	}
 	
 	/**
-	 * 
+	 * Wird fuer die Berechnung des schnelleren Algorithmusses verwendet
 	 * @param n
 	 * @return
 	 */
