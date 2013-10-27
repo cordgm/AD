@@ -3,8 +3,6 @@ package a05;
 public class PascalscheDreieck {
 	//Attribute
 	private int aufwandZaehler;
-	private int aufwandZaehlerIterativ;
-	private int aufwandZaehlerRekusiv;
 	
 	private void printZeile(int[] zeile){
 		System.out.println("\nDie " + zeile.length + "te Zeile:");
@@ -19,6 +17,11 @@ public class PascalscheDreieck {
 	 */
 	public void iterativ(int n)
 	{
+		if(n<=0){
+			System.err.println("Ungültige Zeilenangabe!");
+			return;			
+		}
+		aufwandZaehler = 0;
         int[][] array = new int[n][n+1];
         array[0][1] = 1;
     
@@ -27,11 +30,11 @@ public class PascalscheDreieck {
                 for(int j = 1; j < i+2; j++)
                 {
                         array[i][j] = array[i-1][j-1] + array[i-1][j];
-                        this.aufwandZaehlerIterativ++;
+                        this.aufwandZaehler++;
                 }
         }
         
-        System.out.println("\n\nDie " + n + ". Zeile:");
+        System.out.println("\nDie " + n + ". Zeile:");
         for(int k = 1; k < n+1; k++)
         {
                 System.out.print(array[n-1][k] + " ");
@@ -62,7 +65,7 @@ public class PascalscheDreieck {
                    {
                            tmp[i] += array[i-1];
                    }
-                   this.aufwandZaehlerRekusiv++;
+                   this.aufwandZaehler++;
            }
            tmp[tmp.length-1] = 1;
            return tmp;
@@ -74,15 +77,16 @@ public class PascalscheDreieck {
 	 */
     public void rekursiv(int n)
     {
+		if(n<=0){
+			System.err.println("Ungültige Zeilenangabe!");
+			return;			
+		}
+    	aufwandZaehler = 0;
         int[] tmp = new int[0];
         
         int[] array = pascDreieck(--n, tmp);
         
-        System.out.println("\n\nDie " + (n+1) + ". Zeile:");
-        for(int i = 0; i < array.length; i++)
-        {
-                System.out.print(array[i] + " ");
-        }
+        printZeile(array);
         
     }//rekursiv
     
@@ -129,13 +133,5 @@ public class PascalscheDreieck {
 	public int getAufwandZaehler() {
 		return aufwandZaehler;
 	}
-
-    public int getAufwandZaehlerIterativ() {
-        return aufwandZaehlerIterativ;
-    }
-
-    public int getAufwandZaehlerRekusiv() {
-        return aufwandZaehlerRekusiv;
-    }
 	
 }
