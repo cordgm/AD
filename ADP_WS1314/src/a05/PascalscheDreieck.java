@@ -37,14 +37,16 @@ public class PascalscheDreieck {
 	 * @param n
 	 */
 	public void schneller(int n){
+		n--;
 		if(n<0){
 			System.err.println("Ungültige Zeilenangabe!");
 			return;			
 		}
-		int[] zeile = new int[n];
-		for(int i = 0; i < n; i++){
+		int[] zeile = new int[n+1];
+		for(int i = 0; i < (n+1); i++){
 			zeile[i] = fakultaet(n) / (fakultaet(i) * fakultaet(n-i));
 		}
+		printZeile(zeile);
 
 	}
 	
