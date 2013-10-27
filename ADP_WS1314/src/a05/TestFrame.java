@@ -79,8 +79,6 @@ public class TestFrame {
         System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
         pascalscheDreieck.schneller(9);
         System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
-        pascalscheDreieck.schneller(7);
-        System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
     }
 
 }
