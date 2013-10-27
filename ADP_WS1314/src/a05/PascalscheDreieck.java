@@ -3,6 +3,8 @@ package a05;
 public class PascalscheDreieck {
 	//Attribute
 	private int aufwandZaehler;
+	private int aufwandZaehlerIterativ;
+	private int aufwandZaehlerRekusiv;
 	
 	private void printZeile(int[] zeile){
 		System.out.println("\nDie " + zeile.length + "te Zeile:");
@@ -15,18 +17,74 @@ public class PascalscheDreieck {
 	 * 
 	 * @param n
 	 */
-	public void iterativ(int n){
-		
-	}
+	public void iterativ(int n)
+	{
+        int[][] array = new int[n][n+1];
+        array[0][1] = 1;
+    
+        for(int i = 1; i < n; i++)
+        {
+                for(int j = 1; j < i+2; j++)
+                {
+                        array[i][j] = array[i-1][j-1] + array[i-1][j];
+                        this.aufwandZaehlerIterativ++;
+                }
+        }
+        
+        System.out.println("\n\nDie " + n + ". Zeile:");
+        for(int k = 1; k < n+1; k++)
+        {
+                System.out.print(array[n-1][k] + " ");
+        }
+        
+        
+        /** Bei genaueren Details bitte entkommentieren.
+        for(int z = 0; z < n; z++){
+                for(int x = 0; x < n+1; x++){
+                        System.out.print(array[z][x] + " ");
+                }
+                System.out.println();
+        }*/
+	}//iterativ
 	
+    private int[] pascDreieck(int n, int[] array)
+    {
+           if(n > 0)
+           {
+                  array = pascDreieck(--n, array);
+           }
+           int[] tmp = new int[array.length+1];
+           
+           for(int i = 0; i < tmp.length-1; i++)
+           {
+                   tmp[i] = array[i];
+                   if(i > 0 && i < array.length)
+                   {
+                           tmp[i] += array[i-1];
+                   }
+                   this.aufwandZaehlerRekusiv++;
+           }
+           tmp[tmp.length-1] = 1;
+           return tmp;
+   }//pascDreieck
 	
 	/**
 	 * 
 	 * @param n
 	 */
-    public void rekursiv(int n){
-        System.out.println(n);
-    }
+    public void rekursiv(int n)
+    {
+        int[] tmp = new int[0];
+        
+        int[] array = pascDreieck(--n, tmp);
+        
+        System.out.println("\n\nDie " + (n+1) + ". Zeile:");
+        for(int i = 0; i < array.length; i++)
+        {
+                System.out.print(array[i] + " ");
+        }
+        
+    }//rekursiv
     
 
 	/**
@@ -71,5 +129,13 @@ public class PascalscheDreieck {
 	public int getAufwandZaehler() {
 		return aufwandZaehler;
 	}
+
+    public int getAufwandZaehlerIterativ() {
+        return aufwandZaehlerIterativ;
+    }
+
+    public int getAufwandZaehlerRekusiv() {
+        return aufwandZaehlerRekusiv;
+    }
 	
 }

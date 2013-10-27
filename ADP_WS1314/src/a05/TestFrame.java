@@ -21,10 +21,16 @@ public class TestFrame {
         
         
         System.out.println("************* rekursives Pascalssches Dreiecks: *************");
-        pascalscheDreieck.rekursiv(1);
+        pascalscheDreieck.rekursiv(2);
+        System.out.println( "\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehlerRekusiv() );
+        pascalscheDreieck.rekursiv(7);
+        System.out.println( "\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehlerRekusiv() );
 
         System.out.println("************* iteratives Pascalssches Dreiecks: *************");
-        
+        pascalscheDreieck.iterativ(2);
+        System.out.println( "\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehlerIterativ() );
+        pascalscheDreieck.iterativ(7);
+        System.out.println( "\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehlerIterativ() );
 
         System.out.println("************* Binomialkoeffizienten Pascalssches Dreiecks: *************");
         pascalscheDreieck.schneller(1);
