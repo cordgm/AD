@@ -2,12 +2,10 @@ package a05;
 
 public class PascalscheDreieck {
 	//Attribute
-	private int aufwandZaehlerIterativ;
-	private int aufwandZaehlerRekusiv;
-	private int aufwandZaehlerSchneller;
+	private int aufwandZaehler;
 	
 	private void printZeile(int[] zeile){
-		System.out.println("Die " + zeile.length + "te Zeile:");
+		System.out.println("\nDie " + zeile.length + "te Zeile:");
 		for(int i = 0; i < zeile.length; i++){
 			System.out.print(zeile[i] + " ");
 		}
@@ -37,14 +35,16 @@ public class PascalscheDreieck {
 	 * @param n
 	 */
 	public void schneller(int n){
-		n--;
-		if(n<0){
+		if(n<=0){
 			System.err.println("Ungültige Zeilenangabe!");
 			return;			
 		}
+		aufwandZaehler = 0;
+		n--;
 		int[] zeile = new int[n+1];
 		for(int i = 0; i < (n+1); i++){
 			zeile[i] = fakultaet(n) / (fakultaet(i) * fakultaet(n-i));
+			aufwandZaehler++;
 		}
 		printZeile(zeile);
 
@@ -68,18 +68,8 @@ public class PascalscheDreieck {
 	}
 
 
-	public int getAufwandZaehlerIterativ() {
-		return aufwandZaehlerIterativ;
-	}
-
-
-	public int getAufwandZaehlerRekusiv() {
-		return aufwandZaehlerRekusiv;
-	}
-
-
-	public int getAufwandZaehlerSchneller() {
-		return aufwandZaehlerSchneller;
+	public int getAufwandZaehler() {
+		return aufwandZaehler;
 	}
 	
 }
