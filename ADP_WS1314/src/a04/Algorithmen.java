@@ -14,7 +14,7 @@ public class Algorithmen {
 static int  cnt1 = 0;
 static int  cnt2 = 0;
 static int  cnt3 = 0;
-static int MAX_ITERATIONS = 10;
+static int MAX_ITERATIONS = 100;
 
     /**
      * @param n
@@ -57,15 +57,15 @@ static int MAX_ITERATIONS = 10;
         
         //Gauﬂ als Rekursiv
         gausAlgoReku(MAX_ITERATIONS);
-        System.out.println("Iterationen: " + MAX_ITERATIONS + "\n Zaehler: " + cnt1 +"\n\n");
+        System.out.println("Rekursiv: " + MAX_ITERATIONS + "\n Zaehler: " + cnt1 +"\n");
 
         //Gauﬂ als Iterativ
         gausAlgoIterativ(MAX_ITERATIONS);
-        System.out.println("Iterationen: " + MAX_ITERATIONS + "\n Zaehler: " + cnt2 +"\n\n");
+        System.out.println("Iterationen: " + MAX_ITERATIONS + "\n Zaehler: " + cnt2 +"\n");
         
         //Gauﬂ als Formel
         gausAlgoFormel(MAX_ITERATIONS);
-        System.out.println("Iterationen: " + MAX_ITERATIONS + "\n Zaehler: " + cnt3 +"\n\n");
+        System.out.println("Formel: " + MAX_ITERATIONS + "\n Zaehler: " + cnt3 +"\n");
     }
 
 }//Algorithmen
