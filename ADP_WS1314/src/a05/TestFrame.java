@@ -16,10 +16,11 @@ public class TestFrame {
         
         //************* Pascalsschen Dreiecks ********************
         System.out.println("************* Start Pascalsschen Dreiecks: *************\n");
-
+        
         
         System.out.println("************* rekursives Pascalssches Dreiecks: *************\n");
-        
+        PascalRekursiv pr1 = new PascalRekursiv();
+        pr1.rekursiv(1);
 
         System.out.println("************* iteratives Pascalssches Dreiecks: *************\n");
         
