@@ -19,8 +19,8 @@ public class TestFrame {
         
         
         System.out.println("************* rekursives Pascalssches Dreiecks: *************\n");
-        PascalRekursiv pr1 = new PascalRekursiv();
-        pr1.rekursiv(1);
+        PascalscheDreieck pascalscheDreieck = new PascalscheDreieck();
+        pascalscheDreieck.rekursiv(1);
 
         System.out.println("************* iteratives Pascalssches Dreiecks: *************\n");
         
