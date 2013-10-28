@@ -79,6 +79,20 @@ public class TestFrame {
         System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
         pascalscheDreieck.schneller(9);
         System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
+        pascalscheDreieck.schneller(10);
+        System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
+        pascalscheDreieck.schneller(11);
+        System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
+        pascalscheDreieck.schneller(12);
+        System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
+        pascalscheDreieck.schneller(13);
+        System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
+        pascalscheDreieck.schneller(14);
+        System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
+        pascalscheDreieck.schneller(15);
+        System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
+        pascalscheDreieck.schneller(16);
+        System.out.println("\nDer asymptotische Aufwand: " + pascalscheDreieck.getAufwandZaehler());
     }
 
 }
