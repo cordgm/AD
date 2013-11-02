@@ -19,4 +19,9 @@ public class ListElement {
 	public String toString() {
 		return schluessel + ", ";
 	}
+
+	public int getSchluessel() {
+		return schluessel;
+	}
+	
 }

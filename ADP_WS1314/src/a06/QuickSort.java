@@ -30,4 +30,8 @@ public class QuickSort<T> {
 		
 	}
 
+	public T[] getArray() {
+		return array;
+	}
+
 }
