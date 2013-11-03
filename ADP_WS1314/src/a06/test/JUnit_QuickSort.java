@@ -42,7 +42,7 @@ public class JUnit_QuickSort {
 	@Test
 	public void testQuickSort1() {
 		//Test Best Case
-		quickSort_best.QuickSort1();
+		quickSort_best.quickSort1(0, 9);
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_best.getArray()[i].getSchluessel());
 		}
@@ -55,7 +55,7 @@ public class JUnit_QuickSort {
 	@Test
 	public void testQuickSort2() {
 		//Test Best Case
-		quickSort_best.QuickSort3();
+		quickSort_best.quickSort3();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_best.getArray()[i].getSchluessel());
 		}
@@ -69,7 +69,7 @@ public class JUnit_QuickSort {
 	@Test
 	public void testQuickSort3() {
 		//Test Best Case
-		quickSort_best.QuickSort3();
+		quickSort_best.quickSort3();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_best.getArray()[i].getSchluessel());
 		}
