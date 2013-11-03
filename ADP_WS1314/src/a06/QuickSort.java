@@ -49,6 +49,12 @@ public class QuickSort<T> {
 	        }//for
 	        swap(i, rechts);
 	        aufwandZaehler++;
+//	        i = partition(pivot, links, rechts);
+	        /* i ist der Index des Pivot */
+//	        if (links < i - 1)
+//	        	quickSort3(links, i - 1);
+//	        if (i < rechts)
+//	            quickSort3(i, rechts);
         
         /* i ist der Index des Pivot */
         quickSort1( links, i-1 );
@@ -137,22 +143,9 @@ public class QuickSort<T> {
 	public void quickSort3(int links, int rechts){
 		
         int pivot = daten[(((int)(Math.random()*(rechts - links))) + links)].hashCode();
+        
         int i = partition(pivot, links, rechts);
-//        T tmp;
-//		int i = links, j = rechts;
-//        while (i <= j) {
-//              while (daten[i].hashCode() < pivot)
-//                    i++;
-//              while (daten[j].hashCode() > pivot)
-//                    j--;
-//              if (i <= j) {
-//                    tmp = daten[i];
-//                    daten[i] = daten[j];
-//                    daten[j] = tmp;
-//                    i++;
-//                    j--;
-//              }
-//        };
+        
         if (links < i - 1)
         	quickSort3(links, i - 1);
         if (i < rechts)
@@ -160,21 +153,29 @@ public class QuickSort<T> {
 	}
 	
 	public int partition(int pivot, int left, int right){
-          int i = left, j = right;
-
-          while (i <= j) {
-                while (daten[i].hashCode() < pivot)
-                      i++;
-                while (daten[j].hashCode() > pivot)
-                      j--;
-                if (i <= j) {
-                      swap(i, j);
-                      i++;
-                      j--;
-                }
-          };
-
-          return i;
+		//Initialiserung der Indices im Array
+        int i = left, j = right;
+        
+        //Wenn die While übereinander hinweggelaufen sind -> Schleife beeenden
+        while (i <= j) {
+        	//Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
+            while (daten[i].hashCode() < pivot){
+                i++;
+            	aufwandZaehler++;
+            }
+            //Hier wird solange von rechts nach links marschiert, bis man auf ein Element stoesst, das kleiner ist als das Pivot.
+            while (daten[j].hashCode() > pivot){
+                j--;
+            	aufwandZaehler++;
+            }
+            if (i <= j) {
+            	//Die blockierenden Elemente werden vertauscht, und die Wanderungen wird fortgesetzt
+                swap(i, j);
+                i++;
+                j--;
+            }
+       };
+       return i;
     }
 	
 	private void swap(int i, int j){
