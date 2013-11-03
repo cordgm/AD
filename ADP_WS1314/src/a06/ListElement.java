@@ -20,7 +20,8 @@ public class ListElement {
 		return schluessel + ", ";
 	}
 
-	public int getSchluessel() {
+	@Override
+	public int hashCode() {
 		return schluessel;
 	}
 	
