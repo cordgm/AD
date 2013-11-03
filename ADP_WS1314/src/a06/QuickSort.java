@@ -24,41 +24,23 @@ public class QuickSort<T> {
 	 * @param rechts
 	 */
 	public void quickSort1(int links, int rechts) {
-	    int pivot, i, j;
+	    int pivot, i;
 	    
 	    if(rechts > links) {
 	        
 	        //Das am weitesten rechts stehende Element wird als Pivot gewählt
 	        pivot = daten[rechts].hashCode(); 
-	        //Initialiserung der Indices im Array
-	        i = links-1;
-	        j = rechts;
-	        for( ; ; ) {
-	            //Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
-	            while( daten[++i].hashCode() < pivot )
-	            	aufwandZaehler++;
-	            //Hier wird solange von rechts nach links marschiert, bis man auf ein Element stoesst, das kleiner ist als das Pivot.
-	            while( (j>i) && ( daten[--j].hashCode() > pivot ) )
-	            	aufwandZaehler++;
-	            //Wenn die While übereinander hinweggelaufen sind -> Schleife beeenden
-	            if(i >= j)
-	                break;
-	            
-		        //Die blockierenden Elemente werden vertauscht, und die Wanderungen wird fortgesetzt
-		        swap(i, j);
-	        }//for
+
+	        //beginne Partitionierung
+	        i = partition1(pivot, links-1, rechts);
+	        
+	        //Pivotelement in die Mitte tauschen
 	        swap(i, rechts);
 	        aufwandZaehler++;
-//	        i = partition(pivot, links, rechts);
-	        /* i ist der Index des Pivot */
-//	        if (links < i - 1)
-//	        	quickSort3(links, i - 1);
-//	        if (i < rechts)
-//	            quickSort3(i, rechts);
         
-        /* i ist der Index des Pivot */
-        quickSort1( links, i-1 );
-        quickSort1( i+1, rechts );
+	        /* i ist der Index des Pivot */
+	        quickSort1( links, i-1 );
+	        quickSort1( i+1, rechts );
 	    
 	    }//if
 	}
@@ -86,23 +68,13 @@ public class QuickSort<T> {
             int pivot = daten[rechts-1].hashCode();
             
             //beginne Partitionierung
-            int i = links, j = rechts-1;
-            while(true) {
-                while(daten[++i].hashCode() < (pivot))
-                    ;
-                while( pivot < (daten[--j].hashCode()))
-                    ;
-                if(i >= j)
-                    break;
-                swap(i, j);
-            }
-//            int i = partition(pivot, links, rechts);
+            int i = partition1(pivot, links, rechts-1);
             
             //pivot wiederherstellen
             swap(i, rechts-1);
             
-            quickSort2(links, i - 1);    //sortiere kleinere Elemente
-            quickSort2(i + 1, rechts);   //sortiere groessere Elemente
+            quickSort2(links, i-1);    //sortiere kleinere Elemente
+            quickSort2(i+1, rechts);   //sortiere groessere Elemente
         }
 	}
 	
@@ -152,12 +124,30 @@ public class QuickSort<T> {
             quickSort3(i, rechts);
 	}
 	
-	public int partition(int pivot, int left, int right){
+
+	public int partition1(int pivot, int links, int rechts){
 		//Initialiserung der Indices im Array
-        int i = left, j = right;
-        
-        //Wenn die While übereinander hinweggelaufen sind -> Schleife beeenden
-        while (i <= j) {
+		int i = links, j = rechts;
+		while(true) {
+			//Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
+            while(daten[++i].hashCode() < pivot)
+            	aufwandZaehler++;
+            //Hier wird solange von rechts nach links marschiert, bis man auf ein Element stoesst, das kleiner ist als das Pivot.
+            while((j>i) && (daten[--j].hashCode() > pivot))
+            	aufwandZaehler++;
+            //Wenn die While übereinander hinweggelaufen sind -> Schleife beeenden
+            if(i >= j)
+                break;
+            //Die blockierenden Elemente werden vertauscht, und die Wanderungen wird fortgesetzt
+            swap(i, j);
+        }
+		return i;
+	}
+
+	public int partition(int pivot, int links, int rechts){
+		//Initialiserung der Indices im Array
+        int i = links, j = rechts;
+        while (true) {
         	//Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
             while (daten[i].hashCode() < pivot){
                 i++;
@@ -168,13 +158,16 @@ public class QuickSort<T> {
                 j--;
             	aufwandZaehler++;
             }
-            if (i <= j) {
+            if(i <= j){
             	//Die blockierenden Elemente werden vertauscht, und die Wanderungen wird fortgesetzt
                 swap(i, j);
                 i++;
                 j--;
             }
-       };
+            //Wenn die While übereinander hinweggelaufen sind -> Schleife beeenden
+            if(i > j)
+                break;
+       }
        return i;
     }
 	
