@@ -18,6 +18,11 @@ public class QuickSort<T> {
 		this.aufwandZaehler = 0;
 	}
 	
+	/**
+	 * QuickSort mit dem am weitest rechts stehenden Element als Pivot
+	 * @param links
+	 * @param rechts
+	 */
 	public void quickSort1(int links, int rechts) {
 	    int pivot, i, j;
 	    
@@ -52,7 +57,11 @@ public class QuickSort<T> {
 	    }//if
 	}
 	
-	
+	/**
+	 * QuickSort nach der 3-Median-Strategie
+	 * @param links
+	 * @param rechts
+	 */
 	public void quickSort2(int links, int rechts){
 		if(rechts-links+1 <= 3){
 			manualSort(links, rechts);
@@ -71,8 +80,8 @@ public class QuickSort<T> {
             int pivot = daten[rechts-1].hashCode();
             
             //beginne Partitionierung
-            int i, j;
-            for( i = links, j = rechts-1; ; ) {
+            int i = links, j = rechts-1;
+            while(true) {
                 while(daten[++i].hashCode() < (pivot))
                     ;
                 while( pivot < (daten[--j].hashCode()))
@@ -81,6 +90,7 @@ public class QuickSort<T> {
                     break;
                 swap(i, j);
             }
+//            int i = partition(pivot, links, rechts);
             
             //pivot wiederherstellen
             swap(i, rechts-1);
@@ -119,30 +129,53 @@ public class QuickSort<T> {
 //        }
 //    }
 	
+	/**
+	 * QuickSort nach der Zufalls-Strategie
+	 * @param links
+	 * @param rechts
+	 */
 	public void quickSort3(int links, int rechts){
 		
-		int i = links, j = rechts;
-        T tmp;
         int pivot = daten[(((int)(Math.random()*(rechts - links))) + links)].hashCode();
-
-        while (i <= j) {
-              while (daten[i].hashCode() < pivot)
-                    i++;
-              while (daten[j].hashCode() > pivot)
-                    j--;
-              if (i <= j) {
-                    tmp = daten[i];
-                    daten[i] = daten[j];
-                    daten[j] = tmp;
-                    i++;
-                    j--;
-              }
-        };
+        int i = partition(pivot, links, rechts);
+//        T tmp;
+//		int i = links, j = rechts;
+//        while (i <= j) {
+//              while (daten[i].hashCode() < pivot)
+//                    i++;
+//              while (daten[j].hashCode() > pivot)
+//                    j--;
+//              if (i <= j) {
+//                    tmp = daten[i];
+//                    daten[i] = daten[j];
+//                    daten[j] = tmp;
+//                    i++;
+//                    j--;
+//              }
+//        };
         if (links < i - 1)
         	quickSort3(links, i - 1);
         if (i < rechts)
             quickSort3(i, rechts);
 	}
+	
+	public int partition(int pivot, int left, int right){
+          int i = left, j = right;
+
+          while (i <= j) {
+                while (daten[i].hashCode() < pivot)
+                      i++;
+                while (daten[j].hashCode() > pivot)
+                      j--;
+                if (i <= j) {
+                      swap(i, j);
+                      i++;
+                      j--;
+                }
+          };
+
+          return i;
+    }
 	
 	private void swap(int i, int j){
        T tmp = this.daten[i];
