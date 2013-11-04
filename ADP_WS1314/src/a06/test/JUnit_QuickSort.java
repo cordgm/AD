@@ -16,7 +16,9 @@ import a06.QuickSort;
 public class JUnit_QuickSort {
 	
 	ListElement[] listElements;
-	QuickSort<ListElement> quickSort_worst;
+	QuickSort<ListElement> quickSort_worst10;
+	QuickSort<ListElement> quickSort_worst100;
+	QuickSort<ListElement> quickSort_worst1000;
 	QuickSort<ListElement> quickSort_best10;
 	QuickSort<ListElement> quickSort_best100;
 	QuickSort<ListElement> quickSort_best1000;
@@ -37,7 +39,9 @@ public class JUnit_QuickSort {
 		quickSort_best1000000 = new QuickSort<ListElement>(bestCase(1000000));
 		
 		//worst Case
-		quickSort_worst = new QuickSort<ListElement>(worstCase(10));
+		quickSort_worst10 = new QuickSort<ListElement>(worstCase(10));
+		quickSort_worst100 = new QuickSort<ListElement>(worstCase(100));
+		quickSort_worst1000 = new QuickSort<ListElement>(worstCase(1000));
 		
 		//average Case
 		listElements = new ListElement[]{ new ListElement(5), new ListElement(3),
@@ -73,22 +77,33 @@ public class JUnit_QuickSort {
 		quickSort_best10.quickSort1();
 		System.out.print("testQuickSort1 best Case:  ");
 		quickSort_best10.showDaten();
+		quickSort_best10.showAufwand();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_best10.getArray()[i].hashCode());
 		}
+		quickSort_best100.quickSort1();
+		quickSort_best100.showAufwand();
+		quickSort_best1000.quickSort1();
+		quickSort_best1000.showAufwand();
 
 		//Test worst Case
-		quickSort_worst.quickSort1();
+		quickSort_worst10.quickSort1();
 		System.out.print("testQuickSort1 worst Case: ");
-		quickSort_worst.showDaten();
+		quickSort_worst10.showDaten();
+		quickSort_worst10.showAufwand();
 		for(int i = 0; i<10; i++){
-			assertEquals(i, quickSort_worst.getArray()[i].hashCode());
+			assertEquals(i, quickSort_worst10.getArray()[i].hashCode());
 		}
+		quickSort_worst100.quickSort1();
+		quickSort_worst100.showAufwand();
+		quickSort_worst1000.quickSort1();
+		quickSort_worst1000.showAufwand();
 
 		//Test avarage Case
 		quickSort_avg.quickSort1();
 		System.out.print("testQuickSort1 avg Case:   ");
 		quickSort_avg.showDaten();
+		quickSort_avg.showAufwand();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_avg.getArray()[i].hashCode());
 		}
@@ -105,11 +120,11 @@ public class JUnit_QuickSort {
 		}
 		
 		//Test worst Case
-		quickSort_worst.quickSort2();
+		quickSort_worst10.quickSort2();
 		System.out.print("testQuickSort2 worst Case: ");
-		quickSort_worst.showDaten();
+		quickSort_worst10.showDaten();
 		for(int i = 0; i<10; i++){
-			assertEquals(i, quickSort_worst.getArray()[i].hashCode());
+			assertEquals(i, quickSort_worst10.getArray()[i].hashCode());
 		}
 
 		//Test avarage Case
@@ -133,11 +148,11 @@ public class JUnit_QuickSort {
 		}
 		
 		//Test worst Case
-		quickSort_worst.quickSort3();
+		quickSort_worst10.quickSort3();
 		System.out.print("testQuickSort3 worst Case: ");
-		quickSort_worst.showDaten();
+		quickSort_worst10.showDaten();
 		for(int i = 0; i<10; i++){
-			assertEquals(i, quickSort_worst.getArray()[i].hashCode());
+			assertEquals(i, quickSort_worst10.getArray()[i].hashCode());
 		}
 
 		//Test avarage Case

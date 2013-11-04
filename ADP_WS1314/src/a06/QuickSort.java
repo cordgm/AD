@@ -202,7 +202,11 @@ public class QuickSort<T> {
 		for(int i = 0; i < daten.length; i++){
             System.out.print(daten[i]);
 	    }
-	    System.out.println("\nAufwand:" + aufwandZaehler);
+	    System.out.println();
+	}
+	
+	public void showAufwand(){
+		System.out.printf("Aufwand für %5d Elemente: %6d\n", daten.length, aufwandZaehler);
 	}
 
 }
