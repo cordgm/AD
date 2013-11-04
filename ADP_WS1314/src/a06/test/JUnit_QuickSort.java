@@ -31,8 +31,8 @@ public class JUnit_QuickSort {
 		quickSort_best = new QuickSort<ListElement>(listElements);
 		
 		//worst Case
-		for(int i = 9; i>=0; i--){
-			listElements[i] = new ListElement(i);
+		for(int i = 0, j = 9; i<10; i++, j--){
+			listElements[i] = new ListElement(j);
 		}
 		quickSort_worst = new QuickSort<ListElement>(listElements);
 		
@@ -50,18 +50,24 @@ public class JUnit_QuickSort {
 	public void testQuickSort1() {
 		//Test Best Case
 		quickSort_best.quickSort1(0, 9);
+		System.out.print("testQuickSort1 best Case:  ");
+		quickSort_best.showDaten();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_best.getArray()[i].hashCode());
 		}
 
 		//Test worst Case
 		quickSort_worst.quickSort1(0, 9);
+		System.out.print("testQuickSort1 worst Case: ");
+		quickSort_worst.showDaten();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_worst.getArray()[i].hashCode());
 		}
 
 		//Test avarage Case
 		quickSort_avg.quickSort1(0, 9);
+		System.out.print("testQuickSort1 avg Case:   ");
+		quickSort_avg.showDaten();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_avg.getArray()[i].hashCode());
 		}
@@ -71,24 +77,24 @@ public class JUnit_QuickSort {
 	public void testQuickSort2() {
 		//Test Best Case
 		quickSort_best.quickSort2(0, 9);
-//		System.out.print("testQuickSort2 best Case:  ");
-//		quickSort_best.showDaten();
+		System.out.print("testQuickSort2 best Case:  ");
+		quickSort_best.showDaten();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_best.getArray()[i].hashCode());
 		}
 		
 		//Test worst Case
 		quickSort_worst.quickSort2(0, 9);
-//		System.out.print("testQuickSort2 worst Case: ");
-//		quickSort_worst.showDaten();
+		System.out.print("testQuickSort2 worst Case: ");
+		quickSort_worst.showDaten();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_worst.getArray()[i].hashCode());
 		}
 
 		//Test avarage Case
 		quickSort_avg.quickSort2(0, 9);
-//		System.out.print("testQuickSort2 avg Case:   ");
-//		quickSort_avg.showDaten();
+		System.out.print("testQuickSort2 avg Case:   ");
+		quickSort_avg.showDaten();
 		for(int i = 0; i<10; i++){
 			assertEquals(i, quickSort_avg.getArray()[i].hashCode());
 		}

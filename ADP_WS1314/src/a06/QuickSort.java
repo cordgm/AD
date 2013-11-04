@@ -36,7 +36,7 @@ public class QuickSort<T> {
 	        
 	        //Pivotelement in die Mitte tauschen
 	        swap(i, rechts);
-	        aufwandZaehler++;
+//	        aufwandZaehler++;
         
 	        /* i ist der Index des Pivot */
 	        quickSort1( links, i-1 );
@@ -126,6 +126,7 @@ public class QuickSort<T> {
 	
 
 	public int partition1(int pivot, int links, int rechts){
+		aufwandZaehler++;
 		//Initialiserung der Indices im Array
 		int i = links, j = rechts;
 		while(true) {
@@ -145,6 +146,7 @@ public class QuickSort<T> {
 	}
 
 	public int partition(int pivot, int links, int rechts){
+		aufwandZaehler++;
 		//Initialiserung der Indices im Array
         int i = links, j = rechts;
         while (true) {
@@ -175,7 +177,7 @@ public class QuickSort<T> {
        T tmp = this.daten[i];
        daten[i] = daten[j];
        daten[j] = tmp;
-       aufwandZaehler += 3;
+//       aufwandZaehler += 3;
    }
 
 	public T[] getArray() {
@@ -186,7 +188,7 @@ public class QuickSort<T> {
 		for(int i = 0; i < daten.length; i++){
             System.out.print(daten[i]);
 	    }
-	    System.out.println();
+	    System.out.println("\nAufwand:" + aufwandZaehler);
 	}
 
 }
