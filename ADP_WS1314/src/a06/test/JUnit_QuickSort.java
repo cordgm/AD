@@ -25,7 +25,9 @@ public class JUnit_QuickSort {
 	QuickSort<ListElement> quickSort_best10000;
 	QuickSort<ListElement> quickSort_best100000;
 	QuickSort<ListElement> quickSort_best1000000;
-	QuickSort<ListElement> quickSort_avg;
+	QuickSort<ListElement> quickSort_avg10;
+	QuickSort<ListElement> quickSort_avg100;
+	QuickSort<ListElement> quickSort_avg1000;
 
 	@Before
 	public void setUp() throws Exception {
@@ -44,13 +46,15 @@ public class JUnit_QuickSort {
 		quickSort_worst1000 = new QuickSort<ListElement>(worstCase(1000));
 		
 		//average Case
-		listElements = new ListElement[]{ new ListElement(5), new ListElement(3),
-										  new ListElement(2), new ListElement(1),
-										  new ListElement(9), new ListElement(7),
-										  new ListElement(4), new ListElement(6),
-										  new ListElement(8), new ListElement(0)
-										};
-		quickSort_avg = new QuickSort<ListElement>(listElements);
+//		listElements = new ListElement[]{ new ListElement(5), new ListElement(3),
+//										  new ListElement(2), new ListElement(1),
+//										  new ListElement(9), new ListElement(7),
+//										  new ListElement(4), new ListElement(6),
+//										  new ListElement(8), new ListElement(0)
+//										};
+		quickSort_avg10 = new QuickSort<ListElement>(avgCase(10));
+		quickSort_avg100 = new QuickSort<ListElement>(avgCase(100));
+		quickSort_avg1000 = new QuickSort<ListElement>(avgCase(1000));
 	}
 	
 	private ListElement[] bestCase(int n){
@@ -67,6 +71,15 @@ public class JUnit_QuickSort {
 		listElements = new ListElement[n];
 		for(int i = 0, j = 9; i<n; i++, j--){
 			listElements[i] = new ListElement(j);
+		}
+		return listElements;
+	}
+	
+	private ListElement[] avgCase(int n){
+		//worst Case
+		listElements = new ListElement[n];
+		for(int i = 0; i<n; i++){
+			listElements[i] = new ListElement((int)(Math.random()*n));
 		}
 		return listElements;
 	}
@@ -100,13 +113,17 @@ public class JUnit_QuickSort {
 		quickSort_worst1000.showAufwand();
 
 		//Test avarage Case
-		quickSort_avg.quickSort1();
+		quickSort_avg10.quickSort1();
 		System.out.print("testQuickSort1 avg Case:   ");
-		quickSort_avg.showDaten();
-		quickSort_avg.showAufwand();
+		quickSort_avg10.showDaten();
+		quickSort_avg10.showAufwand();
 		for(int i = 0; i<10; i++){
-			assertEquals(i, quickSort_avg.getArray()[i].hashCode());
+			assertEquals(i, quickSort_avg10.getArray()[i].hashCode());
 		}
+		quickSort_avg100.quickSort1();
+		quickSort_avg100.showAufwand();
+		quickSort_avg1000.quickSort1();
+		quickSort_avg1000.showAufwand();
 	}
 
 	@Test
@@ -128,11 +145,11 @@ public class JUnit_QuickSort {
 		}
 
 		//Test avarage Case
-		quickSort_avg.quickSort2();
+		quickSort_avg10.quickSort2();
 		System.out.print("testQuickSort2 avg Case:   ");
-		quickSort_avg.showDaten();
+		quickSort_avg10.showDaten();
 		for(int i = 0; i<10; i++){
-			assertEquals(i, quickSort_avg.getArray()[i].hashCode());
+			assertEquals(i, quickSort_avg10.getArray()[i].hashCode());
 		}
 		
 	}
@@ -156,11 +173,11 @@ public class JUnit_QuickSort {
 		}
 
 		//Test avarage Case
-		quickSort_avg.quickSort3();
+		quickSort_avg10.quickSort3();
 		System.out.print("testQuickSort3 avg Case:   ");
-		quickSort_avg.showDaten();
+		quickSort_avg10.showDaten();
 		for(int i = 0; i<10; i++){
-			assertEquals(i, quickSort_avg.getArray()[i].hashCode());
+			assertEquals(i, quickSort_avg10.getArray()[i].hashCode());
 		}
 		
 	}
