@@ -24,6 +24,7 @@ public class QuickSort<T> {
 	 * @param rechts
 	 */
 	public void quickSort1(int links, int rechts) {
+		aufwandZaehler++;
 	    int pivot, i;
 	    
 	    if(rechts > links) {
@@ -51,6 +52,7 @@ public class QuickSort<T> {
 	 * @param rechts
 	 */
 	public void quickSort2(int links, int rechts){
+		aufwandZaehler++;
 		if(rechts-links+1 <= 3){
 			manualSort(links, rechts);
 		}else {
@@ -79,6 +81,7 @@ public class QuickSort<T> {
 	}
 	
 	public void manualSort(int links, int rechts) {
+		aufwandZaehler++;
 		int size = rechts-links+1;
 		if (size <= 1) //bei 1 Element nicht sortieren
 			return;
@@ -113,6 +116,7 @@ public class QuickSort<T> {
 	 * @param rechts
 	 */
 	public void quickSort3(int links, int rechts){
+		aufwandZaehler++;
 		
         int pivot = daten[(((int)(Math.random()*(rechts - links))) + links)].hashCode();
         
@@ -126,10 +130,10 @@ public class QuickSort<T> {
 	
 
 	public int partition1(int pivot, int links, int rechts){
-		aufwandZaehler++;
 		//Initialiserung der Indices im Array
 		int i = links, j = rechts;
 		while(true) {
+			aufwandZaehler++;
 			//Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
             while(daten[++i].hashCode() < pivot)
             	aufwandZaehler++;
@@ -146,10 +150,10 @@ public class QuickSort<T> {
 	}
 
 	public int partition(int pivot, int links, int rechts){
-		aufwandZaehler++;
 		//Initialiserung der Indices im Array
         int i = links, j = rechts;
         while (true) {
+    		aufwandZaehler++;
         	//Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
             while (daten[i].hashCode() < pivot){
                 i++;
