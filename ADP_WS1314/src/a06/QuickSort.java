@@ -17,13 +17,23 @@ public class QuickSort<T> {
 		this.daten = array;
 		this.aufwandZaehler = 0;
 	}
+
+	public void quickSort1() {
+		quickSort1_rec(0, daten.length-1);
+	}
+	public void quickSort2() {
+		quickSort2_rec(0, daten.length-1);
+	}
+	public void quickSort3() {
+		quickSort3_rec(0, daten.length-1);
+	}
 	
 	/**
 	 * QuickSort mit dem am weitest rechts stehenden Element als Pivot
 	 * @param links
 	 * @param rechts
 	 */
-	public void quickSort1(int links, int rechts) {
+	public void quickSort1_rec(int links, int rechts) {
 		aufwandZaehler++;
 	    int pivot, i;
 	    
@@ -40,8 +50,8 @@ public class QuickSort<T> {
 //	        aufwandZaehler++;
         
 	        /* i ist der Index des Pivot */
-	        quickSort1( links, i-1 );
-	        quickSort1( i+1, rechts );
+	        quickSort1_rec( links, i-1 );
+	        quickSort1_rec( i+1, rechts );
 	    
 	    }//if
 	}
@@ -51,7 +61,7 @@ public class QuickSort<T> {
 	 * @param links
 	 * @param rechts
 	 */
-	public void quickSort2(int links, int rechts){
+	public void quickSort2_rec(int links, int rechts){
 		aufwandZaehler++;
 		if(rechts-links+1 <= 3){
 			manualSort(links, rechts);
@@ -75,8 +85,8 @@ public class QuickSort<T> {
             //pivot wiederherstellen
             swap(i, rechts-1);
             
-            quickSort2(links, i-1);    //sortiere kleinere Elemente
-            quickSort2(i+1, rechts);   //sortiere groessere Elemente
+            quickSort2_rec(links, i-1);    //sortiere kleinere Elemente
+            quickSort2_rec(i+1, rechts);   //sortiere groessere Elemente
         }
 	}
 	
@@ -115,7 +125,7 @@ public class QuickSort<T> {
 	 * @param links
 	 * @param rechts
 	 */
-	public void quickSort3(int links, int rechts){
+	public void quickSort3_rec(int links, int rechts){
 		aufwandZaehler++;
 		
         int pivot = daten[(((int)(Math.random()*(rechts - links))) + links)].hashCode();
@@ -123,9 +133,9 @@ public class QuickSort<T> {
         int i = partition(pivot, links, rechts);
         
         if (links < i - 1)
-        	quickSort3(links, i - 1);
+        	quickSort3_rec(links, i - 1);
         if (i < rechts)
-            quickSort3(i, rechts);
+            quickSort3_rec(i, rechts);
 	}
 	
 
