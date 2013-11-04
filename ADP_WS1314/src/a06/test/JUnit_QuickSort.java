@@ -34,9 +34,9 @@ public class JUnit_QuickSort {
 		quickSort_best10 = new QuickSort<ListElement>(bestCase(10));
 		quickSort_best100 = new QuickSort<ListElement>(bestCase(100));
 		quickSort_best1000 = new QuickSort<ListElement>(bestCase(1000));
-		quickSort_best10000 = new QuickSort<ListElement>(bestCase(10000));
-		quickSort_best100000 = new QuickSort<ListElement>(bestCase(100000));
-		quickSort_best1000000 = new QuickSort<ListElement>(bestCase(1000000));
+//		quickSort_best10000 = new QuickSort<ListElement>(bestCase(10000));
+//		quickSort_best100000 = new QuickSort<ListElement>(bestCase(100000));
+//		quickSort_best1000000 = new QuickSort<ListElement>(bestCase(1000000));
 		
 		//worst Case
 		quickSort_worst10 = new QuickSort<ListElement>(worstCase(10));
@@ -65,7 +65,7 @@ public class JUnit_QuickSort {
 	private ListElement[] worstCase(int n){
 		//worst Case
 		listElements = new ListElement[n];
-		for(int i = 0, j = 9; i<10; i++, j--){
+		for(int i = 0, j = 9; i<n; i++, j--){
 			listElements[i] = new ListElement(j);
 		}
 		return listElements;

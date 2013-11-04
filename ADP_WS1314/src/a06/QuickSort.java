@@ -10,7 +10,7 @@ public class QuickSort<T> {
 	
 	//Attribute
 	private T[] daten;
-	private int aufwandZaehler;
+	private long aufwandZaehler;
 
 	//Konstruktor
 	public QuickSort(T[] array) {
@@ -19,7 +19,7 @@ public class QuickSort<T> {
 	}
 
 	public void quickSort1() {
-		quickSort1_rec(0, daten.length-1);
+		quickSort1_rec(0, (daten.length-1));
 	}
 	public void quickSort2() {
 		quickSort2_rec(0, daten.length-1);
