@@ -109,7 +109,7 @@ public class Sorttest<T> {
     private void quick_Insertion_rec(int l, int r) {
         
         int i=l-1, j=r; 
-        int konstanterSchwellwert = 25;
+        int konstanterSchwellwert = 27;
         T tmp;      
         aufwandZaehler++;
         //Median of three
