@@ -51,6 +51,7 @@ public class Sorttest<T> {
         int i=l-1, j=r; 
         int konstanterSchwellwert = 25;
         T tmp;      
+        aufwandZaehler++;
         //Median of three
         if(r>l) {
             if(r-l > 3) { 
@@ -71,8 +72,9 @@ public class Sorttest<T> {
         if(r-l > konstanterSchwellwert){ //Quicksort
           i=l-1; j=r;
           for(;;){
-            while(daten[++i].hashCode() < daten[r].hashCode());
-            while(daten[--j].hashCode() > daten[r].hashCode());
+            while( daten[i].hashCode() < daten[r].hashCode() ){ i++; aufwandZaehler++; };
+            while( daten[j].hashCode() > daten[r].hashCode() ){ j++; aufwandZaehler++; };
+            
             if(i >= j) break;
             tmp = daten[i]; daten[i]=daten[j]; daten[j]=tmp;
           }
@@ -80,6 +82,7 @@ public class Sorttest<T> {
 
           quick_Insertion( l, i-1);
           quick_Insertion( i+1, r);
+          
         } else { //insertion sort
           for(i=l+1; i<=r; ++i){
             tmp=daten[i];
