@@ -166,6 +166,11 @@ public class Sorttest<T> {
         quick_Insertion_rec(0, daten.length-1);
     }
     
+    public void quick_Insertion_R() {
+        quick_Insertion_Random(0, daten.length-1);
+    }
+
+    
     /**
      * QuickSort nach der ganz Rechts Strategie.
      * @param links
@@ -201,6 +206,46 @@ public class Sorttest<T> {
           }
         }
       }
+    
+    /**
+     * QuickSort Insertion Sort nach der Zufalls-Strategie
+     * @param links
+     * @param rechts
+     */
+    private void quick_Insertion_Random(int l, int r){
+        aufwandZaehler++;
+        
+        int pivot = daten[(((int)(Math.random()*(r - l))) + l)].hashCode();
+        aufwandZaehler++;
+        int i, j;
+        T tmp;
+        if(r-l > konstanterSchwellwert){ //Quicksort
+          i=l-1; j=r;
+          for(;;){
+              aufwandZaehler++;
+            while(daten[++i].hashCode() < pivot ) { aufwandZaehler++; };
+            while(daten[--j].hashCode() > pivot ) { aufwandZaehler++; };
+          
+            
+            if(i>=j) break;
+            tmp=daten[i]; daten[i]=daten[j]; daten[j]=tmp;
+          }
+          tmp=daten[i]; daten[i]=daten[r]; daten[r]=tmp;
+
+          quick_Insertion_Random(l, i-1);
+          quick_Insertion_Random(i+1, r);
+        }
+        else{ //insertion sort
+          for(i=l+1; i<=r; ++i){
+            aufwandZaehler++;
+            tmp=daten[i];
+            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j, aufwandZaehler++)
+              daten[j+1]=daten[j];
+            daten[j+1]=tmp;
+          }
+        }
+    }
+    
     
     public int partition(int pivot, int links, int rechts) {
         //Initialiserung der Indices im Array
