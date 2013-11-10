@@ -12,41 +12,55 @@ public class TestFrame {
         
         /* Die Variablen zum Testen */
         
-        //Für den normalen Quciksort-Algorithmus
-        Sorttest<ListElement> quickSort_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
-        Sorttest<ListElement> quickSort_downCount100 = new Sorttest<ListElement> ( downCount(N) );
-        Sorttest<ListElement> quickSort_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
+        //Für den Zufalls- Quicksort-Algorithmus
+        Sorttest<ListElement> quickSort_R_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
+        Sorttest<ListElement> quickSort_R_downCount100 = new Sorttest<ListElement> ( downCount(N) );
+        Sorttest<ListElement> quickSort_R_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
     
-       //Für den verbesserten Quciksort-Algorithmus
-        Sorttest<ListElement> quick_InsSort_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
-        Sorttest<ListElement> quick_InsSort_downCount100 = new Sorttest<ListElement> ( downCount(N) );
-        Sorttest<ListElement> quick_InsSort_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
+        //Für den 3-Median- Quicksort-Algorithmus
+        Sorttest<ListElement> quickSort_3M_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
+        Sorttest<ListElement> quickSort_3M_downCount100 = new Sorttest<ListElement> ( downCount(N) );
+        Sorttest<ListElement> quickSort_3M_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
+        
+        //Für den verbesserten- Quicksort-Algorithmus
+        Sorttest<ListElement> quickSort_QI_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
+        Sorttest<ListElement> quickSort_QI_downCount100 = new Sorttest<ListElement> ( downCount(N) );
+        Sorttest<ListElement> quickSort_QI_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
     
     
         /************** Der Aufruf der Algorithmen **************/
         //AVG 100
         System.out.print("\nAvgCount\n---------\n");
-        quickSort_avg100.quickSort3();
-        quickSort_avg100.showAufwand();
+        quickSort_R_avg100.quickSort3(); //Zufall
+        quickSort_R_avg100.showAufwand();
         
-        quick_InsSort_avg100.quick_Insertion();
-        quick_InsSort_avg100.showAufwand();
+        quickSort_3M_avg100.quickSort2(); //3-Median
+        quickSort_3M_avg100.showAufwand();
+        
+        quickSort_QI_avg100.quick_Insertion();//Quick_Insertion
+        quickSort_QI_avg100.showAufwand();
         
         //UPTO 100
         System.out.print("\nUpCount\n---------\n");
-        quickSort_upCount100.quickSort3();
-        quickSort_upCount100.showAufwand();
+        quickSort_R_upCount100.quickSort3(); //Zufall
+        quickSort_R_upCount100.showAufwand();
         
-        quick_InsSort_upCount100.quick_Insertion();
-        quick_InsSort_upCount100.showAufwand();
+        quickSort_3M_upCount100.quickSort2(); //3-Median
+        quickSort_3M_upCount100.showAufwand();
+        
+        quickSort_QI_upCount100.quick_Insertion();//Quick_Insertion
+        quickSort_QI_upCount100.showAufwand();
        
         //DOWNTO 100
         System.out.print("\nDownCount\n---------\n");
-        quickSort_downCount100.quickSort3();
-        quickSort_downCount100.showAufwand();
+        quickSort_R_downCount100.quickSort3(); //Zufall
+        quickSort_R_downCount100.showAufwand();
         
-        quick_InsSort_downCount100.quick_Insertion();
-        quick_InsSort_downCount100.showAufwand();
+        quickSort_3M_downCount100.quickSort2(); //3-Median
+        quickSort_3M_downCount100.showAufwand();
+        
+        quickSort_QI_downCount100.quick_Insertion(); //Quick_Insertion
+        quickSort_QI_downCount100.showAufwand();
     }
 
     
