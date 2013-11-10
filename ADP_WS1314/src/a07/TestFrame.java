@@ -6,20 +6,21 @@ import a06.QuickSort;
 public class TestFrame {
     
     static ListElement[] listElements;
+    static int N = 1000000; 
     
     public static void main(String[] args) {
         
         /* Die Variablen zum Testen */
         
         //Für den normalen Quciksort-Algorithmus
-        Sorttest<ListElement> quickSort_upCount100   = new Sorttest<ListElement> ( upCount(100)   );
-        Sorttest<ListElement> quickSort_downCount100 = new Sorttest<ListElement> ( downCount(100) );
-        Sorttest<ListElement> quickSort_avg100       = new Sorttest<ListElement> ( avgCase(100)   );
+        Sorttest<ListElement> quickSort_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
+        Sorttest<ListElement> quickSort_downCount100 = new Sorttest<ListElement> ( downCount(N) );
+        Sorttest<ListElement> quickSort_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
     
        //Für den verbesserten Quciksort-Algorithmus
-        Sorttest<ListElement> quick_InsSort_upCount100   = new Sorttest<ListElement> ( upCount(100)   );
-        Sorttest<ListElement> quick_InsSort_downCount100 = new Sorttest<ListElement> ( downCount(100) );
-        Sorttest<ListElement> quick_InsSort_avg100       = new Sorttest<ListElement> ( avgCase(100)   );
+        Sorttest<ListElement> quick_InsSort_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
+        Sorttest<ListElement> quick_InsSort_downCount100 = new Sorttest<ListElement> ( downCount(N) );
+        Sorttest<ListElement> quick_InsSort_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
     
     
         /************** Der Aufruf der Algorithmen **************/
