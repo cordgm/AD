@@ -8,9 +8,10 @@ package a07;
 public class Sorttest<T> {
 
     
-  //Attribute
+    //Attribute
     private T[] daten;
     private long aufwandZaehler;
+    private static final int konstanterSchwellwert = 27;
 
     //Konstruktor
     public Sorttest(T[] array) {
@@ -109,7 +110,6 @@ public class Sorttest<T> {
     private void quick_Insertion_rec(int l, int r) {
         
         int i=l-1, j=r; 
-        int konstanterSchwellwert = 27;
         T tmp;      
         aufwandZaehler++;
         //Median of three

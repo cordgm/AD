@@ -66,7 +66,7 @@ public class TestFrame {
     
     
     private static ListElement[] upCount(int n) {
-    	int min = 700*n;
+    	long min = 700*n;
         //Best Case
         listElements = new ListElement[n];
         for(int i = 0; i<n; i++) {
@@ -77,7 +77,7 @@ public class TestFrame {
     }
     
     private static ListElement[] downCount(int n){
-    	int min = 700*n;
+    	long min = 700*n;
         //worst Case
         listElements = new ListElement[n];
         for(int i = 0, j = n-1; i<n; i++, j--){
@@ -87,8 +87,8 @@ public class TestFrame {
     }
     
     private static ListElement[] avgCase(int n){
-    	int min = 700*n;
-    	int max = 800*n;
+    	long min = 700*n;
+    	long max = 800*n;
         //worst Case
         listElements = new ListElement[n];
         for(int i = 0; i<n; i++){
