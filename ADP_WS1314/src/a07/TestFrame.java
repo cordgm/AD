@@ -12,14 +12,40 @@ public class TestFrame {
         /* Die Variablen zum Testen */
         
         //Für den normalen Quciksort-Algorithmus
-        Sorttest<ListElement> quickSort_upCount10   = new Sorttest<ListElement> ( upCount(10)   );
-        Sorttest<ListElement> quickSort_downCount10 = new Sorttest<ListElement> ( downCount(10) );
-        Sorttest<ListElement> quickSort_avg10       = new Sorttest<ListElement> ( avgCase(10)   );
+        Sorttest<ListElement> quickSort_upCount100   = new Sorttest<ListElement> ( upCount(100)   );
+        Sorttest<ListElement> quickSort_downCount100 = new Sorttest<ListElement> ( downCount(100) );
+        Sorttest<ListElement> quickSort_avg100       = new Sorttest<ListElement> ( avgCase(100)   );
     
        //Für den verbesserten Quciksort-Algorithmus
-        Sorttest<ListElement> quick_InsSort_upCount10   = new Sorttest<ListElement> ( upCount(10)   );
-        Sorttest<ListElement> quick_InsSort_downCount10 = new Sorttest<ListElement> ( downCount(10) );
-        Sorttest<ListElement> quick_InsSort_avg10       = new Sorttest<ListElement> ( avgCase(10)   );
+        Sorttest<ListElement> quick_InsSort_upCount100   = new Sorttest<ListElement> ( upCount(100)   );
+        Sorttest<ListElement> quick_InsSort_downCount100 = new Sorttest<ListElement> ( downCount(100) );
+        Sorttest<ListElement> quick_InsSort_avg100       = new Sorttest<ListElement> ( avgCase(100)   );
+    
+    
+        /************** Der Aufruf der Algorithmen **************/
+        //AVG 100
+        System.out.print("\nAvgCount\n---------\n");
+        quickSort_avg100.quickSort3();
+        quickSort_avg100.showAufwand();
+        
+        quick_InsSort_avg100.quick_Insertion();
+        quick_InsSort_avg100.showAufwand();
+        
+        //UPTO 100
+        System.out.print("\nUpCount\n---------\n");
+        quickSort_upCount100.quickSort3();
+        quickSort_upCount100.showAufwand();
+        
+        quick_InsSort_upCount100.quick_Insertion();
+        quick_InsSort_upCount100.showAufwand();
+       
+        //DOWNTO 100
+        System.out.print("\nDownCount\n---------\n");
+        quickSort_downCount100.quickSort3();
+        quickSort_downCount100.showAufwand();
+        
+        quick_InsSort_downCount100.quick_Insertion();
+        quick_InsSort_downCount100.showAufwand();
     }
 
     

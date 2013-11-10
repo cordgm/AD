@@ -23,7 +23,7 @@ public class Sorttest<T> {
      * @param links
      * @param rechts
      */
-    public void quickSort3_rec(int links, int rechts) {
+    private void quickSort3_rec(int links, int rechts) {
         aufwandZaehler++;
         
         int pivot = daten[(((int)(Math.random()*(rechts - links))) + links)].hashCode();
@@ -36,6 +36,10 @@ public class Sorttest<T> {
             quickSort3_rec(i, rechts);
     }
     
+    public void quickSort3() {
+        quickSort3_rec(0, daten.length-1);
+    }
+    
     /**
      * Der verbesserte Quicksort. 
      * Durch die Behandlung kleiner Teilfelder mit Insertionsort. 
@@ -46,7 +50,7 @@ public class Sorttest<T> {
      * @param links
      * @param rechts
      */
-    public void quick_Insertion(int l, int r) {
+    private void quick_Insertion_rec(int l, int r) {
         
         int i=l-1, j=r; 
         int konstanterSchwellwert = 25;
@@ -72,16 +76,16 @@ public class Sorttest<T> {
         if(r-l > konstanterSchwellwert){ //Quicksort
           i=l-1; j=r;
           for(;;){
-            while( daten[i].hashCode() < daten[r].hashCode() ){ i++; aufwandZaehler++; };
-            while( daten[j].hashCode() > daten[r].hashCode() ){ j++; aufwandZaehler++; };
+            while( daten[++i].hashCode() < daten[r].hashCode() ){  aufwandZaehler++; };
+            while( daten[--j].hashCode() > daten[r].hashCode() ){  aufwandZaehler++; };
             
             if(i >= j) break;
             tmp = daten[i]; daten[i]=daten[j]; daten[j]=tmp;
           }
           tmp=daten[i]; daten[i]=daten[r]; daten[r]=tmp;
 
-          quick_Insertion( l, i-1);
-          quick_Insertion( i+1, r);
+          quick_Insertion_rec( l, i-1);
+          quick_Insertion_rec( i+1, r);
           
         } else { //insertion sort
           for(i=l+1; i<=r; ++i){
@@ -92,6 +96,10 @@ public class Sorttest<T> {
           }
         }
        }
+    }
+    
+    public void quick_Insertion() {
+        quick_Insertion_rec(0, daten.length-1);
     }
     
     public int partition(int pivot, int links, int rechts) {
