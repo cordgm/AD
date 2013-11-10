@@ -24,7 +24,7 @@ public class Sorttest<T> {
      * @param links
      * @param rechts
      */
-    private void quickSort3_rec(int links, int rechts) {
+    private void quickSort_R_rec(int links, int rechts) {
         aufwandZaehler++;
         
         int pivot = daten[(((int)(Math.random()*(rechts - links))) + links)].hashCode();
@@ -32,16 +32,16 @@ public class Sorttest<T> {
         int i = partition(pivot, links, rechts);
         
         if (links < i - 1)
-            quickSort3_rec(links, i - 1);
+            quickSort_R_rec(links, i - 1);
         if (i < rechts)
-            quickSort3_rec(i, rechts);
+            quickSort_R_rec(i, rechts);
     }
     /**
      * QuickSort nach der 3-Median-Strategie
      * @param links
      * @param rechts
      */
-    private void quickSort2_rec(int links, int rechts){
+    private void quickSort_3M_rec(int links, int rechts){
         aufwandZaehler++;
         if(rechts-links+1 <= 3){
             manualSort(links, rechts);
@@ -65,8 +65,8 @@ public class Sorttest<T> {
             //pivot wiederherstellen
             swap(i, rechts-1);
             
-            quickSort2_rec(links, i-1);    //sortiere kleinere Elemente
-            quickSort2_rec(i+1, rechts);   //sortiere groessere Elemente
+            quickSort_3M_rec(links, i-1);    //sortiere kleinere Elemente
+            quickSort_3M_rec(i+1, rechts);   //sortiere groessere Elemente
         }
     }
     
@@ -89,12 +89,12 @@ public class Sorttest<T> {
         }
     }
     
-    public void quickSort2() {
-        quickSort2_rec(0, daten.length-1);
+    public void quickSort_3M() {
+        quickSort_3M_rec(0, daten.length-1);
     }
     
-    public void quickSort3() {
-        quickSort3_rec(0, daten.length-1);
+    public void quickSort_R() {
+        quickSort_R_rec(0, daten.length-1);
     }
     
     /**
@@ -130,13 +130,14 @@ public class Sorttest<T> {
         //end of Median of three
             
         if(r-l > konstanterSchwellwert){ //Quicksort
-          i=l-1; j=r;
-          for(;;){
-            while( daten[++i].hashCode() < daten[r].hashCode() ){  aufwandZaehler++; };
-            while( daten[--j].hashCode() > daten[r].hashCode() ){  aufwandZaehler++; };
+		  i=l-1; j=r;
+		  for(;;){
+        	  aufwandZaehler++;
+        	  while( daten[++i].hashCode() < daten[r].hashCode() ){  aufwandZaehler++; };
+        	  while( daten[--j].hashCode() > daten[r].hashCode() ){  aufwandZaehler++; };
             
-            if(i >= j) break;
-            tmp = daten[i]; daten[i]=daten[j]; daten[j]=tmp;
+        	  if(i >= j) break;
+        	  tmp = daten[i]; daten[i]=daten[j]; daten[j]=tmp;
           }
           tmp=daten[i]; daten[i]=daten[r]; daten[r]=tmp;
 
@@ -144,9 +145,9 @@ public class Sorttest<T> {
           quick_Insertion_rec( i+1, r);
           
         } else { //insertion sort
-          for(i=l+1; i<=r; ++i){
+          for(i=l+1; i<=r; ++i, aufwandZaehler++){
             tmp=daten[i];
-            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j)
+            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j, aufwandZaehler++)
               daten[j+1]=daten[j];
             daten[j+1]=tmp;
           }

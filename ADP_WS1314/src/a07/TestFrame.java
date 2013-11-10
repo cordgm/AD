@@ -31,10 +31,10 @@ public class TestFrame {
         /************** Der Aufruf der Algorithmen **************/
         //AVG 100
         System.out.print("\nAvgCount\n---------\n");
-        quickSort_R_avg100.quickSort3(); //Zufall
+        quickSort_R_avg100.quickSort_R(); //Zufall
         quickSort_R_avg100.showAufwand();
         
-        quickSort_3M_avg100.quickSort2(); //3-Median
+        quickSort_3M_avg100.quickSort_3M(); //3-Median
         quickSort_3M_avg100.showAufwand();
         
         quickSort_QI_avg100.quick_Insertion();//Quick_Insertion
@@ -42,10 +42,10 @@ public class TestFrame {
         
         //UPTO 100
         System.out.print("\nUpCount\n---------\n");
-        quickSort_R_upCount100.quickSort3(); //Zufall
+        quickSort_R_upCount100.quickSort_R(); //Zufall
         quickSort_R_upCount100.showAufwand();
         
-        quickSort_3M_upCount100.quickSort2(); //3-Median
+        quickSort_3M_upCount100.quickSort_3M(); //3-Median
         quickSort_3M_upCount100.showAufwand();
         
         quickSort_QI_upCount100.quick_Insertion();//Quick_Insertion
@@ -53,10 +53,10 @@ public class TestFrame {
        
         //DOWNTO 100
         System.out.print("\nDownCount\n---------\n");
-        quickSort_R_downCount100.quickSort3(); //Zufall
+        quickSort_R_downCount100.quickSort_R(); //Zufall
         quickSort_R_downCount100.showAufwand();
         
-        quickSort_3M_downCount100.quickSort2(); //3-Median
+        quickSort_3M_downCount100.quickSort_3M(); //3-Median
         quickSort_3M_downCount100.showAufwand();
         
         quickSort_QI_downCount100.quick_Insertion(); //Quick_Insertion
