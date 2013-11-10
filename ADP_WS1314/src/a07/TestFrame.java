@@ -11,6 +11,7 @@ public class TestFrame {
     public static void main(String[] args) {
         
         /* Die Variablen zum Testen */
+
         
         //Für den Zufalls- Quicksort-Algorithmus
         Sorttest<ListElement> quickSort_R_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
@@ -22,12 +23,19 @@ public class TestFrame {
         Sorttest<ListElement> quickSort_3M_downCount100 = new Sorttest<ListElement> ( downCount(N) );
         Sorttest<ListElement> quickSort_3M_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
         
-        //Für den verbesserten- Quicksort-Algorithmus
+        //Für den verbesserten- Quicksort-Algorithmus 3-Median
         Sorttest<ListElement> quickSort_QI_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
         Sorttest<ListElement> quickSort_QI_downCount100 = new Sorttest<ListElement> ( downCount(N) );
         Sorttest<ListElement> quickSort_QI_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
     
-    
+        //Für den verbesserten- Quicksort-Algorithmus Rechts-Pivot //15,
+        Sorttest<ListElement> quickSort_QI_R_upCount100   = new Sorttest<ListElement> ( upCount(10000)   );
+        Sorttest<ListElement> quickSort_QI_R_downCount100 = new Sorttest<ListElement> ( downCount(N) );
+        Sorttest<ListElement> quickSort_QI_R_avg100       = new Sorttest<ListElement> ( avgCase(N)   );
+        
+        
+        
+
         /************** Der Aufruf der Algorithmen **************/
         //AVG 100
         System.out.print("\nAvgCount\n---------\n");
@@ -40,6 +48,9 @@ public class TestFrame {
         quickSort_QI_avg100.quick_Insertion();//Quick_Insertion
         quickSort_QI_avg100.showAufwand();
         
+//        quickSort_QI_R_avg100.quick_Insertsort_Rechts();//Quick_Insertion Rechts-Pivot
+//        quickSort_QI_R_avg100.showAufwand();
+        
         //UPTO 100
         System.out.print("\nUpCount\n---------\n");
         quickSort_R_upCount100.quickSort_R(); //Zufall
@@ -51,6 +62,9 @@ public class TestFrame {
         quickSort_QI_upCount100.quick_Insertion();//Quick_Insertion
         quickSort_QI_upCount100.showAufwand();
        
+//        quickSort_QI_R_upCount100.quick_Insertsort_Rechts();//Quick_Insertion Rechts-Pivot
+//        quickSort_QI_R_upCount100.showAufwand();
+        
         //DOWNTO 100
         System.out.print("\nDownCount\n---------\n");
         quickSort_R_downCount100.quickSort_R(); //Zufall
@@ -61,6 +75,10 @@ public class TestFrame {
         
         quickSort_QI_downCount100.quick_Insertion(); //Quick_Insertion
         quickSort_QI_downCount100.showAufwand();
+        
+//        quickSort_QI_R_downCount100.quick_Insertsort_Rechts(); //Quick_Insertion
+//        quickSort_QI_R_downCount100.showAufwand();
+        
     }
 
     

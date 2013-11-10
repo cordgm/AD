@@ -5,13 +5,14 @@ package a07;
  * @version 0
  * @param <T>
  */
+
 public class Sorttest<T> {
 
     
     //Attribute
     private T[] daten;
     private long aufwandZaehler;
-    private static final int konstanterSchwellwert = 27;
+    private static final int konstanterSchwellwert = 20;
 
     //Konstruktor
     public Sorttest(T[] array) {
@@ -36,6 +37,7 @@ public class Sorttest<T> {
         if (i < rechts)
             quickSort_R_rec(i, rechts);
     }
+    
     /**
      * QuickSort nach der 3-Median-Strategie
      * @param links
@@ -95,6 +97,10 @@ public class Sorttest<T> {
     
     public void quickSort_R() {
         quickSort_R_rec(0, daten.length-1);
+    }
+    
+    public void quick_Insertsort_Rechts() {
+        qsort_ins_Rechts(0, daten.length-1);
     }
     
     /**
@@ -159,6 +165,42 @@ public class Sorttest<T> {
     public void quick_Insertion() {
         quick_Insertion_rec(0, daten.length-1);
     }
+    
+    /**
+     * QuickSort nach der ganz Rechts Strategie.
+     * @param links
+     * @param rechts
+     */
+    private void qsort_ins_Rechts(int l, int r) {
+        aufwandZaehler++;
+        int i, j;
+        T tmp;
+        if(r-l > konstanterSchwellwert){ //Quicksort
+          i=l-1; j=r;
+          for(;;){
+              aufwandZaehler++;
+            while(daten[++i].hashCode() < daten[r].hashCode() ) { aufwandZaehler++; };
+            while(daten[--j].hashCode() > daten[r].hashCode() ) { aufwandZaehler++; };
+          
+            
+            if(i>=j) break;
+            tmp=daten[i]; daten[i]=daten[j]; daten[j]=tmp;
+          }
+          tmp=daten[i]; daten[i]=daten[r]; daten[r]=tmp;
+
+          qsort_ins_Rechts(l, i-1);
+          qsort_ins_Rechts(i+1, r);
+        }
+        else{ //insertion sort
+          for(i=l+1; i<=r; ++i){
+            aufwandZaehler++;
+            tmp=daten[i];
+            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j, aufwandZaehler++)
+              daten[j+1]=daten[j];
+            daten[j+1]=tmp;
+          }
+        }
+      }
     
     public int partition(int pivot, int links, int rechts) {
         //Initialiserung der Indices im Array
