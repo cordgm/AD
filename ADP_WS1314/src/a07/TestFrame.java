@@ -66,29 +66,33 @@ public class TestFrame {
     
     
     private static ListElement[] upCount(int n) {
+    	int min = 700*n;
         //Best Case
         listElements = new ListElement[n];
         for(int i = 0; i<n; i++) {
-                listElements[i] = new ListElement(i);
+                listElements[i] = new ListElement(i+min);
         }
         
         return listElements;
     }
     
     private static ListElement[] downCount(int n){
+    	int min = 700*n;
         //worst Case
         listElements = new ListElement[n];
         for(int i = 0, j = n-1; i<n; i++, j--){
-            listElements[i] = new ListElement(j);
+            listElements[i] = new ListElement(j+min);
         }
         return listElements;
     }
     
     private static ListElement[] avgCase(int n){
+    	int min = 700*n;
+    	int max = 800*n;
         //worst Case
         listElements = new ListElement[n];
         for(int i = 0; i<n; i++){
-            listElements[i] = new ListElement((int)(Math.random()*1000000));
+            listElements[i] = new ListElement(min+(int)(Math.random()*max));
         }
         return listElements;
     }
