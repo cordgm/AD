@@ -145,7 +145,8 @@ public class Sorttest<T> {
           quick_Insertion_rec( i+1, r);
           
         } else { //insertion sort
-          for(i=l+1; i<=r; ++i, aufwandZaehler++){
+          for(i=l+1; i<=r; ++i ){
+              aufwandZaehler++;
             tmp=daten[i];
             for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j, aufwandZaehler++)
               daten[j+1]=daten[j];
