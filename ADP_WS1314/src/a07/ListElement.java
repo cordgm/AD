@@ -8,11 +8,11 @@ package a07;
 public class ListElement {
 	
 	//Attribute
-	private int schluessel;
+	private long schluessel;
 
 	//Konstruktor
-	public ListElement(int schluessel) {
-		this.schluessel = schluessel;
+	public ListElement(long l) {
+		this.schluessel = l;
 	}
 
 	@Override
@@ -22,7 +22,7 @@ public class ListElement {
 
 	@Override
 	public int hashCode() {
-		return schluessel;
+		return (int)schluessel;
 	}
 	
 }
