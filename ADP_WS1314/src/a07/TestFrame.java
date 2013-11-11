@@ -12,7 +12,7 @@ public class TestFrame {
         
         /* Die Variablen zum Testen */
 
-        
+         
         //Für den Zufalls- Quicksort-Algorithmus
         Sorttest<ListElement> quickSort_R_upCount100   = new Sorttest<ListElement> ( upCount(N)   );
         Sorttest<ListElement> quickSort_R_downCount100 = new Sorttest<ListElement> ( downCount(N) );
