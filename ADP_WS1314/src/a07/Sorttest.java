@@ -12,6 +12,7 @@ public class Sorttest<T> {
     //Attribute
     private T[] daten;
     private long aufwandZaehler;
+    final boolean AUFWAND = true;
     private static final int konstanterSchwellwert = 20;
 
     //Konstruktor
@@ -26,7 +27,7 @@ public class Sorttest<T> {
      * @param rechts
      */
     private void quickSort_R_rec(int links, int rechts) {
-        aufwandZaehler++;
+    	if(AUFWAND) {aufwandZaehler++;};
         
         int pivot = daten[(((int)(Math.random()*(rechts - links))) + links)].hashCode();
         
@@ -44,7 +45,7 @@ public class Sorttest<T> {
      * @param rechts
      */
     private void quickSort_3M_rec(int links, int rechts){
-        aufwandZaehler++;
+    	if(AUFWAND) {aufwandZaehler++;};
         if(rechts-links+1 <= 3){
             manualSort(links, rechts);
         }else {
@@ -72,8 +73,23 @@ public class Sorttest<T> {
         }
     }
     
+    public void InsertionSort(int start, int end)
+    {
+        for (int x = start + 1; x < end; x++)
+        {
+            T val = daten[x];
+            int j = x - 1;
+            while (j >= 0 && val.hashCode() < daten[j].hashCode())
+            {
+            	daten[j + 1] = daten[j];
+                j--;
+            }
+            daten[j + 1] = val;
+        }
+    }
+    
     public void manualSort(int links, int rechts) {
-        aufwandZaehler++;
+    	if(AUFWAND) {aufwandZaehler++;};
         int size = rechts-links+1;
         if (size <= 1) //bei 1 Element nicht sortieren
             return;
@@ -115,22 +131,21 @@ public class Sorttest<T> {
      */
     private void quick_Insertion_rec(int l, int r) {
         
-        int i=l-1, j=r; 
-        T tmp;      
-        aufwandZaehler++;
+        int i=l-1, j=r;
+        if(AUFWAND) aufwandZaehler++;
         //Median of three
         if(r>l) {
             if(r-l > 3) { 
               int m=l+(r-l)/2;
               
               if(daten[l].hashCode() > daten[m].hashCode()) { 
-                  tmp=daten[l]; daten[l]=daten[m]; daten[m]=tmp; 
+                  swap(l, m); 
               }
-              
               if( daten[l].hashCode() > daten[r].hashCode() ) { 
-                  tmp=daten[l]; daten[l]=daten[r]; daten[r]=tmp; 
-              } else if(daten[r].hashCode() > daten[m].hashCode()) { 
-                  tmp=daten[r]; daten[r]=daten[m]; daten[m]=tmp; 
+                  swap(l, r); 
+              }
+              if(daten[r].hashCode() > daten[m].hashCode()) { 
+                  swap(r, m); 
               }
          }
         //end of Median of three
@@ -138,25 +153,28 @@ public class Sorttest<T> {
         if(r-l > konstanterSchwellwert){ //Quicksort
 		  i=l-1; j=r;
 		  for(;;){
-        	  aufwandZaehler++;
-        	  while( daten[++i].hashCode() < daten[r].hashCode() ){  aufwandZaehler++; };
-        	  while( daten[--j].hashCode() > daten[r].hashCode() ){  aufwandZaehler++; };
+			  if(AUFWAND) aufwandZaehler++;
+        	  while( daten[++i].hashCode() < daten[r].hashCode() ){  if(AUFWAND) aufwandZaehler++; };
+        	  while( daten[--j].hashCode() > daten[r].hashCode() ){  if(AUFWAND) aufwandZaehler++; };
             
         	  if(i >= j) break;
-        	  tmp = daten[i]; daten[i]=daten[j]; daten[j]=tmp;
+        	  swap(i, j);
           }
-          tmp=daten[i]; daten[i]=daten[r]; daten[r]=tmp;
+          swap(i, r);
 
           quick_Insertion_rec( l, i-1);
           quick_Insertion_rec( i+1, r);
           
         } else { //insertion sort
-          for(i=l+1; i<=r; ++i ){
-              aufwandZaehler++;
-            tmp=daten[i];
-            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j, aufwandZaehler++)
-              daten[j+1]=daten[j];
-            daten[j+1]=tmp;
+        	T tmp;
+        	for(i=l+1; i<=r; ++i ){
+        		if(AUFWAND) {aufwandZaehler++;};
+			    tmp=daten[i];
+			    for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j){
+			    	daten[j+1]=daten[j];
+			    	if(AUFWAND) {aufwandZaehler++;};
+			    }
+			    daten[j+1]=tmp;
           }
         }
        }
@@ -177,31 +195,33 @@ public class Sorttest<T> {
      * @param rechts
      */
     private void qsort_ins_Rechts(int l, int r) {
-        aufwandZaehler++;
+    	if(AUFWAND) {aufwandZaehler++;};
         int i, j;
         T tmp;
         if(r-l > konstanterSchwellwert){ //Quicksort
           i=l-1; j=r;
           for(;;){
               aufwandZaehler++;
-            while(daten[++i].hashCode() < daten[r].hashCode() ) { aufwandZaehler++; };
-            while(daten[--j].hashCode() > daten[r].hashCode() ) { aufwandZaehler++; };
+            while(daten[++i].hashCode() < daten[r].hashCode() ) { if(AUFWAND) {aufwandZaehler++;}; };
+            while(daten[--j].hashCode() > daten[r].hashCode() ) { if(AUFWAND) {aufwandZaehler++;}; };
           
             
             if(i>=j) break;
-            tmp=daten[i]; daten[i]=daten[j]; daten[j]=tmp;
+            swap(i, j);
           }
-          tmp=daten[i]; daten[i]=daten[r]; daten[r]=tmp;
+          swap(i, r);
 
           qsort_ins_Rechts(l, i-1);
           qsort_ins_Rechts(i+1, r);
         }
         else{ //insertion sort
           for(i=l+1; i<=r; ++i){
-            aufwandZaehler++;
+        	  if(AUFWAND) {aufwandZaehler++;};
             tmp=daten[i];
-            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j, aufwandZaehler++)
-              daten[j+1]=daten[j];
+            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j){
+            	daten[j+1]=daten[j];
+            	if(AUFWAND) {aufwandZaehler++;};
+            }
             daten[j+1]=tmp;
           }
         }
@@ -213,36 +233,40 @@ public class Sorttest<T> {
      * @param rechts
      */
     private void quick_Insertion_Random(int l, int r){
-        aufwandZaehler++;
+    	if(AUFWAND) {aufwandZaehler++;};
         
         int pivot = daten[(((int)(Math.random()*(r - l))) + l)].hashCode();
-        aufwandZaehler++;
+        if(AUFWAND) {aufwandZaehler++;};
         int i, j;
         T tmp;
         if(r-l > konstanterSchwellwert){ //Quicksort
-          i=l-1; j=r;
-          for(;;){
-              aufwandZaehler++;
-            while(daten[++i].hashCode() < pivot ) { aufwandZaehler++; };
-            while(daten[--j].hashCode() > pivot ) { aufwandZaehler++; };
+        	i=l-1; j=r;
+        	for(;;){	//Partitionierung
+        		if(AUFWAND) {aufwandZaehler++;};
+        		//Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
+        		while(daten[++i].hashCode() < pivot ) { if(AUFWAND) {aufwandZaehler++;};};
+        		//Hier wird solange von rechts nach links marschiert, bis man auf ein Element stoesst, das kleiner ist als das Pivot.
+        		while(daten[--j].hashCode() > pivot ) { if(AUFWAND) {aufwandZaehler++;}; };
           
-            
-            if(i>=j) break;
-            tmp=daten[i]; daten[i]=daten[j]; daten[j]=tmp;
-          }
-          tmp=daten[i]; daten[i]=daten[r]; daten[r]=tmp;
+	            if(i>=j) break;
+	            //Die blockierenden Elemente werden vertauscht, und die Wanderungen wird fortgesetzt
+	            swap(i, j);
+        	}
+          swap(i, r);
 
           quick_Insertion_Random(l, i-1);
           quick_Insertion_Random(i+1, r);
         }
         else{ //insertion sort
-          for(i=l+1; i<=r; ++i){
-            aufwandZaehler++;
-            tmp=daten[i];
-            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j, aufwandZaehler++)
-              daten[j+1]=daten[j];
+        	for(i=l+1; i<=r; ++i){
+        		if(AUFWAND) {aufwandZaehler++;};
+        		tmp=daten[i];
+            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j){
+            	daten[j+1]=daten[j];
+            	if(AUFWAND) {aufwandZaehler++;};
+            }
             daten[j+1]=tmp;
-          }
+        	}
         }
     }
     
@@ -251,16 +275,16 @@ public class Sorttest<T> {
         //Initialiserung der Indices im Array
         int i = links, j = rechts;
         while (true) {
-            aufwandZaehler++;
+        	if(AUFWAND) {aufwandZaehler++;};
             //Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
             while (daten[i].hashCode() < pivot){
                 i++;
-                aufwandZaehler++;
+                if(AUFWAND) {aufwandZaehler++;};
             }
             //Hier wird solange von rechts nach links marschiert, bis man auf ein Element stoesst, das kleiner ist als das Pivot.
             while (daten[j].hashCode() > pivot){
                 j--;
-                aufwandZaehler++;
+                if(AUFWAND) {aufwandZaehler++;};
             }
             if(i <= j){
                 //Die blockierenden Elemente werden vertauscht, und die Wanderungen wird fortgesetzt
@@ -279,13 +303,13 @@ public class Sorttest<T> {
         //Initialiserung der Indices im Array
         int i = links, j = rechts;
         while(true) {
-            aufwandZaehler++;
+        	if(AUFWAND) {aufwandZaehler++;};
             //Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
             while(daten[++i].hashCode() < pivot)
-                aufwandZaehler++;
+            	if(AUFWAND) {aufwandZaehler++;};
             //Hier wird solange von rechts nach links marschiert, bis man auf ein Element stoesst, das kleiner ist als das Pivot.
             while((j>i) && (daten[--j].hashCode() > pivot))
-                aufwandZaehler++;
+            	if(AUFWAND) {aufwandZaehler++;};
             //Wenn die While übereinander hinweggelaufen sind -> Schleife beeenden
             if(i >= j)
                 break;
@@ -314,7 +338,7 @@ public class Sorttest<T> {
     }
     
     public void showAufwand() {
-        System.out.printf("Aufwand für %5d Elemente: %8d\n", daten.length, aufwandZaehler);
+        System.out.printf("Aufwand für %5d Elemente: %8d", daten.length, aufwandZaehler);
     }
 
     
