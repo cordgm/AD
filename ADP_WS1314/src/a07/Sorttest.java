@@ -115,9 +115,9 @@ public class Sorttest<T> {
         quickSort_R_rec(0, daten.length-1);
     }
     
-    public void quick_Insertsort_Rechts() {
-        qsort_ins_Rechts(0, daten.length-1);
-    }
+//    public void quick_Insertsort_Rechts() {
+//        qsort_ins_Rechts(0, daten.length-1);
+//    }
     
     /**
      * Der verbesserte Quicksort. 
@@ -136,48 +136,50 @@ public class Sorttest<T> {
         //Median of three
         if(r>l) {
             if(r-l > 3) { 
-              int m=l+(r-l)/2;
+            	int m=l+(r-l)/2;
               
-              if(daten[l].hashCode() > daten[m].hashCode()) { 
-                  swap(l, m); 
-              }
-              if( daten[l].hashCode() > daten[r].hashCode() ) { 
-                  swap(l, r); 
-              }
-              if(daten[r].hashCode() > daten[m].hashCode()) { 
-                  swap(r, m); 
-              }
-         }
-        //end of Median of three
+            	if(daten[l].hashCode() > daten[m].hashCode()) { 
+            		swap(l, m); 
+            	}
+            	if( daten[l].hashCode() > daten[r].hashCode() ) { 
+            		swap(l, r); 
+            	}
+            	if(daten[r].hashCode() > daten[m].hashCode()) { 
+            		swap(r, m); 
+              	}
+            }//end of Median of three
             
-        if(r-l > konstanterSchwellwert){ //Quicksort
-		  i=l-1; j=r;
-		  for(;;){
-			  if(AUFWAND) aufwandZaehler++;
-        	  while( daten[++i].hashCode() < daten[r].hashCode() ){  if(AUFWAND) aufwandZaehler++; };
-        	  while( daten[--j].hashCode() > daten[r].hashCode() ){  if(AUFWAND) aufwandZaehler++; };
+            if(r-l > konstanterSchwellwert){ //Quicksort
+            	i=l-1; j=r;
+            	for(;;){//Partitionierung
+            		if(AUFWAND) aufwandZaehler++;
+            		//Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
+            		while( daten[++i].hashCode() < daten[r].hashCode() ){  if(AUFWAND) aufwandZaehler++; };
+            		//Hier wird solange von rechts nach links marschiert, bis man auf ein Element stoesst, das kleiner ist als das Pivot.
+            		while( daten[--j].hashCode() > daten[r].hashCode() ){  if(AUFWAND) aufwandZaehler++; };
             
-        	  if(i >= j) break;
-        	  swap(i, j);
-          }
-          swap(i, r);
+            		if(i >= j) break;
+            		//Die blockierenden Elemente werden vertauscht, und die Wanderungen wird fortgesetzt
+            		swap(i, j);
+            	}//end Partitionierung
+            	swap(i, r);
 
-          quick_Insertion_rec( l, i-1);
-          quick_Insertion_rec( i+1, r);
+            	quick_Insertion_rec( l, i-1);
+            	quick_Insertion_rec( i+1, r);
           
-        } else { //insertion sort
-        	T tmp;
-        	for(i=l+1; i<=r; ++i ){
-        		if(AUFWAND) {aufwandZaehler++;};
-			    tmp=daten[i];
-			    for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j){
-			    	daten[j+1]=daten[j];
-			    	if(AUFWAND) {aufwandZaehler++;};
-			    }
-			    daten[j+1]=tmp;
-          }
+            } else { //insertion sort
+            	T tmp;
+            	for(i=l+1; i<=r; ++i ){
+            		if(AUFWAND) {aufwandZaehler++;};
+            		tmp=daten[i];
+            		for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j){
+            			daten[j+1]=daten[j];
+            			if(AUFWAND) {aufwandZaehler++;};
+            		}
+            		daten[j+1]=tmp;
+            	}
+            }//end insertion sort
         }
-       }
     }
     
     public void quick_Insertion() {
@@ -189,43 +191,43 @@ public class Sorttest<T> {
     }
 
     
-    /**
-     * QuickSort nach der ganz Rechts Strategie.
-     * @param links
-     * @param rechts
-     */
-    private void qsort_ins_Rechts(int l, int r) {
-    	if(AUFWAND) {aufwandZaehler++;};
-        int i, j;
-        T tmp;
-        if(r-l > konstanterSchwellwert){ //Quicksort
-          i=l-1; j=r;
-          for(;;){
-              aufwandZaehler++;
-            while(daten[++i].hashCode() < daten[r].hashCode() ) { if(AUFWAND) {aufwandZaehler++;}; };
-            while(daten[--j].hashCode() > daten[r].hashCode() ) { if(AUFWAND) {aufwandZaehler++;}; };
-          
-            
-            if(i>=j) break;
-            swap(i, j);
-          }
-          swap(i, r);
-
-          qsort_ins_Rechts(l, i-1);
-          qsort_ins_Rechts(i+1, r);
-        }
-        else{ //insertion sort
-          for(i=l+1; i<=r; ++i){
-        	  if(AUFWAND) {aufwandZaehler++;};
-            tmp=daten[i];
-            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j){
-            	daten[j+1]=daten[j];
-            	if(AUFWAND) {aufwandZaehler++;};
-            }
-            daten[j+1]=tmp;
-          }
-        }
-      }
+//    /**
+//     * QuickSort nach der ganz Rechts Strategie.
+//     * @param links
+//     * @param rechts
+//     */
+//    private void qsort_ins_Rechts(int l, int r) {
+//    	if(AUFWAND) {aufwandZaehler++;};
+//        int i, j;
+//        T tmp;
+//        if(r-l > konstanterSchwellwert){ //Quicksort
+//          i=l-1; j=r;
+//          for(;;){
+//              aufwandZaehler++;
+//            while(daten[++i].hashCode() < daten[r].hashCode() ) { if(AUFWAND) {aufwandZaehler++;}; };
+//            while(daten[--j].hashCode() > daten[r].hashCode() ) { if(AUFWAND) {aufwandZaehler++;}; };
+//          
+//            
+//            if(i>=j) break;
+//            swap(i, j);
+//          }
+//          swap(i, r);
+//
+//          qsort_ins_Rechts(l, i-1);
+//          qsort_ins_Rechts(i+1, r);
+//        }
+//        else{ //insertion sort
+//          for(i=l+1; i<=r; ++i){
+//        	  if(AUFWAND) {aufwandZaehler++;};
+//            tmp=daten[i];
+//            for(j=i-1; j>=l && tmp.hashCode() < daten[j].hashCode(); --j){
+//            	daten[j+1]=daten[j];
+//            	if(AUFWAND) {aufwandZaehler++;};
+//            }
+//            daten[j+1]=tmp;
+//          }
+//        }
+//      }
     
     /**
      * QuickSort Insertion Sort nach der Zufalls-Strategie
