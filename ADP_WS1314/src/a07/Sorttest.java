@@ -13,7 +13,7 @@ public class Sorttest<T> {
     private T[] daten;
     private long aufwandZaehler;
     final boolean AUFWAND = true;
-    private static final int konstanterSchwellwert = 20;
+    private static final int konstanterSchwellwert = 27;//20
 
     //Konstruktor
     public Sorttest(T[] array) {
@@ -108,10 +108,12 @@ public class Sorttest<T> {
     }
     
     public void quickSort_3M() {
+    	aufwandZaehler = 0;
         quickSort_3M_rec(0, daten.length-1);
     }
     
     public void quickSort_R() {
+    	aufwandZaehler = 0;
         quickSort_R_rec(0, daten.length-1);
     }
     
@@ -183,10 +185,12 @@ public class Sorttest<T> {
     }
     
     public void quick_Insertion() {
+    	aufwandZaehler = 0;
         quick_Insertion_rec(0, daten.length-1);
     }
     
     public void quick_Insertion_R() {
+    	aufwandZaehler = 0;
         quick_Insertion_Random(0, daten.length-1);
     }
 
@@ -342,6 +346,14 @@ public class Sorttest<T> {
     public void showAufwand() {
         System.out.printf("Aufwand für %5d Elemente: %8d", daten.length, aufwandZaehler);
     }
+
+	public long getAufwandZaehler() {
+		return aufwandZaehler;
+	}
+
+	public void setAufwandZaehler(long aufwandZaehler) {
+		this.aufwandZaehler = aufwandZaehler;
+	}
 
     
 }

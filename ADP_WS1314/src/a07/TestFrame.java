@@ -44,45 +44,59 @@ public class TestFrame {
 	        //AVG 100
 	        System.out.print("\nAvgCount\n---------\n");
 	//        long time1 = System.nanoTime();
-	        long time1 = System.currentTimeMillis();
-	        quickSort_R_avg100.quickSort_R(); //Zufall
-	        long time2 = System.currentTimeMillis();
-	        System.out.print("Quick-Random:    ");
-	        quickSort_R_avg100.showAufwand();
-	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
-	        
-	        time1 = System.currentTimeMillis();
-	        quickSort_3M_avg100.quickSort_3M(); //3-Median
-	        time2 = System.currentTimeMillis();
+//	        long time1 = System.currentTimeMillis();
+//	        quickSort_R_avg100.quickSort_R(); //Zufall
+//	        long time2 = System.currentTimeMillis();
+//	        System.out.print("Quick-Random:    ");
+//	        quickSort_R_avg100.showAufwand();
+//	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
+	        int avgAufwand = 0;
+	        long time1 = 0;
+	        long time2 = 0;
+	        for(int i=0; i<10; i++){
+		        time1 += System.currentTimeMillis();
+		        quickSort_3M_avg100.quickSort_3M(); //3-Median
+		        time2 += System.currentTimeMillis();
+		        avgAufwand += quickSort_3M_avg100.getAufwandZaehler();
+		
+	        }
 	        System.out.print("Quick-3-Median:  ");
-	        quickSort_3M_avg100.showAufwand();
-	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
-	
-	        time1 = System.currentTimeMillis();
-	        quickSort_QI_avg100.quick_Insertion();//Quick_Insertion
-	        time2 = System.currentTimeMillis();
-	        System.out.print("Quick-Insertion: ");
-	        quickSort_QI_avg100.showAufwand();
-	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
+	        System.out.printf("Aufwand für %5d Elemente: %8d", N, avgAufwand/10);
+	        System.out.print(" , Zeit: " + (time2-time1)/10 + "ms\n");
 	        
+	        avgAufwand = 0;
+	        time1 = 0;
+	        time2 = 0;
+	        for(int i=0; i<10; i++){
+		        time1 += System.currentTimeMillis();
+		        quickSort_QI_avg100.quick_Insertion();//Quick_Insertion
+		        time2 += System.currentTimeMillis();
+		        avgAufwand += quickSort_QI_avg100.getAufwandZaehler();
+	        }
+	        System.out.print("Quick-Insertion: ");
+	        System.out.printf("Aufwand für %5d Elemente: %8d", N, avgAufwand/10);
+	        System.out.print(" , Zeit: " + (time2-time1)/10 + "ms\n");
+
+	        
+
 	//        quickSort_QI_R_avg100.quick_Insertsort_Rechts();//Quick_Insertion Rechts-Pivot
 	//        quickSort_QI_R_avg100.showAufwand();
 	
-	        time1 = System.currentTimeMillis();
-	        quickSort_QI_Random_avg100.quick_Insertion_R();//Quick_Insertion Random
-	        time2 = System.currentTimeMillis();
-	        System.out.print("Quick-Ins.-Ran.: ");
-	        quickSort_QI_Random_avg100.showAufwand();
-	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
+//	        time1 = System.currentTimeMillis();
+//	        quickSort_QI_Random_avg100.quick_Insertion_R();//Quick_Insertion Random
+//	        time2 = System.currentTimeMillis();
+//	        System.out.print("Quick-Ins.-Ran.: ");
+//	        quickSort_QI_Random_avg100.showAufwand();
+//	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
 	        
 	        //UPTO 100
 	        System.out.print("\nUpCount\n---------\n");
-	        time1 = System.currentTimeMillis();
-	        quickSort_R_upCount100.quickSort_R(); //Zufall
-	        time2 = System.currentTimeMillis();
-	        System.out.print("Quick-Random:    ");
-	        quickSort_R_upCount100.showAufwand();
-	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
+//	        time1 = System.currentTimeMillis();
+//	        quickSort_R_upCount100.quickSort_R(); //Zufall
+//	        time2 = System.currentTimeMillis();
+//	        System.out.print("Quick-Random:    ");
+//	        quickSort_R_upCount100.showAufwand();
+//	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
 	
 	        time1 = System.currentTimeMillis();
 	        quickSort_3M_upCount100.quickSort_3M(); //3-Median
@@ -101,21 +115,21 @@ public class TestFrame {
 	//        quickSort_QI_R_upCount100.quick_Insertsort_Rechts();//Quick_Insertion Rechts-Pivot
 	//        quickSort_QI_R_upCount100.showAufwand();
 	
-	        time1 = System.currentTimeMillis();
-	        quickSort_QI_Random_upCount100.quick_Insertion_R();//Quick_Insertion Random
-	        time2 = System.currentTimeMillis();
-	        System.out.print("Quick-Ins.-Ran.: ");
-	        quickSort_QI_Random_upCount100.showAufwand();
-	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
+//	        time1 = System.currentTimeMillis();
+//	        quickSort_QI_Random_upCount100.quick_Insertion_R();//Quick_Insertion Random
+//	        time2 = System.currentTimeMillis();
+//	        System.out.print("Quick-Ins.-Ran.: ");
+//	        quickSort_QI_Random_upCount100.showAufwand();
+//	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
 	        
 	        //DOWNTO 100
 	        System.out.print("\nDownCount\n---------\n");
-	        time1 = System.currentTimeMillis();
-	        quickSort_R_downCount100.quickSort_R(); //Zufall
-	        time2 = System.currentTimeMillis();
-	        System.out.print("Quick-Random:    ");
-	        quickSort_R_downCount100.showAufwand();
-	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
+//	        time1 = System.currentTimeMillis();
+//	        quickSort_R_downCount100.quickSort_R(); //Zufall
+//	        time2 = System.currentTimeMillis();
+//	        System.out.print("Quick-Random:    ");
+//	        quickSort_R_downCount100.showAufwand();
+//	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
 	
 	        time1 = System.currentTimeMillis();
 	        quickSort_3M_downCount100.quickSort_3M(); //3-Median
@@ -129,17 +143,17 @@ public class TestFrame {
 	        time2 = System.currentTimeMillis();
 	        System.out.print("Quick-Insertion: ");
 	        quickSort_QI_downCount100.showAufwand();
-	        System.out.print(" , Zeit: " + (time2-time1) + "ms\n");
+	        System.out.println(" , Zeit: " + (time2-time1) + "ms\n");
 	        
 	//        quickSort_QI_R_downCount100.quick_Insertsort_Rechts(); //Quick_Insertion Rechts-Pivot
 	//        quickSort_QI_R_downCount100.showAufwand();
 	
-	        time1 = System.currentTimeMillis();
-	        quickSort_QI_Random_downCount100.quick_Insertion_R();//Quick_Insertion Random
-	        time2 = System.currentTimeMillis();
-	        System.out.print("Quick-Ins.-Ran.: ");
-	        quickSort_QI_Random_downCount100.showAufwand();
-	        System.out.println(" , Zeit: " + (time2-time1) + "ms\n");
+//	        time1 = System.currentTimeMillis();
+//	        quickSort_QI_Random_downCount100.quick_Insertion_R();//Quick_Insertion Random
+//	        time2 = System.currentTimeMillis();
+//	        System.out.print("Quick-Ins.-Ran.: ");
+//	        quickSort_QI_Random_downCount100.showAufwand();
+//	        System.out.println(" , Zeit: " + (time2-time1) + "ms\n");
 	        
         }
         
