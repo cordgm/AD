@@ -17,7 +17,29 @@ public class QuickSort<T> {
 		this.daten = array;
 		this.aufwandZaehler = 0;
 	}
+	
+	public QuickSort() {
+		this.aufwandZaehler = 0;
+	}
 
+	public void quickSort(int pivot, T[] array) {
+		this.daten = array;
+		aufwandZaehler = 0;
+		switch(pivot){
+		case 0:
+			quickSort1_rec(0, (daten.length-1));
+			break;
+		case 1:
+			quickSort2_rec(0, (daten.length-1));
+			break;
+		case 2:
+			quickSort3_rec(0, (daten.length-1));
+			break;
+		}
+		
+	}
+	
+	
 	public void quickSort1() {
 		quickSort1_rec(0, (daten.length-1));
 	}
