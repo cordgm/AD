@@ -19,12 +19,28 @@ public class JUnit_QuickSort {
 		int i;
 		int pivot;
 		for(pivot = 0; pivot < PIVOT_METHODE; pivot++){//for fuer Pivotelement
-			for(anzahl_elemente = 10; anzahl_elemente <= MAX_ANZAHLELEMENTE; anzahl_elemente*=10){//for fuer Anzahl der zu testenden Elemente
+			if(QuickSort.AUFWAND){
+				switch(pivot){
+				case QuickSort.RECHTS_PIVOT:
+					System.out.println("Pivot ist rechts:");
+					break;
+				case QuickSort.MEDIAN_OF_3_PIVOT:
+					System.out.println("Pivot nach 3-Median:");
+					break;
+				case QuickSort.RANDOM_PIVOT:
+					System.out.println("Pivot nach Random:");
+					break;
+				}
+			}
+			for(anzahl_elemente = 10; anzahl_elemente <= MAX_ANZAHLELEMENTE; anzahl_elemente*=10) {//for fuer Anzahl der zu testenden Elemente
 				quickSort.quickSort(pivot, avgCase(anzahl_elemente));
+				if(QuickSort.AUFWAND) { quickSort.showAufwand(); }
+				
 				for(i = 1; i < anzahl_elemente; i++){//for fuer das Iterieren durchs Array
 					assertTrue(quickSort.getArray()[i-1].hashCode() <= quickSort.getArray()[i].hashCode());
 				}
 			}
+			if(QuickSort.AUFWAND) {System.out.println();};
 		}
 	}
 	

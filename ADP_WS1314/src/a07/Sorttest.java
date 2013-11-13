@@ -12,7 +12,7 @@ public class Sorttest<T> {
     //Attribute
     private T[] daten;
     private long aufwandZaehler;
-    final boolean AUFWAND = true;
+    public static final boolean AUFWAND = true;
     private static final int konstanterSchwellwert = 27;//20
 
     //Konstruktor

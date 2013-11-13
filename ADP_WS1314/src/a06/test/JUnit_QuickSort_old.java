@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import a06.ListElement;
 import a06.QuickSort;
+import a06.QuickSort_old;
 
 /**
  * 
@@ -16,24 +17,24 @@ import a06.QuickSort;
 public class JUnit_QuickSort_old {
 	
 	ListElement[] listElements;
-	QuickSort<ListElement> quickSort_upCount10;
-	QuickSort<ListElement> quickSort_upCount50;
-	QuickSort<ListElement> quickSort_upCount100;
-	QuickSort<ListElement> quickSort_upCount500;
-	QuickSort<ListElement> quickSort_upCount1000;
-	QuickSort<ListElement> quickSort_upCount5000;
-	QuickSort<ListElement> quickSort_downCount10;
-	QuickSort<ListElement> quickSort_downCount50;
-	QuickSort<ListElement> quickSort_downCount100;
-	QuickSort<ListElement> quickSort_downCount500;
-	QuickSort<ListElement> quickSort_downCount1000;
-	QuickSort<ListElement> quickSort_downCount5000;
-	QuickSort<ListElement> quickSort_avg10;
-	QuickSort<ListElement> quickSort_avg50;
-	QuickSort<ListElement> quickSort_avg100;
-	QuickSort<ListElement> quickSort_avg500;
-	QuickSort<ListElement> quickSort_avg1000;
-	QuickSort<ListElement> quickSort_avg5000;
+	QuickSort_old<ListElement> quickSort_upCount10;
+	QuickSort_old<ListElement> quickSort_upCount50;
+	QuickSort_old<ListElement> quickSort_upCount100;
+	QuickSort_old<ListElement> quickSort_upCount500;
+	QuickSort_old<ListElement> quickSort_upCount1000;
+	QuickSort_old<ListElement> quickSort_upCount5000;
+	QuickSort_old<ListElement> quickSort_downCount10;
+	QuickSort_old<ListElement> quickSort_downCount50;
+	QuickSort_old<ListElement> quickSort_downCount100;
+	QuickSort_old<ListElement> quickSort_downCount500;
+	QuickSort_old<ListElement> quickSort_downCount1000;
+	QuickSort_old<ListElement> quickSort_downCount5000;
+	QuickSort_old<ListElement> quickSort_avg10;
+	QuickSort_old<ListElement> quickSort_avg50;
+	QuickSort_old<ListElement> quickSort_avg100;
+	QuickSort_old<ListElement> quickSort_avg500;
+	QuickSort_old<ListElement> quickSort_avg1000;
+	QuickSort_old<ListElement> quickSort_avg5000;
 
 	@Before
 	public void setUp() throws Exception {
@@ -54,20 +55,20 @@ public class JUnit_QuickSort_old {
 //											new ListElement(4)
 //										};
 //		};
-		quickSort_upCount10 = new QuickSort<ListElement>(upCount(10));
-		quickSort_upCount50 = new QuickSort<ListElement>(upCount(50));
-		quickSort_upCount100 = new QuickSort<ListElement>(upCount(100));
-		quickSort_upCount500 = new QuickSort<ListElement>(upCount(500));
-		quickSort_upCount1000 = new QuickSort<ListElement>(upCount(1000));
-		quickSort_upCount5000 = new QuickSort<ListElement>(upCount(5000));
+		quickSort_upCount10 = new QuickSort_old<ListElement>(upCount(10));
+		quickSort_upCount50 = new QuickSort_old<ListElement>(upCount(50));
+		quickSort_upCount100 = new QuickSort_old<ListElement>(upCount(100));
+		quickSort_upCount500 = new QuickSort_old<ListElement>(upCount(500));
+		quickSort_upCount1000 = new QuickSort_old<ListElement>(upCount(1000));
+		quickSort_upCount5000 = new QuickSort_old<ListElement>(upCount(5000));
 		
 		//worst Case
-		quickSort_downCount10 = new QuickSort<ListElement>(downCount(10));
-		quickSort_downCount50 = new QuickSort<ListElement>(downCount(50));
-		quickSort_downCount100 = new QuickSort<ListElement>(downCount(100));
-		quickSort_downCount500 = new QuickSort<ListElement>(downCount(500));
-		quickSort_downCount1000 = new QuickSort<ListElement>(downCount(1000));
-		quickSort_downCount5000 = new QuickSort<ListElement>(downCount(5000));
+		quickSort_downCount10 = new QuickSort_old<ListElement>(downCount(10));
+		quickSort_downCount50 = new QuickSort_old<ListElement>(downCount(50));
+		quickSort_downCount100 = new QuickSort_old<ListElement>(downCount(100));
+		quickSort_downCount500 = new QuickSort_old<ListElement>(downCount(500));
+		quickSort_downCount1000 = new QuickSort_old<ListElement>(downCount(1000));
+		quickSort_downCount5000 = new QuickSort_old<ListElement>(downCount(5000));
 		
 		//average Case
 //		listElements = new ListElement[]{ new ListElement(5), new ListElement(3),
@@ -76,12 +77,12 @@ public class JUnit_QuickSort_old {
 //										  new ListElement(4), new ListElement(6),
 //										  new ListElement(8), new ListElement(0)
 //										};
-		quickSort_avg10 = new QuickSort<ListElement>(avgCase(10));
-		quickSort_avg50 = new QuickSort<ListElement>(avgCase(50));
-		quickSort_avg100 = new QuickSort<ListElement>(avgCase(100));
-		quickSort_avg500 = new QuickSort<ListElement>(avgCase(500));
-		quickSort_avg1000 = new QuickSort<ListElement>(avgCase(1000));
-		quickSort_avg5000 = new QuickSort<ListElement>(avgCase(5000));
+		quickSort_avg10 = new QuickSort_old<ListElement>(avgCase(10));
+		quickSort_avg50 = new QuickSort_old<ListElement>(avgCase(50));
+		quickSort_avg100 = new QuickSort_old<ListElement>(avgCase(100));
+		quickSort_avg500 = new QuickSort_old<ListElement>(avgCase(500));
+		quickSort_avg1000 = new QuickSort_old<ListElement>(avgCase(1000));
+		quickSort_avg5000 = new QuickSort_old<ListElement>(avgCase(5000));
 	}
 	
 	private ListElement[] upCount(int n){

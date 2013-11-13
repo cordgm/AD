@@ -11,6 +11,10 @@ public class QuickSort<T> {
 	//Attribute
 	private T[] daten;
 	private long aufwandZaehler;
+	public static final int RECHTS_PIVOT = 0;
+	public static final int MEDIAN_OF_3_PIVOT = 1;
+	public static final int RANDOM_PIVOT = 2;
+	public static final boolean AUFWAND = true;
 
 	//Konstruktor
 	public QuickSort(T[] array) {
@@ -26,28 +30,17 @@ public class QuickSort<T> {
 		this.daten = array;
 		aufwandZaehler = 0;
 		switch(pivot){
-		case 0:
+		case RECHTS_PIVOT:
 			quickSort1_rec(0, (daten.length-1));
 			break;
-		case 1:
+		case MEDIAN_OF_3_PIVOT:
 			quickSort2_rec(0, (daten.length-1));
 			break;
-		case 2:
+		case RANDOM_PIVOT:
 			quickSort3_rec(0, (daten.length-1));
 			break;
 		}
 		
-	}
-	
-	
-	public void quickSort1() {
-		quickSort1_rec(0, (daten.length-1));
-	}
-	public void quickSort2() {
-		quickSort2_rec(0, daten.length-1);
-	}
-	public void quickSort3() {
-		quickSort3_rec(0, daten.length-1);
 	}
 	
 	/**
@@ -56,7 +49,7 @@ public class QuickSort<T> {
 	 * @param rechts
 	 */
 	public void quickSort1_rec(int links, int rechts) {
-		aufwandZaehler++;
+		if(AUFWAND) {aufwandZaehler++;};
 	    int pivot, i;
 	    
 	    if(rechts > links) {
@@ -69,7 +62,6 @@ public class QuickSort<T> {
 	        
 	        //Pivotelement in die Mitte tauschen
 	        swap(i, rechts);
-//	        aufwandZaehler++;
         
 	        /* i ist der Index des Pivot */
 	        quickSort1_rec( links, i-1 );
@@ -84,7 +76,7 @@ public class QuickSort<T> {
 	 * @param rechts
 	 */
 	public void quickSort2_rec(int links, int rechts){
-		aufwandZaehler++;
+		if(AUFWAND) {aufwandZaehler++;};
 		if(rechts-links+1 <= 3){
 			manualSort(links, rechts);
 		}else {
@@ -113,7 +105,7 @@ public class QuickSort<T> {
 	}
 	
 	public void manualSort(int links, int rechts) {
-		aufwandZaehler++;
+		if(AUFWAND) {aufwandZaehler++;};
 		int size = rechts-links+1;
 		if (size <= 1) //bei 1 Element nicht sortieren
 			return;
@@ -131,24 +123,13 @@ public class QuickSort<T> {
 	    }
 	}
 	
-//	private void insertionSort(int low, int high ) {
-//        for(int p = low + 1; p <= high; p++) {
-//            T tmp = daten[p];
-//            int j;
-//            
-//            for(j = p; j > low && tmp.hashCode() < (daten[j - 1].hashCode()); j--)
-//                daten[j] = daten[j-1];
-//            daten[j] = tmp;
-//        }
-//    }
-	
 	/**
 	 * QuickSort nach der Zufalls-Strategie
 	 * @param links
 	 * @param rechts
 	 */
 	public void quickSort3_rec(int links, int rechts){
-		aufwandZaehler++;
+		if(AUFWAND) {aufwandZaehler++;};
 		
         int pivot = daten[(((int)(Math.random()*(rechts - links))) + links)].hashCode();
         
@@ -165,13 +146,13 @@ public class QuickSort<T> {
 		//Initialiserung der Indices im Array
 		int i = links, j = rechts;
 		while(true) {
-			aufwandZaehler++;
+			if(AUFWAND) {aufwandZaehler++;};
 			//Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
             while(daten[++i].hashCode() < pivot)
-            	aufwandZaehler++;
+            	if(AUFWAND) {aufwandZaehler++;};
             //Hier wird solange von rechts nach links marschiert, bis man auf ein Element stoesst, das kleiner ist als das Pivot.
             while((j>i) && (daten[--j].hashCode() > pivot))
-            	aufwandZaehler++;
+            	if(AUFWAND) {aufwandZaehler++;};
             //Wenn die While übereinander hinweggelaufen sind -> Schleife beeenden
             if(i >= j)
                 break;
@@ -185,16 +166,16 @@ public class QuickSort<T> {
 		//Initialiserung der Indices im Array
         int i = links, j = rechts;
         while (true) {
-    		aufwandZaehler++;
+        	if(AUFWAND) {aufwandZaehler++;};
         	//Hier wird solange von links nach rechts marschiert, bis man auf ein Element stoesst, das groesser als das Pivot ist.
             while (daten[i].hashCode() < pivot){
                 i++;
-            	aufwandZaehler++;
+                if(AUFWAND) {aufwandZaehler++;};
             }
             //Hier wird solange von rechts nach links marschiert, bis man auf ein Element stoesst, das kleiner ist als das Pivot.
             while (daten[j].hashCode() > pivot){
                 j--;
-            	aufwandZaehler++;
+                if(AUFWAND) {aufwandZaehler++;};
             }
             if(i <= j){
             	//Die blockierenden Elemente werden vertauscht, und die Wanderungen wird fortgesetzt
@@ -213,7 +194,6 @@ public class QuickSort<T> {
        T tmp = this.daten[i];
        daten[i] = daten[j];
        daten[j] = tmp;
-//       aufwandZaehler += 3;
    }
 
 	public T[] getArray() {
