@@ -15,12 +15,15 @@ public class TreeArray<T> implements ITree<T> {
 
     @Override
     public boolean insert(Node<T> node ) {
+        int n = 0; 
+        Node<T> tmpNode = node; 
         
-        Node<T> tmpNode; 
-        tmpNode.setDaten(daten);
-        tmpNode.setKey(key);
+        if( node.getKey() == binaryTree[n].getKey() ) return true;
+        else {
+            
+        }
         
-        
+        return true;
     }
 
     @Override
