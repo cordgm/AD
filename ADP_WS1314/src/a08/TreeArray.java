@@ -2,6 +2,17 @@ package a08;
 
 public class TreeArray<T> implements ITree<T> {
 
+    private Node[] binaryTree;
+    private int N; //Maximale Größe des Arrays
+    
+    /**
+     * 
+     */
+    public TreeArray(int N) {
+        super();
+        this.binaryTree = (Node[]) new Object[N];
+    }
+
     @Override
     public void insert(Node<T> key) {
         // TODO Auto-generated method stub
@@ -42,6 +53,11 @@ public class TreeArray<T> implements ITree<T> {
     public Node<T> getVater(int n) {
         // TODO Auto-generated method stub
         return null;
+    }
+    
+    public boolean exists(int key) {
+        if( key == binaryTree.getKey() )
+        
     }
 
 }
