@@ -13,28 +13,28 @@ public class TreeLinked<T> implements ITree<T> {
 	Node wurzel = tree.wurzel;
 
     @Override
-    public void insert(Node<T> node) {
-    	if(k == key) return this;
+    public boolean insert(Node<T> node) {
+    	if(key == wurzel.key) return false;
     	else
     	{
-    	if(k < key)
-    	{
-    	if(links == null)
-    	{
-    	links = new Knoten<T>(d,k);
-    	return links;
-    	}
-    	else return links.insert(d, k);
-    	}
-    	else
-    	{
-    	if(rechts == null)
-    	{
-    	rechts = new Knoten<T>(d,k);
-    	return rechts;
-    	}
-    	else return rechts.insert(d,k);
-    	}
+	    	if(node.key < wurzel.key)
+	    	{
+		    	if(wurzel.links == null)
+		    	{
+			    	node.setLinks(node);
+			    	return true;
+		    	}
+		    	else return links.insert(daten, key);
+	    	}
+	    	else
+	    	{
+	    	if(rechts == null)
+	    	{
+	    	rechts = new Knoten<T>(d,k);
+	    	return rechts;
+	    	}
+	    	else return rechts.insert(d,k);
+	    	}
     	}
     }
 

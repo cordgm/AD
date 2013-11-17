@@ -2,11 +2,11 @@ package a08;
 
 public class Node<T> {
     
-    T daten; //Die eigentliche Daten
-    int key; 
-    Node<T> links;    //Linker Sohn
-    Node<T> rechts;  //Rechter Sohn
-    Node<T> vater;   //Vater (Knoten)
+    private T daten; //Die eigentliche Daten
+    private int key; 
+    private Node<T> links;    //Linker Sohn
+    private Node<T> rechts;  //Rechter Sohn
+    private Node<T> vater;   //Vater (Knoten)
 
     /**
      * @param daten
