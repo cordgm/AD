@@ -14,8 +14,8 @@ public class TreeArray<T> implements ITree<T> {
     }
 
     @Override
-    public void insert(Node<T> key) {
-        // TODO Auto-generated method stub
+    public boolean insert( T daten, int key ) {
+        
         
     }
 
@@ -54,10 +54,8 @@ public class TreeArray<T> implements ITree<T> {
         // TODO Auto-generated method stub
         return null;
     }
-    
-    public boolean exists(int key) {
-        if( key == binaryTree.getKey() )
+ 
         
-    }
+    
 
 }
