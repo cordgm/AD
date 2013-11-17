@@ -28,6 +28,10 @@ public class TreeLinked<T> implements ITree<T> {
 		}
     	
     }
+	
+	public boolean exists(int k) {
+		return wurzel.exists(k);
+	}
 
     @Override
     public void inorder(Node<T> vater) {

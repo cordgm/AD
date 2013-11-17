@@ -55,4 +55,11 @@ public interface ITree<T> {
      */
     public Node<T> getVater(int n);
 
+    /**
+     * 
+     * @param i
+     * @return
+     */
+	public boolean exists(int i);
+
 }
