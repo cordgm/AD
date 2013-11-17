@@ -97,11 +97,13 @@ public class TreeArray<T> implements ITree<T> {
     public void inorder(Node<T> vater) {
         
         if(vater != null) {
-            
             inorder( vater.getLinks() );
             printDump( vater);
             inorder( vater.getRechts() );
+           
         }
+        
+        if(DEBUG) treePrintAll();
         
     }
 
@@ -115,6 +117,8 @@ public class TreeArray<T> implements ITree<T> {
             preorder( vater.getRechts() );
         
         }
+        
+        if(DEBUG) treePrintAll();
     }
 
     @Override
@@ -126,6 +130,8 @@ public class TreeArray<T> implements ITree<T> {
            postorder( vater.getRechts() );
            printDump( vater);
        }
+       
+       if(DEBUG) treePrintAll();
         
     }
 
@@ -160,5 +166,13 @@ public class TreeArray<T> implements ITree<T> {
         
     }
     
+    private void treePrintAll() {
+        for (int i = 0; i < binaryTree.length; i++) {
+            
+            if(binaryTree[i] != null) {
+                System.out.println("[i = " + i + "] : Daten -> " + binaryTree[i].getDaten() );
+            }
+        }
+    }
 
 }

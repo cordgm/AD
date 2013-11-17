@@ -1,9 +1,11 @@
 package a08;
 
 public class TestFrame {
+    
 	final static int wurzel = 10;
 	final static int anzahlNodes = 20;
 	private final static int N = 10;
+	private final static int AUSWAHL = 1; //1=inorder or 2=preorder or 3=postorder
 
     public static void main(String[] args) {
 
@@ -23,12 +25,11 @@ public class TestFrame {
 //    	System.out.println();
 
     	
-	   int datensatz = (int) (Math.random() * 100 + 1); System.out.println("Datensatz: "+ datensatz);
-       
+	 //  int datensatz = (int) (Math.random() * 100 + 1); System.out.println("Datensatz: "+ datensatz);
      //  Node<Element> n1 = new Node<Element>(new Element(datensatz), datensatz, null, null, null); //1. Datensatz
+        // treeArray.insert(n1); 
+        
        ITree<Element> treeArray = new TreeArray<Element>(N);
-       
-      // treeArray.insert(n1); 
        Node<Element> node;
        
        for(int i=1; i <= N; i++) {
@@ -37,10 +38,18 @@ public class TestFrame {
          treeArray.insert(node);
       }
       
-       treeArray.inorder  ( new Node<Element>( new Element(1), 1, null, null, null) );       
-       treeArray.postorder( new Node<Element>( new Element(1), 1, null, null, null) );
-       treeArray.preorder ( new Node<Element>( new Element(1), 1, null, null, null) );
-       
-    }
+       switch( AUSWAHL ) {
+           case (1):   treeArray.inorder  ( new Node<Element>( new Element(1), 1, null, null, null) ); 
+               break;
+               
+           case (2):   treeArray.preorder ( new Node<Element>( new Element(1), 1, null, null, null) );
+               break; 
+           
+           case (3):   treeArray.postorder( new Node<Element>( new Element(1), 1, null, null, null) );
+               break;
 
+          
+       }
+           
+    }  
 }
