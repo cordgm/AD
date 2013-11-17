@@ -9,33 +9,24 @@ package a08;
 public class TreeLinked<T> implements ITree<T> {
 	
 	//Attribute
-	Tree tree = new Tree();
-	Node wurzel = tree.wurzel;
+	Tree<T> tree;
+	Node<T> wurzel;
+	
+    public TreeLinked() {
+		super();
+		tree = new Tree<T>();
+		wurzel = tree.wurzel;
+	}
 
-    @Override
+	@Override
     public boolean insert(Node<T> node) {
-    	if(key == wurzel.key) return false;
-    	else
-    	{
-	    	if(node.key < wurzel.key)
-	    	{
-		    	if(wurzel.links == null)
-		    	{
-			    	node.setLinks(node);
-			    	return true;
-		    	}
-		    	else return links.insert(daten, key);
-	    	}
-	    	else
-	    	{
-	    	if(rechts == null)
-	    	{
-	    	rechts = new Knoten<T>(d,k);
-	    	return rechts;
-	    	}
-	    	else return rechts.insert(d,k);
-	    	}
-    	}
+		if(node != null){
+			wurzel.insert(node.getDaten(), node.getKey());
+	    	return true;
+		}else{
+			return false;
+		}
+    	
     }
 
     @Override

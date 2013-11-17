@@ -82,7 +82,30 @@ public class Node<T> {
     	}
     }
 
-    
+    Node<T> insert(T d, int k){
+	    if(k == key) return this;
+	    else
+	    {
+		    if(k < key)
+		    {
+			    if(links == null)
+			    {
+				    links = new Node<T>(d,k, null, null, vater);
+				    return links;
+			    }
+			    else return links.insert(d, k);
+		    }
+		    else
+		    {
+		    if(rechts == null)
+		    {
+			    rechts = new Node<T>(d,k, null, null, vater);
+			    return rechts;
+		    }
+		    else return rechts.insert(d,k);
+		    }
+	    }
+    }
 }
 
 
