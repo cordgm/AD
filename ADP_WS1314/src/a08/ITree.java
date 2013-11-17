@@ -15,6 +15,11 @@ package a08;
 public interface ITree<T> {
     
     /**
+     * @param key
+     */
+    void insert(Node<T> key);
+    
+    /**
      * Ausgabe der Knoten in Symmetrischer Folge. 
      * @param vater
      */
