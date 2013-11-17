@@ -59,16 +59,16 @@ public class TreeLinked<T> implements ITree<T> {
     public void preorder(Node<T> vater) {
     	if(vater != null){
     		System.out.print(vater.getDaten());
-    		inorder(vater.getLinks());
-    		inorder(vater.getRechts());
+    		preorder(vater.getLinks());
+    		preorder(vater.getRechts());
     	}
     }
 
     @Override
     public void postorder(Node<T> vater) {
     	if(vater != null){
-    		inorder(vater.getLinks());
-    		inorder(vater.getRechts());
+    		postorder(vater.getLinks());
+    		postorder(vater.getRechts());
     		System.out.print(vater.getDaten());
     	}
     }
