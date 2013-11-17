@@ -69,7 +69,7 @@ public class Node<T> {
      * @param k
      * @return
      */
-    public boolean exists(int k){
+    public boolean exists(int k) {
     	if(k == key) return true;
     	else
     	{
