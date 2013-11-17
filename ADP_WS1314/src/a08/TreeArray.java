@@ -136,7 +136,7 @@ public class TreeArray<T> implements ITree<T> {
     }
 
     @Override
-    public  Node<T> getLinkerSohn(Node<T> vater) {
+    public Node<T> getLinkerSohn(Node<T> vater) {
         //Mit Index Rechnung die Daten bekommen n*2.
         return vater.getLinks();
     }
