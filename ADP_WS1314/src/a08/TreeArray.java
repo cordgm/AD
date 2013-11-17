@@ -2,8 +2,8 @@ package a08;
 
 public class TreeArray<T> implements ITree<T> {
     
-    private static int N; //Maximale Größe des Arrays
-    private static  int DEFAULT_ARRAY_GROESSE = N * 2;
+    private  int N; //Maximale Größe des Arrays
+    private  int DEFAULT_ARRAY_GROESSE = N * 2;
     
     private Node<T>[] binaryTree;
    // Tree<T> tree;
