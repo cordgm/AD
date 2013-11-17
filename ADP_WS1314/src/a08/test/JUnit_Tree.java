@@ -21,12 +21,19 @@ public class JUnit_Tree {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		ITree<Element> bsBaumA = new TreeArray<Element>();
-//		ITree<Element> bsBaumV = new Binaerer_Suchbaum_Verlinkung<Element>();
-		for(int i = 0; i < 3; i++){
-			Node<Element> node = new Node<Element>(new Element(i), i, null, null, null);
-			
-		}
+		ITree<Element> treeArray = new TreeArray<Element>();
+		ITree<Element> treeLinked = new TreeLinked<Element>();
+		Node<Element> nodePapa = new Node<Element>(new Element(0), 0, null, null, null);
+		Node<Element> nodeSohnLinks = new Node<Element>(new Element(0), 0, null, null, null);
+		Node<Element> nodeSohnRechts = new Node<Element>(new Element(0), 0, null, null, null);
+		nodePapa.setLinks(nodeSohnLinks);
+		nodePapa.setRechts(nodeSohnRechts);
+		nodeSohnLinks.setVater(nodePapa);
+		nodeSohnRechts.setVater(nodePapa);
+//		for(int i = 0; i < 3; i++){
+//			Node<Element> node = new Node<Element>(new Element(i), i, null, null, null);
+//			
+//		}
 	}
 
 	@Test

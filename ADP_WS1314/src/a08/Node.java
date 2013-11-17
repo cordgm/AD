@@ -64,7 +64,24 @@ public class Node<T> {
         this.vater = vater;
     }
 
-    
+    /**
+     * 
+     * @param k
+     * @return
+     */
+    public boolean exists(int k){
+    	if(k == key) return true;
+    	else
+    	{
+	    	if(k < key)
+		    	if(links == null) return false;
+		    	else return links.exists(k);
+	    	else
+		    	if(rechts == null) return false;
+		    	else return rechts.exists(k);
+    	}
+    }
+
     
 }
 

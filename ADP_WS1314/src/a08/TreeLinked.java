@@ -1,5 +1,11 @@
 package a08;
 
+/**
+ * 
+ * @author Cord
+ *
+ * @param <T>
+ */
 public class TreeLinked<T> implements ITree<T> {
 
     @Override
