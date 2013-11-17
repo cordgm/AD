@@ -5,7 +5,7 @@ public class TreeArray<T> implements ITree<T> {
     private static int N; //Maximale Größe des Arrays
     private static  int DEFAULT_ARRAY_GROESSE = N * 2;
     
-    private Node[] binaryTree;
+    private Node<T>[] binaryTree;
    // Tree<T> tree;
    
     
@@ -23,7 +23,7 @@ public class TreeArray<T> implements ITree<T> {
     public TreeArray(int N) {
         super();
         this.N = N; 
-        this.binaryTree = (Node[]) new Object[N];
+        this.binaryTree = new Node[N];
     }
     
 
