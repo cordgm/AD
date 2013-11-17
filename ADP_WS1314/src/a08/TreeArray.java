@@ -1,6 +1,6 @@
 package a08;
 
-public class TreeArray implements ITree<T> {
+public class TreeArray<T> implements ITree<T> {
 
     @Override
     public void insert(Node<T> key) {
