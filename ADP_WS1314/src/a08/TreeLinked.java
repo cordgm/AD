@@ -12,21 +12,21 @@ public class TreeLinked<T> implements ITree<T> {
 	Tree<T> tree;
 	Node<T> wurzel;
 
-    public TreeLinked() {
-		super();
-		this.tree = new Tree<T>();
-		this.wurzel = tree.wurzel;
-	}
-    
-    public TreeLinked(int wurzel) {
-		super();
-		this.tree = new Tree<T>(wurzel);
-		this.wurzel = tree.wurzel;
-	}
+//    public TreeLinked() {
+//		super();
+//		this.tree = new Tree<T>();
+//		this.wurzel = tree.wurzel;
+//	}
+//    
+//    public TreeLinked(int wurzel) {
+//		super();
+//		this.tree = new Tree<T>(wurzel);
+//		this.wurzel = tree.wurzel;
+//	}
     
     public TreeLinked(Node<T> wurzel) {
 		super();
-//		this.tree = new Tree<T>(wurzel.getKey());
+		this.tree = new Tree<T>(wurzel);
 		this.wurzel = wurzel;
 	}
 

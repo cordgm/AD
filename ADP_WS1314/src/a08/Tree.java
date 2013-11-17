@@ -2,7 +2,7 @@ package a08;
 
 public class Tree<T> {
 
-    Node<T> wurzel;
+    private Node<T> wurzel;
 
 	public Tree() {
 		super();
@@ -12,5 +12,10 @@ public class Tree<T> {
 	public Tree(int w) {
 		super();
 		wurzel = new Node<T>(null, w, null, null, null);
+	}
+	
+	public Tree(Node<T> wurzelNode) {
+		super();
+		wurzel = wurzelNode;
 	}
 }
