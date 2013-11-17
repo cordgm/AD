@@ -2,8 +2,10 @@ package a08;
 
 public class TreeArray<T> implements ITree<T> {
     
-    private  int N; //Maximale Größe des Arrays
-    private  int DEFAULT_ARRAY_GROESSE = N * 2;
+    private static final boolean DEBUG = true;
+    
+    private static  int N; //Maximale Größe des Arrays
+   // private static  int DEFAULT_ARRAY_GROESSE = 20;
     
     private Node<T>[] binaryTree;
    // Tree<T> tree;
@@ -16,7 +18,7 @@ public class TreeArray<T> implements ITree<T> {
 //    public TreeArray() {
 //        this(DEFAULT_ARRAY_GROESSE);
 //    }
-    
+//    
     /**
      * @param N
      */
@@ -32,9 +34,14 @@ public class TreeArray<T> implements ITree<T> {
         int n = 1; 
         Node<T> tmpNode = node; 
         
-        if( node.getKey() == binaryTree[n].getKey() ) return true;
+        if(binaryTree[n] == null) {
+            binaryTree[n] = node;
+            
+        } else if( node.getKey() == binaryTree[n].getKey() ) {
+            return true;           
+            
+        } else {
         
-        else {
             
             while( binaryTree[n] != null ) {
                 
@@ -63,13 +70,15 @@ public class TreeArray<T> implements ITree<T> {
     }
 
     /**
-     * @param n2
+     * @param n
      * @return
      */
-    private int increase(int n2) {
-     
+    private int increase(int n) {
         
-        Node[] hilfsBinaryTree = (Node[]) new Object[N + 
+        int DEFAULT_ARRAY_GROESSE = N * 2;
+        N = DEFAULT_ARRAY_GROESSE; 
+        
+        Node[] hilfsBinaryTree = (Node[]) new Node[N + 
                                                           DEFAULT_ARRAY_GROESSE];
         
         /* Zeiger auf binaryTreeeinträge kopieren */
@@ -77,28 +86,46 @@ public class TreeArray<T> implements ITree<T> {
         
         /* Objektvariable binaryTree das neue Array zuweisen */
         binaryTree = hilfsBinaryTree;
-        System.out.println("binaryTree vergößert auf " +
-                                                       binaryTree.length);
         
-       return (n2%2==0) ? (n2*2) : ((n2*2)+1);
+        if (DEBUG) System.out.println("BinaryTree Array vergößert auf " + binaryTree.length);
+        
+       return ( n%2==0 ) ? ( n*2 ) : ( (n*2)+1 );
         
     }
 
     @Override
     public void inorder(Node<T> vater) {
-        // TODO Auto-generated method stub
+        
+        if(vater != null) {
+            
+            inorder( vater.getLinks() );
+            printDump( vater);
+            inorder( vater.getRechts() );
+        }
         
     }
 
     @Override
     public void preorder(Node<T> vater) {
-        // TODO Auto-generated method stub
         
+        if(vater != null) {
+                
+            printDump( vater);
+            preorder( vater.getLinks()  );
+            preorder( vater.getRechts() );
+        
+        }
     }
 
     @Override
     public void postorder(Node<T> vater) {
-        // TODO Auto-generated method stub
+        
+       if(vater != null) {
+           
+           postorder( vater.getLinks()  );
+           postorder( vater.getRechts() );
+           printDump( vater);
+       }
         
     }
 
@@ -126,7 +153,12 @@ public class TreeArray<T> implements ITree<T> {
         return false;
     }
  
+    /****************EIGENE - METHODEN****************/
+    
+    private void printDump(Node<T> vater) {
+        System.out.println( vater.getDaten() );
         
+    }
     
 
 }
