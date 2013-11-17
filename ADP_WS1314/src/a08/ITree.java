@@ -17,7 +17,7 @@ public interface ITree<T> {
     /**
      * @param key
      */
-    void insert(int key);
+    void insert(T daten, int key);
     
     /**
      * Ausgabe der Knoten in Symmetrischer Folge. 
