@@ -136,24 +136,6 @@ public class TreeArray<T> implements ITree<T> {
     }
 
     @Override
-    public int getLinkerSohn(int n) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public int getRechterSohn(int n) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public Node<T> getVater(int n) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public boolean exists(int i) {
         // TODO Auto-generated method stub
         return false;

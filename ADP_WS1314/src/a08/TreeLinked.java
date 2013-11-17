@@ -72,23 +72,5 @@ public class TreeLinked<T> implements ITree<T> {
     		System.out.print(vater.getDaten());
     	}
     }
-
-    @Override
-    public int getLinkerSohn(int n) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public int getRechterSohn(int n) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public Node<T> getVater(int n) {
-        // TODO Auto-generated method stub
-        return null;
-    }
     
 }

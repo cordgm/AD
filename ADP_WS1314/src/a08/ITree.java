@@ -36,24 +36,6 @@ public interface ITree<T> {
      * @param vater
      */
     void postorder( Node<T> vater);
-    
-    /**
-     * @param n
-     * @return
-     */
-    public int getLinkerSohn(int n);
-
-    /**
-     * @param n
-     * @return
-     */
-    public int getRechterSohn(int n);
-
-    /**
-     * @param n
-     * @return
-     */
-    public Node<T> getVater(int n);
 
     /**
      * 
