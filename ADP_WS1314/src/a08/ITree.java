@@ -41,19 +41,19 @@ public interface ITree<T> {
      * @param n
      * @return
      */
-    public int getLinkerSohn(int n);
+    public Node<T> getLinkerSohn( Node<T> vater);
 
     /**
      * @param n
      * @return
      */
-    public int getRechterSohn(int n);
+    public Node<T> getRechterSohn( Node<T> vater);
 
     /**
      * @param n
      * @return
      */
-    public Node<T> getVater(int n);
+    public Node<T> getVater( Node<T> vater);
 
     /**
      * 

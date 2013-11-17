@@ -60,9 +60,9 @@ public class TreeArray<T> implements ITree<T> {
             binaryTree[n] = node; //Neuen Knoten hinzufügen
             
             if (n % 2 != 0 && n / 2 > 0) {
-                binaryTree[n/2].setRechts(node); // [n/2]
+                binaryTree[n/2].setRechts(node ); // [n/2]
             } else if (n % 2 == 0 && n / 2 > 0) {
-                binaryTree[n/2].setLinks(node); // [n/2]
+                binaryTree[n/2].setLinks(node ); // [n/2]
             }
         }
         
@@ -136,26 +136,25 @@ public class TreeArray<T> implements ITree<T> {
     }
 
     @Override
-    public int getLinkerSohn(int n) {
-        // TODO Auto-generated method stub
-        return 0;
+    public  Node<T> getLinkerSohn(Node<T> vater) {
+        //Mit Index Rechnung die Daten bekommen n*2.
+        return vater.getLinks();
     }
 
     @Override
-    public int getRechterSohn(int n) {
-        // TODO Auto-generated method stub
-        return 0;
+    public  Node<T> getRechterSohn(Node<T> vater) {
+        //Mit Index Rechnung die Daten bekommen n/2.
+        return vater.getRechts();
     }
 
     @Override
-    public Node<T> getVater(int n) {
-        // TODO Auto-generated method stub
-        return null;
+    public Node<T> getVater(Node<T> vater) {
+        //Mit Index Rechnung die Daten bekommen n*2+1.
+        return vater.getVater();
     }
 
     @Override
     public boolean exists(int i) {
-        // TODO Auto-generated method stub
         return false;
     }
  

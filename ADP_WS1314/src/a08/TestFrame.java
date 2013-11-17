@@ -5,7 +5,7 @@ public class TestFrame {
 	final static int wurzel = 10;
 	final static int anzahlNodes = 20;
 	private final static int N = 10;
-	private final static int AUSWAHL = 1; //1=inorder or 2=preorder or 3=postorder
+	private final static int AUSWAHL = 2; //1=inorder or 2=preorder or 3=postorder
 
     public static void main(String[] args) {
 

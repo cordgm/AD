@@ -74,19 +74,19 @@ public class TreeLinked<T> implements ITree<T> {
     }
 
     @Override
-    public int getLinkerSohn(int n) {
+    public Node<T> getLinkerSohn(Node<T> vater) {
         // TODO Auto-generated method stub
-        return 0;
+        return null;
     }
 
     @Override
-    public int getRechterSohn(int n) {
+    public Node<T> getRechterSohn(Node<T> vater) {
         // TODO Auto-generated method stub
-        return 0;
+        return vater.getRechts() ;
     }
 
     @Override
-    public Node<T> getVater(int n) {
+    public Node<T> getVater(Node<T> vater) {
         // TODO Auto-generated method stub
         return null;
     }
