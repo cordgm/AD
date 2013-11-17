@@ -1,24 +1,28 @@
 package a08;
 
 public class TreeArray<T> implements ITree<T> {
-
-    private Node[] binaryTree;
+    
     private static int N; //Maximale Größe des Arrays
-    private static final int DEFAULT_ARRAY_GROESSE = N * 2;
+    private static  int DEFAULT_ARRAY_GROESSE = N * 2;
+    
+    private Node[] binaryTree;
+   // Tree<T> tree;
+   
     
 
     /**
      * 
      */
-    public TreeArray() {
-        this(DEFAULT_ARRAY_GROESSE);
-    }
+//    public TreeArray() {
+//        this(DEFAULT_ARRAY_GROESSE);
+//    }
     
     /**
      * @param N
      */
     public TreeArray(int N) {
         super();
+        this.N = N; 
         this.binaryTree = (Node[]) new Object[N];
     }
     
@@ -114,6 +118,12 @@ public class TreeArray<T> implements ITree<T> {
     public Node<T> getVater(int n) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public boolean exists(int i) {
+        // TODO Auto-generated method stub
+        return false;
     }
  
         
