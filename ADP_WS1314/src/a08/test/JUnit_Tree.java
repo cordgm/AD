@@ -19,6 +19,7 @@ public class JUnit_Tree {
 	Node<Element> node;
 	Node<Element> wurzelNode;
 	final static int wurzel = 25;
+	final static int anzahlNodes = 50;
 
 	/**
 	 * @throws java.lang.Exception
@@ -31,8 +32,8 @@ public class JUnit_Tree {
 	}
 
 	@Test
-	public void test() {
-		for(int i = 0; i<50; i++){
+	public void testTreeLinked() {
+		for(int i = 0; i<anzahlNodes; i++){
 			node = new Node<Element>(new Element(i), i, null, null, null);
 			assertTrue(treeLinked.insert(node));
 			assertTrue(treeLinked.exists(i));

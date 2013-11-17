@@ -1,17 +1,16 @@
 package a08;
 
 public class TestFrame {
-	final static int wurzel = 4;
+	final static int wurzel = 10;
+	final static int anzahlNodes = 20;
 
     public static void main(String[] args) {
 
     	Node<Element> wurzelNode = new Node<Element>(new Element(wurzel), wurzel, null, null, null);
     	ITree<Element> treeLinked = new TreeLinked<Element>(wurzelNode);
     	Node<Element> node;
-    	for(int i=0; i < 9; i++){
-//    		if(i==wurzel){
-//    			i++;
-//    		}
+    	for(int i=0; i < anzahlNodes; i++){
+    		if(i==wurzel){i++;}
     		node = new Node<Element>(new Element(i), i, null, null, null);
     		treeLinked.insert(node);
     	}
