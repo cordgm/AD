@@ -41,9 +41,14 @@ public class JUnit_Tree {
 
 	@Test
 	public void test() {
+		for(int i = 0; i<10; i++){
+			node = new Node<Element>(new Element(i), i, null, null, null);
+			assertTrue(treeLinked.insert(node));
+			assertTrue(treeLinked.exists(i));
+		}
 		assertFalse(treeLinked.insert(null));
 		assertTrue(treeLinked.insert(node));
-		assertFalse(treeLinked.exists(8));
+//		assertFalse(treeLinked.exists(8));
 		assertTrue(treeLinked.exists(5));
 	}
 

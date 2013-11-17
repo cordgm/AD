@@ -8,4 +8,9 @@ public class Tree<T> {
 		super();
 		wurzel = new Node<T>(null, 0, null, null, null);
 	}
+	
+	public Tree(int w) {
+		super();
+		wurzel = new Node<T>(null, w, null, null, null);
+	}
 }
