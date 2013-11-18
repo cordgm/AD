@@ -2,7 +2,7 @@ package a08;
 
 /**
  * 
- * @author Cord
+ * @author Cord Godehus- Meyer
  *
  * @param <T>
  */

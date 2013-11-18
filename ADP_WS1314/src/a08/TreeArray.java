@@ -1,31 +1,20 @@
 package a08;
 
 /**
- * @author abg561
+ * @author Manuel Meyer
  *
  * @param <T>
  */
 
 public class TreeArray<T> implements ITree<T> {
     
-    private static final boolean DEBUG = false;
+    private static final boolean DEBUG = false; //Um Debug Informationen ein,-auschalten zu können. 
     
-    private static  int N; //Maximale Größe des Arrays
-   // private static  int DEFAULT_ARRAY_GROESSE = 20;
-    
-    private Node<T>[] binaryTree;
-   // Tree<T> tree;
-   
-    
+    private static  int N;                      //Maximale Größe des Arrays    
+    private Node<T>[] binaryTree;               //Array von Typ Knoten(Node)
 
     /**
-     * 
-     */
-//    public TreeArray() {
-//        this(DEFAULT_ARRAY_GROESSE);
-//    }
-//    
-    /**
+     * Konstruiert das Objekt.
      * @param N
      */
     public TreeArray(int N) {
@@ -78,7 +67,9 @@ public class TreeArray<T> implements ITree<T> {
     }
 
     /**
-     * Vergroessert das Array.
+     * Vergroessert das Array, wenn das Array für die Speicherung zu klein wird.
+     * Gibt schnell einen mem-Heap Java Fehler. 
+     * UEbergabe der aktuellen Position n im Array. 
      * @param n
      * @return n
      */
@@ -171,15 +162,17 @@ public class TreeArray<T> implements ITree<T> {
     /****************EIGENE - METHODEN****************/
     
     /**
+     * Fuer die Ausgabe auf den Bildschirm/Console. 
      * @param vater
      */
     private void printDump(Node<T> vater) {
         System.out.print( vater.getDaten() );
         
     }
-    
+
     /**
-     * 
+     * Debug flag muss eingeschaltet werden. 
+     * Dann kann man sich das derzeitige Array und deren Besetzung angucken und analysieren. 
      */
     private void treePrintAll() {
         for (int i = 0; i < binaryTree.length; i++) {

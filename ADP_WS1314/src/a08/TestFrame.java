@@ -26,7 +26,8 @@ public class TestFrame {
     	treeLinked.postorder(wurzelNode);
     	System.out.println();
 
-        /********ARRAY EINBETTUNG*****************/
+        /****************************ARRAY EINBETTUNG****************************/
+    	
     	System.out.println("************ARRAY EINBETTUNG*****************");
 	//    int datensatz = (int) (Math.random() * 100 + 1); System.out.println("Datensatz: "+ datensatz);
     	

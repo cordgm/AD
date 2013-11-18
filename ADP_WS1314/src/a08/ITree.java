@@ -14,8 +14,12 @@ package a08;
  */
 public interface ITree<T> {
     
+
     /**
-     * @param key
+     * Fügt einen Knoten ein (Einbettung Array or. Linked).
+     * Gibt true oder false zurück bei erfolreicher oder nicht erfolgreicher Eeinbettung.
+     * @param node
+     * @return boolean. 
      */
     boolean insert(Node<T> node);
     
@@ -56,9 +60,9 @@ public interface ITree<T> {
 //    public Node<T> getVater( Node<T> vater);
 
     /**
-     * 
+     * Überprüft ob ein Knoten schon vorhanden ist bzw. existiert.
      * @param i
-     * @return
+     * @return boolean. 
      */
 	public boolean exists(int i);
 
