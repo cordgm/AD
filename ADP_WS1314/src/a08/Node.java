@@ -82,7 +82,7 @@ public class Node<T> {
     	}
     }
 
-    Node<T> insert(T d, int k){
+    Node<T> insert(T d, int k) {
 	    if(k == key) return this;
 	    else
 	    {

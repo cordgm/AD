@@ -1,8 +1,14 @@
 package a08;
 
+/**
+ * @author abg561
+ *
+ * @param <T>
+ */
+
 public class TreeArray<T> implements ITree<T> {
     
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
     
     private static  int N; //Maximale Größe des Arrays
    // private static  int DEFAULT_ARRAY_GROESSE = 20;
@@ -31,6 +37,8 @@ public class TreeArray<T> implements ITree<T> {
 
     @Override
     public boolean insert(Node<T> node ) {
+    	if(node==null) return false;
+    	
         int n = 1; 
         Node<T> tmpNode = node; 
         
@@ -70,8 +78,9 @@ public class TreeArray<T> implements ITree<T> {
     }
 
     /**
+     * Vergroessert das Array.
      * @param n
-     * @return
+     * @return n
      */
     private int increase(int n) {
         
@@ -155,16 +164,23 @@ public class TreeArray<T> implements ITree<T> {
 
     @Override
     public boolean exists(int i) {
-        return false;
+    	
+        return binaryTree[1].exists(i);
     }
  
     /****************EIGENE - METHODEN****************/
     
+    /**
+     * @param vater
+     */
     private void printDump(Node<T> vater) {
-        System.out.println( vater.getDaten() );
+        System.out.print( vater.getDaten() );
         
     }
     
+    /**
+     * 
+     */
     private void treePrintAll() {
         for (int i = 0; i < binaryTree.length; i++) {
             

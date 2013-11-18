@@ -16,10 +16,11 @@ import a08.*;
  */
 public class JUnit_Tree {
 	ITree<Element> treeLinked;
+	ITree<Element> treeArray;
 	Node<Element> node;
 	Node<Element> wurzelNode;
-	final static int wurzel = 25;
-	final static int anzahlNodes = 50;
+	final static int wurzel = 10;
+	final static int anzahlNodes = 20;
 
 	/**
 	 * @throws java.lang.Exception
@@ -27,13 +28,13 @@ public class JUnit_Tree {
 	@Before
 	public void setUp() throws Exception {
 		wurzelNode = new Node<Element>(new Element(wurzel), wurzel, null, null, null);
-		treeLinked = new TreeLinked<Element>(wurzelNode);
-		treeLinked.insert(wurzelNode);
 	}
 
 	@Test
 	public void testTreeLinked() {
-		for(int i = 0; i<anzahlNodes; i++){
+		treeLinked = new TreeLinked<Element>(wurzelNode);
+		treeLinked.insert(wurzelNode);
+		for(int i = 1; i<=anzahlNodes; i++){
 			node = new Node<Element>(new Element(i), i, null, null, null);
 			assertTrue(treeLinked.insert(node));
 			assertTrue(treeLinked.exists(i));
@@ -49,6 +50,29 @@ public class JUnit_Tree {
 		//Fehlerfaelle
 		assertFalse(treeLinked.insert(null));
 		assertFalse(treeLinked.exists(999999));
+	}
+
+	@Test
+	public void testTreeArray() {
+		treeArray = new TreeArray<Element>(anzahlNodes);
+		treeArray.insert(wurzelNode);
+		
+		for(int i = 1; i<=anzahlNodes; i++) {
+			node = new Node<Element>(new Element(i), i, null, null, null);
+			assertTrue(treeArray.insert(node));
+			assertTrue(treeArray.exists(i));
+		}
+
+		treeArray.inorder(wurzelNode);
+    	System.out.println();
+    	treeArray.preorder(wurzelNode);
+    	System.out.println();
+    	treeArray.postorder(wurzelNode);
+    	System.out.println();
+    	
+		//Fehlerfaelle
+		assertFalse(treeArray.insert(null));
+		assertFalse(treeArray.exists(999999));
 	}
 
 }
