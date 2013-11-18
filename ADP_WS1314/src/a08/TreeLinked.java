@@ -24,6 +24,10 @@ public class TreeLinked<T> implements ITree<T> {
 //		this.wurzel = tree.wurzel;
 //	}
     
+	/**
+	 * Der Konstruktor erwartet ein Wurzel-Node, auf den er den Baum aufsetzen kann.
+	 * @param wurzel Der Wurzel-Node.
+	 */
     public TreeLinked(Node<T> wurzel) {
 		super();
 		this.tree = new Tree<T>(wurzel);
@@ -73,22 +77,22 @@ public class TreeLinked<T> implements ITree<T> {
     	}
     }
 
-    @Override
-    public Node<T> getLinkerSohn(Node<T> vater) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Node<T> getRechterSohn(Node<T> vater) {
-        // TODO Auto-generated method stub
-        return vater.getRechts() ;
-    }
-
-    @Override
-    public Node<T> getVater(Node<T> vater) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+//    @Override
+//    public Node<T> getLinkerSohn(Node<T> vater) {
+//        // TODO Auto-generated method stub
+//        return null;
+//    }
+//
+//    @Override
+//    public Node<T> getRechterSohn(Node<T> vater) {
+//        // TODO Auto-generated method stub
+//        return vater.getRechts() ;
+//    }
+//
+//    @Override
+//    public Node<T> getVater(Node<T> vater) {
+//        // TODO Auto-generated method stub
+//        return null;
+//    }
     
 }

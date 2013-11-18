@@ -144,23 +144,23 @@ public class TreeArray<T> implements ITree<T> {
         
     }
 
-    @Override
-    public Node<T> getLinkerSohn(Node<T> vater) {
-        //Mit Index Rechnung die Daten bekommen n*2.
-        return vater.getLinks();
-    }
-
-    @Override
-    public  Node<T> getRechterSohn(Node<T> vater) {
-        //Mit Index Rechnung die Daten bekommen n/2.
-        return vater.getRechts();
-    }
-
-    @Override
-    public Node<T> getVater(Node<T> vater) {
-        //Mit Index Rechnung die Daten bekommen n*2+1.
-        return vater.getVater();
-    }
+//    @Override
+//    public Node<T> getLinkerSohn(Node<T> vater) {
+//        //Mit Index Rechnung die Daten bekommen n*2.
+//        return vater.getLinks();
+//    }
+//
+//    @Override
+//    public  Node<T> getRechterSohn(Node<T> vater) {
+//        //Mit Index Rechnung die Daten bekommen n/2.
+//        return vater.getRechts();
+//    }
+//
+//    @Override
+//    public Node<T> getVater(Node<T> vater) {
+//        //Mit Index Rechnung die Daten bekommen n*2+1.
+//        return vater.getVater();
+//    }
 
     @Override
     public boolean exists(int i) {

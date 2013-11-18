@@ -65,9 +65,9 @@ public class Node<T> {
     }
 
     /**
-     * 
-     * @param k
-     * @return
+     * Ueberprueft, ob das Element mit dem uebergebenen Key existiert.
+     * @param k Key
+     * @return boolean true, wenn das Element existiert, ansonsten false.
      */
     public boolean exists(int k) {
     	if(k == key) return true;
@@ -82,6 +82,12 @@ public class Node<T> {
     	}
     }
 
+    /**
+     * Fuegt die Daten d mit dem Key k in den Binaeren Suchbaum ein.
+     * @param d Daten
+     * @param k Key
+     * @return Node
+     */
     Node<T> insert(T d, int k) {
 	    if(k == key) return this;
 	    else
