@@ -72,6 +72,7 @@ public class TreeLinked<T> implements ITree<T> {
 
 	}
 
+	@SuppressWarnings("unused")
 	public int summeZwischen(int m, int M) {
 		Node<T> amNachstenDran = null;
 		sucheKleinM(wurzel, m);
