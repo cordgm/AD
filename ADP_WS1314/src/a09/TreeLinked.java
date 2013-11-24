@@ -33,20 +33,20 @@ public class TreeLinked<T> implements ITree<T> {
     }
 	
 	/**
-	 * 
-	 * @param node
-	 * @param wert
-	 * @return
+	 * Rekursive Methode zur Berechnung der Summer aller Kleineren.
+	 * @param node Anfangs der Wurzel-Node, damit von Ihm aus alle kleineren vom uebergebenen Wert gefunden werden koennen.
+	 * @param wert Wert, von alle Kleineren addiert werden.
+	 * @return die Summe alles Kleineren
 	 */
-	private int summe_Aller_Kleineren(Node<T> node, int wert) {
+	private int summeAllerKleinerenRe(Node<T> node, int wert) {
 		int returnWert = 0;
 		if (node == null) {
 			return 0;
 		} else if (node.getKey() > wert) {
-			returnWert += summe_Aller_Kleineren(node.getLinks(), wert);
+			returnWert += summeAllerKleinerenRe(node.getLinks(), wert);
 		} else {
-			returnWert += summe_Aller_Kleineren(node.getLinks(), wert);
-			returnWert += summe_Aller_Kleineren(node.getRechts(), wert);
+			returnWert += summeAllerKleinerenRe(node.getLinks(), wert);
+			returnWert += summeAllerKleinerenRe(node.getRechts(), wert);
 			returnWert += node.getKey();
 		}
 		return returnWert;
@@ -54,25 +54,25 @@ public class TreeLinked<T> implements ITree<T> {
 	}
 
 	/**
-	 * 
-	 * @param node
+	 * Rekursive Methode zur Berechnung der Summer aller Kleineren vom Knoten selber und aller Kinder.
+	 * @param node Node von dem alle Kleineren addiert werden sollen.
 	 */
-	public void summeAllerKleinerenAktualisieren(Node<T> node) {
-		node.setSummeAllerKleineren(summe_Aller_Kleineren(wurzel, node.getKey()));
+	public void summeAllerKleinerenAktualisierenRe(Node<T> node) {
+		node.setSummeAllerKleineren(summeAllerKleinerenRe(wurzel, node.getKey()));
 		if (node.getLinks() != null) {
-			summeAllerKleinerenAktualisieren(node.getLinks());
+			summeAllerKleinerenAktualisierenRe(node.getLinks());
 		}
 		if (node.getRechts() != null) {
-			summeAllerKleinerenAktualisieren(node.getRechts());
+			summeAllerKleinerenAktualisierenRe(node.getRechts());
 		}
 
 	}
 
 	/**
-	 * 
-	 * @param m
-	 * @param M
-	 * @return
+	 * Berechnung der Summer aller Werte aus einer gegebenen Folge, die zwische m und M liegen.
+	 * @param m m
+	 * @param M M
+	 * @return Die Summe aller vorhandenen Werte zwischen m und M.
 	 */
 	public int summeZwischen(int m, int M) {
 		amNachstenDran = null;
@@ -93,9 +93,9 @@ public class TreeLinked<T> implements ITree<T> {
 	}
 
 	/**
-	 * 
-	 * @param node
-	 * @param M
+	 * Sucht den Knoten mit dem groeﬂten Wert, der noch kleiner gleich M ist
+	 * @param node Am Anfang Wuzel-Node
+	 * @param M M
 	 */
 	private void sucheGrossM(Node<T> node, int M) {
 		if (node != null) {
@@ -111,9 +111,9 @@ public class TreeLinked<T> implements ITree<T> {
 	}
 
 	/**
-	 * 
-	 * @param node
-	 * @param m
+	 * Sucht den Knoten mit dem kleinsten Wert der noch groeﬂer gleich m ist
+	 * @param node Am Anfang Wuzel-Node
+	 * @param m m
 	 */
 	private void sucheKleinM(Node<T> node, int m) {
 		if (node != null) {

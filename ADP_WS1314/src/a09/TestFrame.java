@@ -25,7 +25,7 @@ public class TestFrame {
     	}
     	
     	/* a09 */
-    	treeLinked.summeAllerKleinerenAktualisieren(wurzelNode);
+    	treeLinked.summeAllerKleinerenAktualisierenRe(wurzelNode);
     	int zahl = treeLinked.summeZwischen(7, 10);
     	System.out.println("Summe zwischen 7 und 10: " + zahl);
     	zahl = treeLinked.summeZwischen(5, 15);

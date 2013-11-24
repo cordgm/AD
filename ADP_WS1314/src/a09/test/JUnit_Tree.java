@@ -84,7 +84,7 @@ public class JUnit_Tree {
 			assertTrue(treeLinked.insert(node));
 			assertTrue(treeLinked.exists(i));
 		}
-    	treeLinked.summeAllerKleinerenAktualisieren(wurzelNode);
+    	treeLinked.summeAllerKleinerenAktualisierenRe(wurzelNode);
     	assertEquals(34, treeLinked.summeZwischen(7, 10));
     	assertEquals(110, treeLinked.summeZwischen(5, 15));
     	assertEquals(88, treeLinked.summeZwischen(3, 13));
