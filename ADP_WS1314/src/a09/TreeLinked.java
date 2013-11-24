@@ -11,6 +11,7 @@ public class TreeLinked<T> implements ITree<T> {
 	//Attribute
 	Tree<T> tree;
 	Node<T> wurzel;
+	public Node<T> amNachstenDran;
 
 //    public TreeLinked() {
 //		super();
@@ -44,6 +45,78 @@ public class TreeLinked<T> implements ITree<T> {
 		}
     	
     }
+	
+	public int summe_Aller_Kleineren(Node<T> node, int wert) {
+		int returnWert = 0;
+		if (node == null) {
+			return 0;
+		} else if (node.getKey() > wert) {
+			returnWert += summe_Aller_Kleineren(node.getLinks(), wert);
+		} else {
+			returnWert += summe_Aller_Kleineren(node.getLinks(), wert);
+			returnWert += summe_Aller_Kleineren(node.getRechts(), wert);
+			returnWert += node.getKey();
+		}
+		return returnWert;
+
+	}
+
+	public void SAKaktualisieren(Node<T> node) {
+		node.setSummeAllerKleineren(summe_Aller_Kleineren(wurzel, node.getKey()));
+		if (node.getLinks() != null) {
+			SAKaktualisieren(node.getLinks());
+		}
+		if (node.getRechts() != null) {
+			SAKaktualisieren(node.getRechts());
+		}
+
+	}
+
+	public int summeZwischen(int m, int M) {
+		Node<T> amNachstenDran = null;
+		sucheKleinM(wurzel, m);
+		int kleinM = 0;
+		//weil nur summe aller kleineren vorhanden ist muss elem.key noch mit einberechnet werden
+		if(amNachstenDran != null){
+			kleinM = amNachstenDran.getSummeAllerKleineren() - amNachstenDran.getKey();
+		}
+		
+		amNachstenDran = null;
+		sucheGrossM(wurzel, M);
+		int grossM = 0;
+		if(amNachstenDran != null){
+			grossM = amNachstenDran.getSummeAllerKleineren();
+		}
+		return grossM - kleinM;
+		// alleKleinerGrossM -(alleKleinerKleinM -kleinM)
+	}
+
+	public void sucheGrossM(Node<T> node, int M) {
+		if (node != null) {
+			if (node.getKey() > M) {
+				sucheGrossM(node.getLinks(), M);
+			} else if (node.getKey() == M) {
+				amNachstenDran = node;
+			} else {
+				amNachstenDran = node;
+				sucheGrossM(node.getRechts(), M);
+			}
+		}
+	}
+
+	public void sucheKleinM(Node<T> node, int m) {
+		if (node != null) {
+			if (node.getKey() < m) {
+				sucheKleinM(node.getRechts(), m);
+			} else if (node.getKey() == m) {
+				amNachstenDran = node;
+			} else {
+				amNachstenDran = node;
+				sucheKleinM(node.getLinks(), m);
+			}
+		}
+
+	}
 	
 	@Override
 	public boolean exists(int k) {

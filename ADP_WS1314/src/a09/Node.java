@@ -23,6 +23,7 @@ public class Node<T> {
         this.links = links;
         this.rechts = rechts;
         this.vater = vater;
+        this.summeAllerKleineren = 0;
     }
 
     public T getDaten() {
