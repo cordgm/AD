@@ -11,6 +11,8 @@ public class TreeLinked<T> implements ITree<T> {
 	//Attribute
 	Node<T> wurzel;
 	Node<T> amNachstenDran;
+    private long aufwandZaehler;
+    public static final boolean AUFWAND = true;
     
 	/**
 	 * Der Konstruktor erwartet ein Wurzel-Node, auf den er den Baum aufsetzen kann.
@@ -19,6 +21,7 @@ public class TreeLinked<T> implements ITree<T> {
     public TreeLinked(Node<T> wurzel) {
 		super();
 		this.wurzel = wurzel;
+		this.aufwandZaehler = 0;
 	}
 
 	@Override
@@ -39,6 +42,7 @@ public class TreeLinked<T> implements ITree<T> {
 	 * @return die Summe alles Kleineren
 	 */
 	private int summeAllerKleinerenRe(Node<T> node, int wert) {
+		if(AUFWAND) {aufwandZaehler++;};
 		int returnWert = 0;
 		if (node == null) {
 			return 0;
@@ -58,6 +62,7 @@ public class TreeLinked<T> implements ITree<T> {
 	 * @param node Node von dem alle Kleineren addiert werden sollen.
 	 */
 	public void summeAllerKleinerenAktualisierenRe(Node<T> node) {
+		if(AUFWAND) {aufwandZaehler++;};
 		node.setSummeAllerKleineren(summeAllerKleinerenRe(wurzel, node.getKey()));
 		if (node.getLinks() != null) {
 			summeAllerKleinerenAktualisierenRe(node.getLinks());
@@ -98,6 +103,7 @@ public class TreeLinked<T> implements ITree<T> {
 	 * @param M M
 	 */
 	private void sucheGrossM(Node<T> node, int M) {
+		if(AUFWAND) {aufwandZaehler++;};
 		if (node != null) {
 			if (node.getKey() > M) {
 				sucheGrossM(node.getLinks(), M);
@@ -116,6 +122,7 @@ public class TreeLinked<T> implements ITree<T> {
 	 * @param m m
 	 */
 	private void sucheKleinM(Node<T> node, int m) {
+		if(AUFWAND) {aufwandZaehler++;};
 		if (node != null) {
 			if (node.getKey() < m) {
 				sucheKleinM(node.getRechts(), m);
@@ -160,5 +167,13 @@ public class TreeLinked<T> implements ITree<T> {
     		System.out.print(vater.getDaten());
     	}
     }
+    
+	public long getAufwandZaehler() {
+		return aufwandZaehler;
+	}
+
+	public void setAufwandZaehlerAuf0() {
+		this.aufwandZaehler = 0;
+	}
     
 }

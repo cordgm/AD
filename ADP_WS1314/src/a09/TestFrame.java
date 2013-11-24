@@ -7,7 +7,7 @@ package a09;
 public class TestFrame {
     
 	final static int wurzel = 10;
-	final static int anzahlNodes = 20;
+	final static int anzahlNodes = 1000;
 //	private final static int AUSWAHL = 3; //1=inorder or 2=preorder or 3=postorder
 
     public static void main(String[] args) {
@@ -18,16 +18,20 @@ public class TestFrame {
     	Node<Element> wurzelNode = new Node<Element>(new Element(wurzel), wurzel, null, null, null);
     	TreeLinked<Element> treeLinked = new TreeLinked<Element>(wurzelNode);
     	Node<Element> node;
-    	for(int i=1; i <= anzahlNodes; i++){
-    		if(i==wurzel){i++;}
-    		node = new Node<Element>(new Element(i), i, null, null, null);
-    		treeLinked.insert(node);
+    	for(int j=10; j <= anzahlNodes; j*=10){
+	    	for(int i=1; i <= j; i++){
+	    		if(i==wurzel){i++;}
+	    		node = new Node<Element>(new Element(i), i, null, null, null);
+	    		treeLinked.insert(node);
+	    	}
+			treeLinked.setAufwandZaehlerAuf0();
+	    	treeLinked.summeAllerKleinerenAktualisierenRe(wurzelNode);
+			long aufwand = treeLinked.getAufwandZaehler();
+			System.out.println("Aufwand für ein Baum mit " + j + " Elemente: " + aufwand + "");
     	}
     	
-    	/* a09 */
-    	treeLinked.summeAllerKleinerenAktualisierenRe(wurzelNode);
     	int zahl = treeLinked.summeZwischen(7, 10);
-    	System.out.println("Summe zwischen 7 und 10: " + zahl);
+    	System.out.println("\nSumme zwischen 7 und 10: " + zahl);
     	zahl = treeLinked.summeZwischen(5, 15);
     	System.out.println("Summe zwischen 5 und 15: " + zahl);
     	zahl = treeLinked.summeZwischen(3, 13);
