@@ -46,7 +46,7 @@ public class TreeLinked<T> implements ITree<T> {
     	
     }
 	
-	public int summe_Aller_Kleineren(Node<T> node, int wert) {
+	private int summe_Aller_Kleineren(Node<T> node, int wert) {
 		int returnWert = 0;
 		if (node == null) {
 			return 0;
