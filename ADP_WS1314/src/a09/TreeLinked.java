@@ -9,21 +9,8 @@ package a09;
 public class TreeLinked<T> implements ITree<T> {
 	
 	//Attribute
-	Tree<T> tree;
 	Node<T> wurzel;
-	public Node<T> amNachstenDran;
-
-//    public TreeLinked() {
-//		super();
-//		this.tree = new Tree<T>();
-//		this.wurzel = tree.wurzel;
-//	}
-//    
-//    public TreeLinked(int wurzel) {
-//		super();
-//		this.tree = new Tree<T>(wurzel);
-//		this.wurzel = tree.wurzel;
-//	}
+	Node<T> amNachstenDran;
     
 	/**
 	 * Der Konstruktor erwartet ein Wurzel-Node, auf den er den Baum aufsetzen kann.
@@ -31,7 +18,6 @@ public class TreeLinked<T> implements ITree<T> {
 	 */
     public TreeLinked(Node<T> wurzel) {
 		super();
-		this.tree = new Tree<T>(wurzel);
 		this.wurzel = wurzel;
 	}
 
@@ -46,6 +32,12 @@ public class TreeLinked<T> implements ITree<T> {
     	
     }
 	
+	/**
+	 * 
+	 * @param node
+	 * @param wert
+	 * @return
+	 */
 	private int summe_Aller_Kleineren(Node<T> node, int wert) {
 		int returnWert = 0;
 		if (node == null) {
@@ -61,17 +53,27 @@ public class TreeLinked<T> implements ITree<T> {
 
 	}
 
-	public void SAKaktualisieren(Node<T> node) {
+	/**
+	 * 
+	 * @param node
+	 */
+	public void summeAllerKleinerenAktualisieren(Node<T> node) {
 		node.setSummeAllerKleineren(summe_Aller_Kleineren(wurzel, node.getKey()));
 		if (node.getLinks() != null) {
-			SAKaktualisieren(node.getLinks());
+			summeAllerKleinerenAktualisieren(node.getLinks());
 		}
 		if (node.getRechts() != null) {
-			SAKaktualisieren(node.getRechts());
+			summeAllerKleinerenAktualisieren(node.getRechts());
 		}
 
 	}
 
+	/**
+	 * 
+	 * @param m
+	 * @param M
+	 * @return
+	 */
 	public int summeZwischen(int m, int M) {
 		amNachstenDran = null;
 		sucheKleinM(wurzel, m);
@@ -88,10 +90,14 @@ public class TreeLinked<T> implements ITree<T> {
 			grossM = amNachstenDran.getSummeAllerKleineren();
 		}
 		return grossM - kleinM;
-		// alleKleinerGrossM -(alleKleinerKleinM -kleinM)
 	}
 
-	public void sucheGrossM(Node<T> node, int M) {
+	/**
+	 * 
+	 * @param node
+	 * @param M
+	 */
+	private void sucheGrossM(Node<T> node, int M) {
 		if (node != null) {
 			if (node.getKey() > M) {
 				sucheGrossM(node.getLinks(), M);
@@ -104,7 +110,12 @@ public class TreeLinked<T> implements ITree<T> {
 		}
 	}
 
-	public void sucheKleinM(Node<T> node, int m) {
+	/**
+	 * 
+	 * @param node
+	 * @param m
+	 */
+	private void sucheKleinM(Node<T> node, int m) {
 		if (node != null) {
 			if (node.getKey() < m) {
 				sucheKleinM(node.getRechts(), m);
@@ -149,23 +160,5 @@ public class TreeLinked<T> implements ITree<T> {
     		System.out.print(vater.getDaten());
     	}
     }
-
-//    @Override
-//    public Node<T> getLinkerSohn(Node<T> vater) {
-//        // TODO Auto-generated method stub
-//        return null;
-//    }
-//
-//    @Override
-//    public Node<T> getRechterSohn(Node<T> vater) {
-//        // TODO Auto-generated method stub
-//        return vater.getRechts() ;
-//    }
-//
-//    @Override
-//    public Node<T> getVater(Node<T> vater) {
-//        // TODO Auto-generated method stub
-//        return null;
-//    }
     
 }

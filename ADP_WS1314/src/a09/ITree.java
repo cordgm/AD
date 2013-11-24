@@ -40,24 +40,6 @@ public interface ITree<T> {
      * @param vater
      */
     void postorder( Node<T> vater);
-    
-//    /**
-//     * @param n
-//     * @return
-//     */
-//    public Node<T> getLinkerSohn( Node<T> vater);
-//
-//    /**
-//     * @param n
-//     * @return
-//     */
-//    public Node<T> getRechterSohn( Node<T> vater);
-//
-//    /**
-//     * @param n
-//     * @return
-//     */
-//    public Node<T> getVater( Node<T> vater);
 
     /**
      * Überprüft ob ein Knoten schon vorhanden ist bzw. existiert.

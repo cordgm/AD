@@ -1,5 +1,9 @@
 package a09;
 
+/**
+ * @author Manuel Meyer und Cord Godehus-Meyer
+ *
+ */
 public class Element {
 
 	//Attribute
