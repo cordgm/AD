@@ -23,12 +23,11 @@ public class TestFrame {
 //    	System.out.println();
 //    	treeLinked.preorder(wurzelNode);
 //    	System.out.println();
-    	treeLinked.postorder(wurzelNode);
-    	System.out.println();
+//    	treeLinked.postorder(wurzelNode);
+//    	System.out.println();
 
         /****************************ARRAY EINBETTUNG****************************/
     	
-    	System.out.println("************ARRAY EINBETTUNG*****************");
 	//    int datensatz = (int) (Math.random() * 100 + 1); System.out.println("Datensatz: "+ datensatz);
     	
 //	    wurzelNode = new Node<Element>(new Element(wurzel), wurzel, null, null, null); //1. Datensatz
@@ -46,14 +45,23 @@ public class TestFrame {
       }
       
        switch( AUSWAHL ) {
-           case (1):   treeArray.inorder  (wurzelNode ); 
-               break;
+           case (1):
+      			treeLinked.inorder(wurzelNode);
+       			System.out.println("\n************ARRAY EINBETTUNG*****************");
+        	   	treeArray.inorder(wurzelNode); 
+       			break;
                
-           case (2):   treeArray.preorder ( wurzelNode );
-               break; 
+           case (2):
+          		treeLinked.preorder(wurzelNode);
+       			System.out.println("\n************ARRAY EINBETTUNG*****************");
+        	   	treeArray.preorder (wurzelNode);
+           		break; 
            
-           case (3):   treeArray.postorder( wurzelNode );
-               break;
+           case (3):
+     			treeLinked.postorder(wurzelNode);
+       			System.out.println("\n************ARRAY EINBETTUNG*****************");
+        	   	treeArray.postorder(wurzelNode);
+      			break;
 
           
        }
