@@ -18,7 +18,7 @@ public class TestFrame {
     	Node<Element> wurzelNode = new Node<Element>(new Element(wurzel), wurzel, null, null, null);
     	TreeLinked<Element> treeLinked = new TreeLinked<Element>(wurzelNode);
     	Node<Element> node;
-    	for(int j=10; j <= anzahlNodes; j*=10){
+    	for(int j=10; j <= anzahlNodes; j+=10){
 	    	for(int i=1; i <= j; i++){
 	    		if(i==wurzel){i++;}
 	    		node = new Node<Element>(new Element(i), i, null, null, null);
@@ -27,7 +27,7 @@ public class TestFrame {
 			treeLinked.setAufwandZaehlerAuf0();
 	    	treeLinked.summeAllerKleinerenAktualisierenRe(wurzelNode);
 			long aufwand = treeLinked.getAufwandZaehler();
-			System.out.println("Aufwand für ein Baum mit " + j + " Elemente: " + aufwand + "");
+			System.out.println(aufwand);//System.out.println("Aufwand für ein Baum mit " + j + " Elemente: " + aufwand + "");
     	}
     	
     	int zahl = treeLinked.summeZwischen(7, 10);
