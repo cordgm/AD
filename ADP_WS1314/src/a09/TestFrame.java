@@ -28,7 +28,8 @@ public class TestFrame {
     	
     	/* a09 */
     	treeLinked.SAKaktualisieren(wurzelNode);
-    	System.out.println("Summe zwischen 7 und 10: " + treeLinked.summeZwischen(7, 20));
+    	int zahl = treeLinked.summeZwischen(7, 10);
+    	System.out.println("Summe zwischen 7 und 10: " + zahl);
 
         /****************************ARRAY EINBETTUNG****************************/
     	

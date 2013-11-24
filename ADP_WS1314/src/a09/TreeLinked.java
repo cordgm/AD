@@ -72,12 +72,11 @@ public class TreeLinked<T> implements ITree<T> {
 
 	}
 
-	@SuppressWarnings("unused")
 	public int summeZwischen(int m, int M) {
-		Node<T> amNachstenDran = null;
+		amNachstenDran = null;
 		sucheKleinM(wurzel, m);
 		int kleinM = 0;
-		//weil nur summe aller kleineren vorhanden ist muss elem.key noch mit einberechnet werden
+		//weil m in der SummeAllerKleineren mit einberechnet ist, muss m hier abgezogen werden -> damit m selber in der neuen Berechnung mit drin ist (m + ... + M)
 		if(amNachstenDran != null){
 			kleinM = amNachstenDran.getSummeAllerKleineren() - amNachstenDran.getKey();
 		}
