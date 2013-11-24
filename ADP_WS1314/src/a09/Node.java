@@ -3,7 +3,8 @@ package a09;
 public class Node<T> {
     
     private T daten; //Die eigentliche Daten
-    private int key; 
+    private int key;
+    private int summeAllerKleineren;
     private Node<T> links;    //Linker Sohn
     private Node<T> rechts;  //Rechter Sohn
     private Node<T> vater;   //Vater (Knoten)
@@ -112,6 +113,14 @@ public class Node<T> {
 		    }
 	    }
     }
+
+	public int getSummeAllerKleineren() {
+		return summeAllerKleineren;
+	}
+
+	public void setSummeAllerKleineren(int summeAllerKleineren) {
+		this.summeAllerKleineren = summeAllerKleineren;
+	}
 }
 
 
