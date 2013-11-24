@@ -12,7 +12,7 @@ public class TestFrame {
         /***********LINKED EINBETTUNG*****************/
     	System.out.println("************LINKED EINBETTUNG*****************");
     	Node<Element> wurzelNode = new Node<Element>(new Element(wurzel), wurzel, null, null, null);
-    	ITree<Element> treeLinked = new TreeLinked<Element>(wurzelNode);
+    	TreeLinked<Element> treeLinked = new TreeLinked<Element>(wurzelNode);
     	Node<Element> node;
     	for(int i=1; i <= anzahlNodes; i++){
     		if(i==wurzel){i++;}
@@ -25,6 +25,10 @@ public class TestFrame {
 //    	System.out.println();
 //    	treeLinked.postorder(wurzelNode);
 //    	System.out.println();
+    	
+    	/* a09 */
+    	treeLinked.SAKaktualisieren(wurzelNode);
+    	System.out.println("Summe zwischen 7 und 10: " + treeLinked.summeZwischen(7, 20));
 
         /****************************ARRAY EINBETTUNG****************************/
     	
