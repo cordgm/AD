@@ -31,7 +31,7 @@ public class TestFrame {
     	}
     	
     	int zahl = treeLinked.summeZwischen(7, 10);
-    	System.out.println("\nSumme zwischen 7 und 10: " + zahl);
+    	System.out.println("\nBeispiel Berechnungen:\nSumme zwischen 7 und 10: " + zahl);
     	zahl = treeLinked.summeZwischen(5, 15);
     	System.out.println("Summe zwischen 5 und 15: " + zahl);
     	zahl = treeLinked.summeZwischen(3, 13);
