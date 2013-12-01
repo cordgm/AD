@@ -10,34 +10,34 @@ package a10;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphL<T> implements IGraph<T>{
+public class GraphAListe<T> implements IGraph<T>{
 
         //Attribute
-        private Knoten<T> start;
-        private List<Knoten<T>> knoten;
+        private Node<T> start;
+        private List<Node<T>> knoten;
         
         
         //Konstruktor
-        public GraphL(Knoten<T> start){
+        public GraphAListe(Node<T> start){
                 this.start = start;
-                this.knoten = new ArrayList<Knoten<T>>();
+                this.knoten = new ArrayList<Node<T>>();
                 this.knoten.add(start);
         }
         
         
         //Methoden
         @Override
-        public void addKnoten(Knoten<T> k) {
+        public void addKnoten(Node<T> k) {
                 this.knoten.add(k);
         }
         
-        public void addKnoten(Knoten<T> k, Knoten<T> ursprung, int g) {
+        public void addKnoten(Node<T> k, Node<T> ursprung, int g) {
                 this.knoten.add(k);
                 addEinseitigeVerbindung(ursprung, k, g);
         }
 
         @Override
-        public void removeKnoten(Knoten<T> k) {
+        public void removeKnoten(Node<T> k) {
                 
                 //Eingehende Verbindungen loeschen
                 for(int i = 0; i < k.getIn().size(); i++){
@@ -57,8 +57,8 @@ public class GraphL<T> implements IGraph<T>{
         }
 
         @Override
-        public List<Knoten<T>> getNachbarknoten(Knoten<T> k) {
-                List<Knoten<T>> tmp = new ArrayList<Knoten<T>>();
+        public List<Node<T>> getNachbarknoten(Node<T> k) {
+                List<Node<T>> tmp = new ArrayList<Node<T>>();
                 
                 //Knoten die auf k zeigen
                 int length = k.getIn().size();
@@ -78,8 +78,8 @@ public class GraphL<T> implements IGraph<T>{
         }
         
         @Override
-        public List<Knoten<T>> getInNachbarknoten(Knoten<T> k) {
-                List<Knoten<T>> tmp = new ArrayList<Knoten<T>>();
+        public List<Node<T>> getInNachbarknoten(Node<T> k) {
+                List<Node<T>> tmp = new ArrayList<Node<T>>();
                 
                 for(Verbindung<T> v : k.getIn()){
                         tmp.add(v.getStart());
@@ -89,8 +89,8 @@ public class GraphL<T> implements IGraph<T>{
         }
         
         @Override
-        public List<Knoten<T>> getOutNachbarknoten(Knoten<T> k) {
-                List<Knoten<T>> tmp = new ArrayList<Knoten<T>>();
+        public List<Node<T>> getOutNachbarknoten(Node<T> k) {
+                List<Node<T>> tmp = new ArrayList<Node<T>>();
                 
                 for(Verbindung<T> v : k.getOut()){
                         tmp.add(v.getZiel());
@@ -99,13 +99,13 @@ public class GraphL<T> implements IGraph<T>{
                 return tmp;
         }
         
-        public void addEinseitigeVerbindung(Knoten<T> start, Knoten<T> ziel, int kosten){
+        public void addEinseitigeVerbindung(Node<T> start, Node<T> ziel, int kosten){
                 Verbindung<T> tmp = new Verbindung<T>(start, ziel, kosten);
                 start.getOut().add(tmp);
                 ziel.getIn().add(tmp);
         }
         
-        public void addBeidseitigeVerbindung(Knoten<T> start, Knoten<T> ziel, int kosten){
+        public void addBeidseitigeVerbindung(Node<T> start, Node<T> ziel, int kosten){
                 Verbindung<T> tmp1 = new Verbindung<T>(start, ziel, kosten);
                 start.getOut().add(tmp1);
                 ziel.getIn().add(tmp1);
@@ -134,17 +134,17 @@ public class GraphL<T> implements IGraph<T>{
 
 
         //Getter-Setter
-        public Knoten<T> getStart() {
+        public Node<T> getStart() {
                 return start;
         }
-        public void setStart(Knoten<T> start) {
+        public void setStart(Node<T> start) {
                 this.start = start;
         }
 
-        public List<Knoten<T>> getKnoten() {
+        public List<Node<T>> getKnoten() {
                 return knoten;
         }
-        public void setKnoten(List<Knoten<T>> knoten) {
+        public void setKnoten(List<Node<T>> knoten) {
                 this.knoten = knoten;
         }
 }

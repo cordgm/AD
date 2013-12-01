@@ -12,32 +12,32 @@ import java.util.List;
 public interface IGraph<T> {
 
         /**
-         * Hinzufügen eines Knotens.
+         * Knoten einfuegen.
          */
-        public void addKnoten(Knoten<T> k);
+        public void addKnoten(Node<T> k);
         
         /**
-         * Entfernen eines Knotens.
+         * Knoten entfernen.
          */
-        public void removeKnoten(Knoten<T> k);
+        public void removeKnoten(Node<T> k);
         
         /**
          * Alle ein- und ausgehenden Nachbarknoten.
          */
-        public List<Knoten<T>> getNachbarknoten(Knoten<T> k);
+        public List<Node<T>> getNachbarknoten(Node<T> k);
         
         /**
          * Alle eingehenden Nachbarknoten.
          */
-        public List<Knoten<T>> getInNachbarknoten(Knoten<T> k);
+        public List<Node<T>> getInNachbarknoten(Node<T> k);
         
         /**
          * Alle ausgehenden Nachbarnknoten.
          */
-        public List<Knoten<T>> getOutNachbarknoten(Knoten<T> k);
+        public List<Node<T>> getOutNachbarknoten(Node<T> k);
         
         /**
-         * Liefert eine Liste über alle Knoten im Graphen zurück.
+         * Liefert eine Liste ueber alle Knoten im Graphen zurueck.
          */
-        public List<Knoten<T>> getKnoten();
+        public List<Node<T>> getKnoten();
 }

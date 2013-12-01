@@ -10,44 +10,44 @@ package a10;
 public class TestFrame {
 
 	public static void main(String[] args) {//Knoten erstellen
-        Knoten<String> a = new Knoten<String>("A");
-        Knoten<String> b = new Knoten<String>("B");
-        Knoten<String> c = new Knoten<String>("C");
-        Knoten<String> d = new Knoten<String>("D");
-        Knoten<String> e = new Knoten<String>("E");
-        Knoten<String> f = new Knoten<String>("F");
-        Knoten<String> g = new Knoten<String>("G");
+        Node<String> a = new Node<String>("A");
+        Node<String> b = new Node<String>("B");
+        Node<String> c = new Node<String>("C");
+        Node<String> d = new Node<String>("D");
+        Node<String> e = new Node<String>("E");
+        Node<String> f = new Node<String>("F");
+        Node<String> g = new Node<String>("G");
                 
         System.out.println("----------------------------------------------------------");
         System.out.println("           G r a p h e n   a l s   M a t r i x");
         System.out.println("----------------------------------------------------------");
         //Graphen erstellen
-        GraphM<String> dm = new GraphM<String>(a);
+        GraphAMatrix<String> gm = new GraphAMatrix<String>(a);
         
         //Konten hinzufuegen
-        dm.addKnoten(b); dm.addKnoten(c); dm.addKnoten(d); dm.addKnoten(e); dm.addKnoten(f); dm.addKnoten(g);
+        gm.addKnoten(b); gm.addKnoten(c); gm.addKnoten(d); gm.addKnoten(e); gm.addKnoten(f); gm.addKnoten(g);
         
         
-        dm.addBeidseitigeVerbindung(a, b, 4);
-        dm.addBeidseitigeVerbindung(a, g, 5);
-        dm.addBeidseitigeVerbindung(a, f, 10);
-        dm.addBeidseitigeVerbindung(b, g, 2);
-        dm.addBeidseitigeVerbindung(b, c, 7);
-        dm.addBeidseitigeVerbindung(c, g, 1);
-        dm.addBeidseitigeVerbindung(c, d, 12);
-        dm.addBeidseitigeVerbindung(d, e, 4);
-        dm.addBeidseitigeVerbindung(e, g, 8);
-        dm.addBeidseitigeVerbindung(e, f, 3);
-        dm.addBeidseitigeVerbindung(f, g, 4);
+        gm.addBeidseitigeVerbindung(a, b, 4);
+        gm.addBeidseitigeVerbindung(a, g, 5);
+        gm.addBeidseitigeVerbindung(a, f, 10);
+        gm.addBeidseitigeVerbindung(b, g, 2);
+        gm.addBeidseitigeVerbindung(b, c, 7);
+        gm.addBeidseitigeVerbindung(c, g, 1);
+        gm.addBeidseitigeVerbindung(c, d, 12);
+        gm.addBeidseitigeVerbindung(d, e, 4);
+        gm.addBeidseitigeVerbindung(e, g, 8);
+        gm.addBeidseitigeVerbindung(e, f, 3);
+        gm.addBeidseitigeVerbindung(f, g, 4);
         
-        dm.showAll();
+        gm.showAll();
         System.out.println("----------------------------------------------------------\n");
         
         System.out.println("----------------------------------------------------------");
         System.out.println("           G r a p h e n   a l s   L i s t e");
         System.out.println("----------------------------------------------------------");
         //Graphen erstellen
-        GraphL<String> gl = new GraphL<String>(a);
+        GraphAListe<String> gl = new GraphAListe<String>(a);
         
         //Konten hinzufuegen
         gl.addKnoten(b); gl.addKnoten(c); gl.addKnoten(d); gl.addKnoten(e); gl.addKnoten(f); gl.addKnoten(g);
@@ -72,7 +72,7 @@ public class TestFrame {
         System.out.println("               D y k s t r a   M a t r i x");
         System.out.println("----------------------------------------------------------");
         //Graphen erstellen
-        DykstraM<String> dkm = new DykstraM<String>(a);
+        DykstraMatrix<String> dkm = new DykstraMatrix<String>(a);
       
         //Konten hinzufuegen
         dkm.addKnoten(b); dkm.addKnoten(c); dkm.addKnoten(d); dkm.addKnoten(e); dkm.addKnoten(f); dkm.addKnoten(g);
@@ -98,7 +98,7 @@ public class TestFrame {
         System.out.println("               D y k s t r a   L i s t e");
         System.out.println("----------------------------------------------------------");
         //Graphen erstellen
-        DykstraL<String> dl = new DykstraL<String>(a);
+        DykstraListe<String> dl = new DykstraListe<String>(a);
         
         //Konten hinzufuegen
         dl.addKnoten(b); dl.addKnoten(c); dl.addKnoten(d); dl.addKnoten(e); dl.addKnoten(f); dl.addKnoten(g);
@@ -121,115 +121,82 @@ public class TestFrame {
         
         dl.berechneWeg();
         
-
-      /**
-       * ---------------------------
-       *      Dykstra Matrix AOP
-       * ---------------------------
-       */
+        System.out.println("\n----------------------------------------------------------");
+        System.out.println("            D y k s t r a   M a t r i x   A O P");
+        System.out.println("----------------------------------------------------------"); 
+        //Graphen erstellen
+        AopM<String> dkmAOP = new AopM<String>(a);
+        
+        //Konten hinzufuegen
+        dkmAOP.addKnoten(b); dkmAOP.addKnoten(c); dkmAOP.addKnoten(d); dkmAOP.addKnoten(e); dkmAOP.addKnoten(f); dkmAOP.addKnoten(g);
+        
+        dkmAOP.addBeidseitigeVerbindung(a, b, 4);
+        dkmAOP.addBeidseitigeVerbindung(a, g, 5);
+        dkmAOP.addBeidseitigeVerbindung(a, f, 10);
+        dkmAOP.addBeidseitigeVerbindung(b, g, 2);
+        dkmAOP.addBeidseitigeVerbindung(b, c, 7);
+        dkmAOP.addBeidseitigeVerbindung(c, g, 1);
+        dkmAOP.addBeidseitigeVerbindung(c, d, 12);
+        dkmAOP.addBeidseitigeVerbindung(d, e, 4);
+        dkmAOP.addBeidseitigeVerbindung(e, g, 8);
+        dkmAOP.addBeidseitigeVerbindung(e, f, 3);
+        dkmAOP.addBeidseitigeVerbindung(f, g, 4);
+        
+        dkmAOP.showAll();
+        System.out.println("----------------------------------------------------------\n");
+        
+        dkmAOP.berechneWeg();
+        
+        dkmAOP.removeKnoten(c);    
             
-            
-//            //Graphen erstellen
-//            AopM<String> dkm = new AopM<String>(a);
-//            
-//            
-//            //Konten hinzufuegen
-//            dkm.addKnoten(b);
-//            dkm.addKnoten(c);
-//            dkm.addKnoten(d);
-//            dkm.addKnoten(e);
-//            dkm.addKnoten(f);
-//            dkm.addKnoten(g);
-//            
-//            
-//            dkm.addBeidseitigeVerbindung(a, b, 4);
-//            dkm.addBeidseitigeVerbindung(a, g, 5);
-//            dkm.addBeidseitigeVerbindung(a, f, 10);
-//            dkm.addBeidseitigeVerbindung(b, g, 2);
-//            dkm.addBeidseitigeVerbindung(b, c, 7);
-//            dkm.addBeidseitigeVerbindung(c, g, 1);
-//            dkm.addBeidseitigeVerbindung(c, d, 12);
-//            dkm.addBeidseitigeVerbindung(d, e, 4);
-//            dkm.addBeidseitigeVerbindung(e, g, 8);
-//            dkm.addBeidseitigeVerbindung(e, f, 3);
-//            dkm.addBeidseitigeVerbindung(f, g, 4);
-//            
-//            dkm.showAll();
-//            System.out.println("-----------------------");
-//            
-//            dkm.berechneWeg();
-//            
-//            dkm.removeKnoten(c);    
-//                
-//            System.out.println("\n\nAuswertung:");
-//            System.out.println("AddZeit:\t\t\t" + dkm.getAddZeit());
-//            System.out.println("RemoveZeit:\t\t\t" + dkm.getRemoveZeit());
-//            System.out.println("BeidseitigeVerbindungZeit:\t" + dkm.getBeidseitigeVerbindungZeit());
-//            System.out.println("EinseitigeVerbindungZeit:\t" + dkm.getEinseitigeVerbindungZeit());
-//            System.out.println("InNachbarnZeit:\t\t\t" + dkm.getGetInNachbarnZeit());
-//            System.out.println("OutNachbarnZeit:\t\t" + dkm.getGetOutNachbarnZeit());
-//            System.out.println("NachbarnZeit:\t\t\t" + dkm.getGetNachbarnZeit());
-//            System.out.println("BerechneWegZeit:\t\t" + dkm.getBerechneWegZeit());
+        System.out.println("\nAuswertung:");
+        System.out.println("AddZeit:\t\t\t" + dkmAOP.getAddZeit());
+        System.out.println("RemoveZeit:\t\t\t" + dkmAOP.getRemoveZeit());
+        System.out.println("BeidseitigeVerbindungZeit:\t" + dkmAOP.getBeidseitigeVerbindungZeit());
+        System.out.println("EinseitigeVerbindungZeit:\t" + dkmAOP.getEinseitigeVerbindungZeit());
+        System.out.println("InNachbarnZeit:\t\t\t" + dkmAOP.getGetInNachbarnZeit());
+        System.out.println("OutNachbarnZeit:\t\t" + dkmAOP.getGetOutNachbarnZeit());
+        System.out.println("NachbarnZeit:\t\t\t" + dkmAOP.getGetNachbarnZeit());
+        System.out.println("BerechneWegZeit:\t\t" + dkmAOP.getBerechneWegZeit());
                 
                 
-                /**
-                 * ---------------------------
-                 *      Dykstra Liste AOP
-                 * ---------------------------
-                 */
-                
-//              //Knoten erstellen
-//              Knoten<String> a = new Knoten<String>("A");
-//              Knoten<String> b = new Knoten<String>("B");
-//              Knoten<String> c = new Knoten<String>("C");
-//              Knoten<String> d = new Knoten<String>("D");
-//              Knoten<String> e = new Knoten<String>("E");
-//              Knoten<String> f = new Knoten<String>("F");
-//              Knoten<String> g = new Knoten<String>("G");
-//              
-//              
-//              //Graphen erstellen
-//              AopL<String> dkl = new AopL<String>(a);
-//              
-//              
-//              //Konten hinzufuegen
-//              dkl.addKnoten(b);
-//              dkl.addKnoten(c);
-//              dkl.addKnoten(d);
-//              dkl.addKnoten(e);
-//              dkl.addKnoten(f);
-//              dkl.addKnoten(g);
-//              
-//              
-//              dkl.addBeidseitigeVerbindung(a, b, 4);
-//              dkl.addBeidseitigeVerbindung(a, g, 5);
-//              dkl.addBeidseitigeVerbindung(a, f, 10);
-//              dkl.addBeidseitigeVerbindung(b, g, 2);
-//              dkl.addBeidseitigeVerbindung(b, c, 7);
-//              dkl.addBeidseitigeVerbindung(c, g, 1);
-//              dkl.addBeidseitigeVerbindung(c, d, 12);
-//              dkl.addBeidseitigeVerbindung(d, e, 4);
-//              dkl.addBeidseitigeVerbindung(e, g, 8);
-//              dkl.addBeidseitigeVerbindung(e, f, 3);
-//              dkl.addBeidseitigeVerbindung(f, g, 4);
-//              
-//              dkl.showAll();
-//              System.out.println("-----------------------");
-//              
-//              dkl.berechneWeg();
-//              
-//              dkl.removeKnoten(c);
-//              
-//              System.out.println("\n\nAuswertung:");
-//              System.out.println("AddZeit:\t\t\t" + dkl.getAddZeit());
-//              System.out.println("RemoveZeit:\t\t\t" + dkl.getRemoveZeit());
-//              System.out.println("BeidseitigeVerbindungZeit:\t" + dkl.getBeidseitigeVerbindungZeit());
-//              System.out.println("EinseitigeVerbindungZeit:\t" + dkl.getEinseitigeVerbindungZeit());
-//              System.out.println("InNachbarnZeit:\t\t\t" + dkl.getGetInNachbarnZeit());
-//              System.out.println("OutNachbarnZeit:\t\t" + dkl.getGetOutNachbarnZeit());
-//              System.out.println("NachbarnZeit:\t\t\t" + dkl.getGetNachbarnZeit());
-//              System.out.println("BerechneWegZeit:\t\t" + dkl.getBerechneWegZeit());
-              
-             
-        }
+        System.out.println("\n----------------------------------------------------------");
+        System.out.println("            D y k s t r a   L i s t e   A O P");
+        System.out.println("----------------------------------------------------------");
+	  
+        //Graphen erstellen
+        AopL<String> dkl = new AopL<String>(a);
+	  
+        //Konten hinzufuegen
+        dkl.addKnoten(b); dkl.addKnoten(c); dkl.addKnoten(d); dkl.addKnoten(e); dkl.addKnoten(f); dkl.addKnoten(g);
+	  
+        dkl.addBeidseitigeVerbindung(a, b, 4);
+        dkl.addBeidseitigeVerbindung(a, g, 5);
+        dkl.addBeidseitigeVerbindung(a, f, 10);
+        dkl.addBeidseitigeVerbindung(b, g, 2);
+        dkl.addBeidseitigeVerbindung(b, c, 7);
+        dkl.addBeidseitigeVerbindung(c, g, 1);
+        dkl.addBeidseitigeVerbindung(c, d, 12);
+        dkl.addBeidseitigeVerbindung(d, e, 4);
+        dkl.addBeidseitigeVerbindung(e, g, 8);
+        dkl.addBeidseitigeVerbindung(e, f, 3);
+        dkl.addBeidseitigeVerbindung(f, g, 4);
+	  
+        dkl.showAll();
+        System.out.println("----------------------------------------------------------\n");
+	  
+        dkl.berechneWeg();
+	  
+        dkl.removeKnoten(c);
+	  
+        System.out.println("\nAuswertung:");
+        System.out.println("AddZeit:\t\t\t" + dkl.getAddZeit());
+        System.out.println("RemoveZeit:\t\t\t" + dkl.getRemoveZeit());
+        System.out.println("BeidseitigeVerbindungZeit:\t" + dkl.getBeidseitigeVerbindungZeit());
+        System.out.println("EinseitigeVerbindungZeit:\t" + dkl.getEinseitigeVerbindungZeit());
+        System.out.println("InNachbarnZeit:\t\t\t" + dkl.getGetInNachbarnZeit());
+        System.out.println("OutNachbarnZeit:\t\t" + dkl.getGetOutNachbarnZeit());
+        System.out.println("NachbarnZeit:\t\t\t" + dkl.getGetNachbarnZeit());
+	  	System.out.println("BerechneWegZeit:\t\t" + dkl.getBerechneWegZeit());
+    }
 }

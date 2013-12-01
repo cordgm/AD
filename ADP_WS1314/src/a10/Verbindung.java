@@ -10,13 +10,13 @@ package a10;
 public class Verbindung<T> {
         
         //Attribute
-        private Knoten<T> start;
-        private Knoten<T> ziel;
+        private Node<T> start;
+        private Node<T> ziel;
         private int kosten;
         
         
         //Konstruktor
-        public Verbindung(Knoten<T> start, Knoten<T> ziel, int kosten){
+        public Verbindung(Node<T> start, Node<T> ziel, int kosten){
                 this.start = start;
                 this.ziel = ziel;
                 this.kosten = kosten;
@@ -24,17 +24,17 @@ public class Verbindung<T> {
 
         
         //Methoden
-        public Knoten<T> getStart() {
+        public Node<T> getStart() {
                 return start;
         }
-        public void setStart(Knoten<T> start) {
+        public void setStart(Node<T> start) {
                 this.start = start;
         }
         
-        public Knoten<T> getZiel() {
+        public Node<T> getZiel() {
                 return ziel;
         }
-        public void setZiel(Knoten<T> ziel) {
+        public void setZiel(Node<T> ziel) {
                 this.ziel = ziel;
         }
         

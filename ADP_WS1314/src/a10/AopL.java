@@ -10,7 +10,7 @@ package a10;
 import java.util.List;
 
 
-public class AopL<T> extends DykstraL<T> {
+public class AopL<T> extends DykstraListe<T> {
 
         //Attribute
         private long addZeit;
@@ -24,21 +24,21 @@ public class AopL<T> extends DykstraL<T> {
         
         
         //Methoden
-        public AopL(Knoten<T> k) {
+        public AopL(Node<T> k) {
                 super(k);
         }
         
         
         //Methoden
-        public void removeKnoten(Knoten<T> k) {
+        public void removeKnoten(Node<T> k) {
                 this.removeZeit = System.nanoTime();
                 super.removeKnoten(k);
                 this.removeZeit = System.nanoTime() - this.removeZeit;
         }
         
         @Override
-        public List<Knoten<T>> getNachbarknoten(Knoten<T> k) {
-                List<Knoten<T>> tmp;
+        public List<Node<T>> getNachbarknoten(Node<T> k) {
+                List<Node<T>> tmp;
                 this.getNachbarnZeit = System.nanoTime();
                 tmp = super.getNachbarknoten(k);
                 this.getNachbarnZeit = System.nanoTime() - this.getNachbarnZeit;
@@ -46,8 +46,8 @@ public class AopL<T> extends DykstraL<T> {
         }
         
         @Override
-        public List<Knoten<T>> getInNachbarknoten(Knoten<T> k) {
-                List<Knoten<T>> tmp;
+        public List<Node<T>> getInNachbarknoten(Node<T> k) {
+                List<Node<T>> tmp;
                 this.getInNachbarnZeit = System.nanoTime();
                 tmp = super.getInNachbarknoten(k);
                 this.getInNachbarnZeit = System.nanoTime() - this.getInNachbarnZeit;
@@ -55,8 +55,8 @@ public class AopL<T> extends DykstraL<T> {
         }
         
         @Override
-        public List<Knoten<T>> getOutNachbarknoten(Knoten<T> k) {
-                List<Knoten<T>> tmp;
+        public List<Node<T>> getOutNachbarknoten(Node<T> k) {
+                List<Node<T>> tmp;
                 this.getOutNachbarnZeit = System.nanoTime();
                 tmp = super.getOutNachbarknoten(k);
                 this.getOutNachbarnZeit = System.nanoTime() - this.getOutNachbarnZeit;
@@ -64,24 +64,24 @@ public class AopL<T> extends DykstraL<T> {
         }
         
         @Override
-        public List<Knoten<T>> getKnoten() {
+        public List<Node<T>> getKnoten() {
                 return super.getKnoten();
         }
         
         @Override
-        public void addKnoten(Knoten<T> k) {
+        public void addKnoten(Node<T> k) {
                 this.addZeit = System.nanoTime();
                 super.addKnoten(k);
                 this.addZeit = System.nanoTime() - this.addZeit;
         }
         
-        public void addEinseitigeVerbindung(Knoten<T> start, Knoten<T> ziel, int kosten){
+        public void addEinseitigeVerbindung(Node<T> start, Node<T> ziel, int kosten){
                 this.einseitigeVerbindungZeit = System.nanoTime();
                 super.addEinseitigeVerbindung(start, ziel, kosten);
                 this.einseitigeVerbindungZeit = System.nanoTime() - this.einseitigeVerbindungZeit;
         }
         
-        public void addBeidseitigeVerbindung(Knoten<T> start, Knoten<T> ziel, int kosten){
+        public void addBeidseitigeVerbindung(Node<T> start, Node<T> ziel, int kosten){
                 this.beidseitigeVerbindungZeit = System.nanoTime();
                 super.addBeidseitigeVerbindung(start, ziel, kosten);
                 this.beidseitigeVerbindungZeit = System.nanoTime() - this.beidseitigeVerbindungZeit;

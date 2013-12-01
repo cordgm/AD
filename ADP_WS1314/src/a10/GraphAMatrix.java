@@ -10,25 +10,25 @@ package a10;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphM<T> implements IGraph<T>{
+public class GraphAMatrix<T> implements IGraph<T>{
 
 
         //Attribute
         private int[][] matrix;
-        private List<Knoten<T>> knoten;
+        private List<Node<T>> knoten;
         
         
         //Konstruktor
-        public GraphM(Knoten<T> k){
+        public GraphAMatrix(Node<T> k){
                 this.matrix = new int[1][1];
-                this.knoten = new ArrayList<Knoten<T>>();
+                this.knoten = new ArrayList<Node<T>>();
                 this.knoten.add(k);
         }
         
         
         //Methoden
         @Override
-        public void addKnoten(Knoten<T> k) {
+        public void addKnoten(Node<T> k) {
                 resize();
                 this.knoten.add(k);
         }
@@ -44,7 +44,7 @@ public class GraphM<T> implements IGraph<T>{
         }
         
         @Override
-        public void removeKnoten(Knoten<T> k) {
+        public void removeKnoten(Node<T> k) {
                 int index = getIndex(k);
                 this.knoten.remove(k);
                 for(int i = 0; i < this.matrix[index].length; i++){
@@ -55,7 +55,7 @@ public class GraphM<T> implements IGraph<T>{
                 }
         }
         
-        public void addEinseitigeVerbindung(Knoten<T> start, Knoten<T> ziel, int gewicht){
+        public void addEinseitigeVerbindung(Node<T> start, Node<T> ziel, int gewicht){
                 if(start == ziel){
                         System.err.println("Ungueltige Kante!");
                 }
@@ -65,21 +65,21 @@ public class GraphM<T> implements IGraph<T>{
                 this.matrix[s][z] = gewicht;
         }
         
-        public void addBeidseitigeVerbindung(Knoten<T> start, Knoten<T> ziel, int gewicht){
+        public void addBeidseitigeVerbindung(Node<T> start, Node<T> ziel, int gewicht){
                 addEinseitigeVerbindung(start, ziel, gewicht);
                 addEinseitigeVerbindung(ziel, start, gewicht);
         }
         
         @Override
-        public List<Knoten<T>> getNachbarknoten(Knoten<T> k) {
-                List<Knoten<T>> nachbarn = getInNachbarknoten(k);
+        public List<Node<T>> getNachbarknoten(Node<T> k) {
+                List<Node<T>> nachbarn = getInNachbarknoten(k);
                 nachbarn.addAll(getOutNachbarknoten(k));
                 return nachbarn;
         }
         
         @Override
-        public List<Knoten<T>> getInNachbarknoten(Knoten<T> k) {
-                List<Knoten<T>> nachbarn = new ArrayList<Knoten<T>>();
+        public List<Node<T>> getInNachbarknoten(Node<T> k) {
+                List<Node<T>> nachbarn = new ArrayList<Node<T>>();
                 int index = getIndex(k);
                 for(int i = 0; i < this.matrix[index].length; i++){
                         if(this.matrix[i][index] > 0){
@@ -90,8 +90,8 @@ public class GraphM<T> implements IGraph<T>{
         }
         
         @Override
-        public List<Knoten<T>> getOutNachbarknoten(Knoten<T> k) {
-                List<Knoten<T>> nachbarn = new ArrayList<Knoten<T>>();
+        public List<Node<T>> getOutNachbarknoten(Node<T> k) {
+                List<Node<T>> nachbarn = new ArrayList<Node<T>>();
                 int index = getIndex(k);
                 for(int i = 0; i < this.matrix[index].length; i++){
                         if(this.matrix[index][i] > 0){
@@ -101,26 +101,26 @@ public class GraphM<T> implements IGraph<T>{
                 return nachbarn;
         }
 
-        public boolean istNachbarVon(Knoten<T> k, Knoten<T> zielKnoten){
+        public boolean istNachbarVon(Node<T> k, Node<T> zielKnoten){
                 return getNachbarknoten(k).contains(zielKnoten);
         }
         
-        public int getKosten(Knoten<T> startKnoten, Knoten<T> zielKnoten){
+        public int getKosten(Node<T> startKnoten, Node<T> zielKnoten){
                 return this.matrix[getIndex(zielKnoten)][getIndex(startKnoten)];
         }
         
         @Override
-        public List<Knoten<T>> getKnoten() {
+        public List<Node<T>> getKnoten() {
                 return this.knoten;
         }
         
-        private int getIndex(Knoten<T> k){
+        private int getIndex(Node<T> k){
                 return this.knoten.indexOf(k);
         }
         
         public void showAll(){
                 System.out.print("\t");
-                for(Knoten<T> k : this.knoten){
+                for(Node<T> k : this.knoten){
                         System.out.print(k.getInfo() + "\t");
                 }
                 System.out.println("\n\n");

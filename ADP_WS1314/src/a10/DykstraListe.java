@@ -4,22 +4,22 @@ package a10;
  * 
  * @author Manuel Meyer und Cord Godehus-Meyer
  *
- * Der Dykstraalgorithmus mit Adjazenzmatrix.
+ * Der Dykstraalgorithmus mit Adjazenzliste.
  */
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DykstraM<T> implements IGraph<T>{
+public class DykstraListe<T> implements IGraph<T>{
 
         //Attribute
-        private GraphM<T> graph;
+        private GraphAListe<T> graph;
         private Wegpunkt<T> start;
         private List<Wegpunkt<T>> alleWegpunkte;
         
         //Konstruktoren
-        public DykstraM(Knoten<T> k){
-                this.graph = new GraphM<T>(k);
+        public DykstraListe(Node<T> k){
+                this.graph = new GraphAListe<T>(k);
                 this.start = new Wegpunkt<T>(k, this.start, 0, true);
                 this.start.setPrev(this.start);
                 this.alleWegpunkte = new ArrayList<Wegpunkt<T>>();
@@ -29,41 +29,41 @@ public class DykstraM<T> implements IGraph<T>{
         
         //Methoden
         @Override
-        public void removeKnoten(Knoten<T> k) {
+        public void removeKnoten(Node<T> k) {
                 this.graph.removeKnoten(k);
         }
         
         @Override
-        public List<Knoten<T>> getNachbarknoten(Knoten<T> k) {
+        public List<Node<T>> getNachbarknoten(Node<T> k) {
                 return this.graph.getNachbarknoten(k);
         }
         
         @Override
-        public List<Knoten<T>> getInNachbarknoten(Knoten<T> k) {
+        public List<Node<T>> getInNachbarknoten(Node<T> k) {
                 return this.graph.getInNachbarknoten(k);
         }
         
         @Override
-        public List<Knoten<T>> getOutNachbarknoten(Knoten<T> k) {
+        public List<Node<T>> getOutNachbarknoten(Node<T> k) {
                 return this.getOutNachbarknoten(k);
         }
         
         @Override
-        public List<Knoten<T>> getKnoten() {
+        public List<Node<T>> getKnoten() {
                 return this.graph.getKnoten();
         }
         
         @Override
-        public void addKnoten(Knoten<T> k) {
+        public void addKnoten(Node<T> k) {
                 this.graph.addKnoten(k);
                 this.alleWegpunkte.add(new Wegpunkt<T>(k, null, 1000000000));
         }
         
-        public void addEinseitigeVerbindung(Knoten<T> start, Knoten<T> ziel, int kosten){
+        public void addEinseitigeVerbindung(Node<T> start, Node<T> ziel, int kosten){
                 this.graph.addEinseitigeVerbindung(start, ziel, kosten);
         }
         
-        public void addBeidseitigeVerbindung(Knoten<T> start, Knoten<T> ziel, int kosten){
+        public void addBeidseitigeVerbindung(Node<T> start, Node<T> ziel, int kosten){
                 this.graph.addBeidseitigeVerbindung(start, ziel, kosten);
         }
         
@@ -119,9 +119,9 @@ public class DykstraM<T> implements IGraph<T>{
                 return tmp;
         }
 
-        private void addNachbarnZuRand(List<Wegpunkt<T>> zielListe, Knoten<T> knoten) {
-                List<Knoten<T>> nachbarn = getNachbarknoten(knoten);
-                for(Knoten<T> k : nachbarn){
+        private void addNachbarnZuRand(List<Wegpunkt<T>> zielListe, Node<T> knoten) {
+                List<Node<T>> nachbarn = getNachbarknoten(knoten);
+                for(Node<T> k : nachbarn){
                         Wegpunkt<T> tmp = getWegpunkt(this.alleWegpunkte, k);
                         if(!(containsKnoten(zielListe, k) || tmp.isMarkiert)){
                                 zielListe.add(tmp);
@@ -129,7 +129,7 @@ public class DykstraM<T> implements IGraph<T>{
                 }
         }
         
-        private boolean containsKnoten(List<Wegpunkt<T>> l, Knoten<T> k){
+        private boolean containsKnoten(List<Wegpunkt<T>> l, Node<T> k){
                 boolean enthalten = false;
                 for(Wegpunkt<T> w : l){
                         if(w.getKnoten() == k){
@@ -139,7 +139,7 @@ public class DykstraM<T> implements IGraph<T>{
                 return enthalten;
         }
         
-        private Wegpunkt<T> getWegpunkt(List<Wegpunkt<T>> l, Knoten<T> k){
+        private Wegpunkt<T> getWegpunkt(List<Wegpunkt<T>> l, Node<T> k){
                 Wegpunkt<T> tmp = null;
                 for(int i = 0; i < l.size(); i++){
                         if(l.get(i).getKnoten().equals(k)){
@@ -151,8 +151,8 @@ public class DykstraM<T> implements IGraph<T>{
         }
         
         private void kostenNeuberechnen(Wegpunkt<T> wp, Wegpunkt<T> neuerWeg){
-                if(this.graph.istNachbarVon(wp.getKnoten(), neuerWeg.getKnoten())){   //istNachbarVon austauschen       DONE
-                        int neueKosten = neuerWeg.getKosten() + this.graph.getKosten(wp.getKnoten(), neuerWeg.getKnoten());
+                if(wp.getKnoten().istNachbarVon(neuerWeg.getKnoten())){
+                        int neueKosten = neuerWeg.getKosten() + wp.getKnoten().getVerbindungMit(neuerWeg.getKnoten()).getKosten();
                         int alteKosten = wp.getKosten();
                         if(neueKosten < alteKosten){
                                 wp.setPrev(neuerWeg);
@@ -168,18 +168,18 @@ public class DykstraM<T> implements IGraph<T>{
         protected class Wegpunkt<T> {
                 
                 //Attribute
-                private Knoten<T> knoten;
+                private Node<T> knoten;
                 private Wegpunkt<T> prev;
                 private int kosten;
                 private boolean isMarkiert;
                 
                 
                 //Konstruktoren
-                public Wegpunkt(Knoten<T> k, Wegpunkt<T> w, int c){
+                public Wegpunkt(Node<T> k, Wegpunkt<T> w, int c){
                         this(k, w, c, false);
                 }
                 
-                public Wegpunkt(Knoten<T> k, Wegpunkt<T> w, int c, boolean isMarkiert){
+                public Wegpunkt(Node<T> k, Wegpunkt<T> w, int c, boolean isMarkiert){
                         this.knoten = k;
                         this.prev = w;
                         this.kosten = c;
@@ -202,10 +202,10 @@ public class DykstraM<T> implements IGraph<T>{
 
 
                 //Getter-Setter
-                public Knoten<T> getKnoten() {
+                public Node<T> getKnoten() {
                         return knoten;
                 }
-                public void setKnoten(Knoten<T> knoten) {
+                public void setKnoten(Node<T> knoten) {
                         this.knoten = knoten;
                 }
 
