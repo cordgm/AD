@@ -1,42 +1,43 @@
+package a10;
+
 /**
  * 
+ * @author Manuel Meyer und Cord Godehus-Meyer
+ *
+ * Das Interface zur Beschreibung der öffentlichen Operationen eines Graphen.
  */
-package a10;
 
 import java.util.List;
 
-/**
- * @author Manuel Meyer und Cord Godehus-Meyer
- *
- */
 public interface IGraph<T> {
-	/**
-     * Knoten einfuegen.
-     */
-    public void addKnoten(Node<T> node);
-    
-    /**
-     * Knoten entfernen.
-     */
-    public void removeKnoten(Node<T> node);
-    
-    /**
-     * Alle ein- und ausgehenden Nachbarknoten.
-     */
-    public List<Node<T>> getNachbarknoten(Node<T> node);
-    
-    /**
-     * Alle eingehenden Nachbarknoten.
-     */
-    public List<Node<T>> getInNachbarknoten(Node<T> node);
-    
-    /**
-     * Alle ausgehenden Nachbarnknoten.
-     */
-    public List<Node<T>> getOutNachbarknoten(Node<T> node);
-    
-    /**
-     * Liefert eine Liste �ber alle Knoten im Graphen zur�ck.
-     */
-    public List<Node<T>> getKnoten();
+
+        /**
+         * Hinzufügen eines Knotens.
+         */
+        public void addKnoten(Knoten<T> k);
+        
+        /**
+         * Entfernen eines Knotens.
+         */
+        public void removeKnoten(Knoten<T> k);
+        
+        /**
+         * Alle ein- und ausgehenden Nachbarknoten.
+         */
+        public List<Knoten<T>> getNachbarknoten(Knoten<T> k);
+        
+        /**
+         * Alle eingehenden Nachbarknoten.
+         */
+        public List<Knoten<T>> getInNachbarknoten(Knoten<T> k);
+        
+        /**
+         * Alle ausgehenden Nachbarnknoten.
+         */
+        public List<Knoten<T>> getOutNachbarknoten(Knoten<T> k);
+        
+        /**
+         * Liefert eine Liste über alle Knoten im Graphen zurück.
+         */
+        public List<Knoten<T>> getKnoten();
 }

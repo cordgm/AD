@@ -1,10 +1,8 @@
-package a10_grund;
+package a10;
 
 /**
  * 
- * Team: Molière
- * Mitglieder: Kaoutare Bedda und Florian Schlosser
- * Datum: 21.06.2011
+ * @author Manuel Meyer und Cord Godehus-Meyer
  *
  * Die Graphenklasse als Adjazenzmatrix.
  */

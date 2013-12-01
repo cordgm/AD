@@ -1,18 +1,16 @@
-package a10_grund;
+package a10;
 
 /**
  * 
- * Team: Molière
- * Mitglieder: Kaoutare Bedda und Florian Schlosser
- * Datum: 21.06.2011
+ * @author Manuel Meyer und Cord Godehus-Meyer
  *
- * Die Klasse zur Bestimmung der asymptotischen Komplexität der Matrizenimplementierung.
+ * Die Klasse zur Bestimmung der asymptotischen Komplexität der Listenimplementierung.
  */
 
 import java.util.List;
 
 
-public class AopM<T> extends DykstraM<T> {
+public class AopL<T> extends DykstraL<T> {
 
         //Attribute
         private long addZeit;
@@ -26,7 +24,7 @@ public class AopM<T> extends DykstraM<T> {
         
         
         //Methoden
-        public AopM(Knoten<T> k) {
+        public AopL(Knoten<T> k) {
                 super(k);
         }
         
