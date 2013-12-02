@@ -31,6 +31,12 @@ public class GraphAListe<T> implements IGraph<T>{
                 this.knoten.add(k);
         }
         
+        /**
+         * UEberladene addKnoten Function. 
+         * @param k
+         * @param ursprung
+         * @param g
+         */
         public void addKnoten(Node<T> k, Node<T> ursprung, int g) {
                 this.knoten.add(k);
                 addEinseitigeVerbindung(ursprung, k, g);

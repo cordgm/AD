@@ -37,6 +37,12 @@ public class Node<T> {
         return "Info: " + this.info;
     }
     
+    /**
+     * for-ech-Schleife, suchen eines Knoten k.
+     * Beide Listen-Verbindungen in, sowie out. 
+     * @param k
+     * @return
+     */
     public Verbindung<T> getVerbindungMit(Node<T> k){
         for(Verbindung<T> v : in){
             if(v.getStart() == k || v.getZiel() == k){
@@ -52,6 +58,12 @@ public class Node<T> {
         return null;
     }
     
+    /**
+     * UEberpruefen ob der uebergebene ein Nachbar ist vom eigenen.
+     * Rueckgabe ist ein Boolean, true = Ja ; false = Nein. 
+     * @param k
+     * @return 
+     */
     public boolean istNachbarVon(Node<T> k){
         boolean tmp = false;
         for(Verbindung<T> v : in){

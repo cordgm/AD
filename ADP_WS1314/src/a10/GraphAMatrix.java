@@ -15,7 +15,7 @@ public class GraphAMatrix<T> implements IGraph<T>{
 
         //Attribute
         private int[][] matrix;
-        private List<Node<T>> knoten;
+        private List< Node<T> > knoten;
         
         
         //Konstruktor
@@ -33,6 +33,9 @@ public class GraphAMatrix<T> implements IGraph<T>{
                 this.knoten.add(k);
         }
         
+        /**
+         * Manuelles vergroessern des Arrays um [1][1]. 
+         */
         private void resize(){
                 int[][] tmp = new int[this.matrix.length+1][this.matrix.length+1];
                 for(int i = 0; i < this.matrix.length; i++){
@@ -55,6 +58,11 @@ public class GraphAMatrix<T> implements IGraph<T>{
                 }
         }
         
+        /**
+         * @param start
+         * @param ziel
+         * @param gewicht
+         */
         public void addEinseitigeVerbindung(Node<T> start, Node<T> ziel, int gewicht){
                 if(start == ziel){
                         System.err.println("Ungueltige Kante!");
@@ -65,6 +73,11 @@ public class GraphAMatrix<T> implements IGraph<T>{
                 this.matrix[s][z] = gewicht;
         }
         
+        /**
+         * @param start
+         * @param ziel
+         * @param gewicht
+         */
         public void addBeidseitigeVerbindung(Node<T> start, Node<T> ziel, int gewicht){
                 addEinseitigeVerbindung(start, ziel, gewicht);
                 addEinseitigeVerbindung(ziel, start, gewicht);
@@ -114,6 +127,11 @@ public class GraphAMatrix<T> implements IGraph<T>{
                 return this.knoten;
         }
         
+        /**
+         * Gint den Index des ersten Vorkommenes Element in der Liste zurück, sonst -1. 
+         * @param k
+         * @return
+         */
         private int getIndex(Node<T> k){
                 return this.knoten.indexOf(k);
         }
