@@ -4,7 +4,7 @@ package a10;
  * 
  * @author Manuel Meyer und Cord Godehus-Meyer
  *
- * Die TestKlasse für unsere Implementierungen.
+ * Die TestKlasse fuer unsere Implementierungen.
  */
 
 public class TestFrame {
@@ -213,17 +213,18 @@ public class TestFrame {
 //        char ziel = (char) ('a' + Math.random()*26);
 //        int kosten = (int)(Math.random()*100);
         
-        for(int i = 10; i<=1000; i*=10){
+        for(int i = 10; i<=100000; i*=10){
+            System.out.println("\n----------------------------------------------------------"); 
         	System.out.println("                  Anzahl der Knoten: " + i + "\n");
 	        Node<Integer> z = new Node<Integer>(i-1);
 	        AopM<Integer> dkmAOP = new AopM<Integer>(z);
-        	for(int j = 0; j<i-1; j+=2){//alle Verbindungen legen
-    	        Node<Integer> start = new Node<Integer>(j);
-        		dkmAOP.addKnoten(start);
-    	        Node<Integer> ziel = new Node<Integer>(j+1);
-        		dkmAOP.addKnoten(ziel);
-                int kosten = (int)(Math.random()*i);
-        		dkmAOP.addBeidseitigeVerbindung(start, ziel, kosten);
+	        for(int j = 0; j<i; j++){
+	        	dkmAOP.addKnoten(new Node<Integer>(j));
+	        }
+        	for(int j = 0; j<i-1; j++){//alle Verbindungen legen
+        		dkmAOP.addBeidseitigeVerbindung(dkmAOP.getKnoten().get((int)(Math.random()*(i-1))),	//start
+        										dkmAOP.getKnoten().get((int)(Math.random()*(i-1))),	//ziel
+        										(int)(Math.random()*(i-1)));						//kosten
         	}
 	        
 //	        dkmAOP.showAll();

@@ -16,6 +16,7 @@ public class DykstraListe<T> implements IGraph<T>{
         private GraphAListe<T> graph;
         private Wegpunkt<T> start;
         private List<Wegpunkt<T>> alleWegpunkte;
+        public static final boolean AUSGABE = false;
         
         //Konstruktoren
         public DykstraListe(Node<T> k){
@@ -103,8 +104,10 @@ public class DykstraListe<T> implements IGraph<T>{
                 }while(!(rand.isEmpty()));
                 
                 //Ausgabe
-                for(Wegpunkt<T> w : fertig){
+                if(AUSGABE){
+	                for(Wegpunkt<T> w : fertig){
                         System.out.println(w);
+	                }
                 }
                 
         }

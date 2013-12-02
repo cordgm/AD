@@ -16,6 +16,7 @@ public class DykstraMatrix<T> implements IGraph<T>{
     private GraphAMatrix<T> graph;
     private Wegpunkt<T> start;
     private List<Wegpunkt<T>> alleWegpunkte;
+    public static final boolean AUSGABE = false;
     
     //Konstruktoren
     public DykstraMatrix(Node<T> k){
@@ -103,8 +104,10 @@ public class DykstraMatrix<T> implements IGraph<T>{
             }while(!(rand.isEmpty()));
             
             //Ausgabe
-            for(Wegpunkt<T> w : fertig){
+            if(AUSGABE){
+	            for(Wegpunkt<T> w : fertig){
                     System.out.println(w);
+	            }
             }
             
     }
