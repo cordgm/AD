@@ -213,32 +213,38 @@ public class TestFrame {
 //        char ziel = (char) ('a' + Math.random()*26);
 //        int kosten = (int)(Math.random()*100);
         
-        for(int i = 10; i<=100000; i*=10){
+        for(int i = 10; i<=1000; i*=10){
             System.out.println("\n----------------------------------------------------------"); 
         	System.out.println("                  Anzahl der Knoten: " + i + "\n");
 	        Node<Integer> z = new Node<Integer>(i-1);
 	        AopM<Integer> dkmAOP = new AopM<Integer>(z);
-	        for(int j = 0; j<i; j++){
+	        for(int j = 1; j<=i; j++){
 	        	dkmAOP.addKnoten(new Node<Integer>(j));
 	        }
-        	for(int j = 0; j<i-1; j++){//alle Verbindungen legen
-        		dkmAOP.addBeidseitigeVerbindung(dkmAOP.getKnoten().get((int)(Math.random()*(i-1))),	//start
-        										dkmAOP.getKnoten().get((int)(Math.random()*(i-1))),	//ziel
-        										(int)(Math.random()*(i-1)));						//kosten
+        	for(int j = 0; j<i; j++){//alle Verbindungen legen
+        		dkmAOP.addBeidseitigeVerbindung(dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//start
+        										dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//ziel
+        										(int)(Math.random()*(i)));						//kosten
         	}
 	        
 //	        dkmAOP.showAll();
 //	        System.out.println("----------------------------------------------------------\n");
 	        
-	        dkmAOP.berechneWeg();  
+	        dkmAOP.berechneWeg();
+	        
+	        dkmAOP.removeKnoten(z);
+	        
+	        dkmAOP.addEinseitigeVerbindung( dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//start
+	        								dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//ziel
+	        								(int)(Math.random()*(i)));						    //kosten
 	            
 	        System.out.println("\nAuswertung:");
 	        System.out.println("AddZeit:\t\t\t" + dkmAOP.getAddZeit());
 	        System.out.println("RemoveZeit:\t\t\t" + dkmAOP.getRemoveZeit());
 	        System.out.println("BeidseitigeVerbindungZeit:\t" + dkmAOP.getBeidseitigeVerbindungZeit());
 	        System.out.println("EinseitigeVerbindungZeit:\t" + dkmAOP.getEinseitigeVerbindungZeit());
-	        System.out.println("InNachbarnZeit:\t\t\t" + dkmAOP.getGetInNachbarnZeit());
-	        System.out.println("OutNachbarnZeit:\t\t" + dkmAOP.getGetOutNachbarnZeit());
+//	        System.out.println("InNachbarnZeit:\t\t\t" + dkmAOP.getGetInNachbarnZeit());
+//	        System.out.println("OutNachbarnZeit:\t\t" + dkmAOP.getGetOutNachbarnZeit());
 	        System.out.println("NachbarnZeit:\t\t\t" + dkmAOP.getGetNachbarnZeit());
 	        System.out.println("BerechneWegZeit:\t\t" + dkmAOP.getBerechneWegZeit());
         }
@@ -250,38 +256,40 @@ public class TestFrame {
         System.out.println("----------------------------------------------------------");
 	  
         //Graphen erstellen
-        AopL<String> dkl = new AopL<String>(a);
+        for(int i = 10; i<=1000; i*=10){
+            System.out.println("\n----------------------------------------------------------"); 
+        	System.out.println("                  Anzahl der Knoten: " + i + "\n");
+	        Node<Integer> z = new Node<Integer>(i-1);
+	        AopM<Integer> dklAOP = new AopM<Integer>(z);
+	        for(int j = 1; j<=i; j++){
+	        	dklAOP.addKnoten(new Node<Integer>(j));
+	        }
+        	for(int j = 0; j<(i-1); j++){//alle Verbindungen legen
+        		dklAOP.addBeidseitigeVerbindung(dklAOP.getKnoten().get((int)(Math.random()*(i))),	//start
+        										dklAOP.getKnoten().get((int)(Math.random()*(i))),	//ziel
+        										(int)(Math.random()*(i)));						    //kosten
+        	}
 	  
-        //Konten hinzufuegen
-        dkl.addKnoten(b); dkl.addKnoten(c); dkl.addKnoten(d); dkl.addKnoten(e); dkl.addKnoten(f); dkl.addKnoten(g);
-	  
-        dkl.addBeidseitigeVerbindung(a, b, 4);
-        dkl.addBeidseitigeVerbindung(a, g, 5);
-        dkl.addBeidseitigeVerbindung(a, f, 10);
-        dkl.addBeidseitigeVerbindung(b, g, 2);
-        dkl.addBeidseitigeVerbindung(b, c, 7);
-        dkl.addBeidseitigeVerbindung(c, g, 1);
-        dkl.addBeidseitigeVerbindung(c, d, 12);
-        dkl.addBeidseitigeVerbindung(d, e, 4);
-        dkl.addBeidseitigeVerbindung(e, g, 8);
-        dkl.addBeidseitigeVerbindung(e, f, 3);
-        dkl.addBeidseitigeVerbindung(f, g, 4);
-	  
-        dkl.showAll();
-        System.out.println("----------------------------------------------------------\n");
-	  
-        dkl.berechneWeg();
-	  
-        dkl.removeKnoten(c);
-	  
-        System.out.println("\nAuswertung:");
-        System.out.println("AddZeit:\t\t\t" + dkl.getAddZeit());
-        System.out.println("RemoveZeit:\t\t\t" + dkl.getRemoveZeit());
-        System.out.println("BeidseitigeVerbindungZeit:\t" + dkl.getBeidseitigeVerbindungZeit());
-        System.out.println("EinseitigeVerbindungZeit:\t" + dkl.getEinseitigeVerbindungZeit());
-        System.out.println("InNachbarnZeit:\t\t\t" + dkl.getGetInNachbarnZeit());
-        System.out.println("OutNachbarnZeit:\t\t" + dkl.getGetOutNachbarnZeit());
-        System.out.println("NachbarnZeit:\t\t\t" + dkl.getGetNachbarnZeit());
-	  	System.out.println("BerechneWegZeit:\t\t" + dkl.getBerechneWegZeit());
+//	        dklAOP.showAll();
+//	        System.out.println("----------------------------------------------------------\n");
+		  
+	        dklAOP.berechneWeg();
+	        
+	        dklAOP.removeKnoten(z);
+	        
+	        dklAOP.addEinseitigeVerbindung(	dklAOP.getKnoten().get((int)(Math.random()*(i))),	//start
+									       	dklAOP.getKnoten().get((int)(Math.random()*(i))),	//ziel
+									       	(int)(Math.random()*(i)));						    //kosten
+		  
+	        System.out.println("\nAuswertung:");
+	        System.out.println("AddZeit:\t\t\t" + dklAOP.getAddZeit());
+	        System.out.println("RemoveZeit:\t\t\t" + dklAOP.getRemoveZeit());
+	        System.out.println("BeidseitigeVerbindungZeit:\t" + dklAOP.getBeidseitigeVerbindungZeit());
+	        System.out.println("EinseitigeVerbindungZeit:\t" + dklAOP.getEinseitigeVerbindungZeit());
+//	        System.out.println("InNachbarnZeit:\t\t\t" + dklAOP.getGetInNachbarnZeit());
+//	        System.out.println("OutNachbarnZeit:\t\t" + dklAOP.getGetOutNachbarnZeit());
+	        System.out.println("NachbarnZeit:\t\t\t" + dklAOP.getGetNachbarnZeit());
+		  	System.out.println("BerechneWegZeit:\t\t" + dklAOP.getBerechneWegZeit());
+        }
     }
 }
