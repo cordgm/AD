@@ -213,7 +213,7 @@ public class TestFrame {
 //        char ziel = (char) ('a' + Math.random()*26);
 //        int kosten = (int)(Math.random()*100);
         
-        for(int i = 10; i<=1000; i*=10){
+        for(int i = 10; i<=10000; i*=10){
             System.out.println("\n----------------------------------------------------------"); 
         	System.out.println("                  Anzahl der Knoten: " + i + "\n");
 	        Node<Integer> z = new Node<Integer>(i-1);
@@ -224,7 +224,7 @@ public class TestFrame {
         	for(int j = 0; j<i; j++){//alle Verbindungen legen
         		dkmAOP.addBeidseitigeVerbindung(dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//start
         										dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//ziel
-        										(int)(Math.random()*(i)));						//kosten
+        										(int)(Math.random()*(i)));		     				//kosten
         	}
 	        
 //	        dkmAOP.showAll();
@@ -256,7 +256,7 @@ public class TestFrame {
         System.out.println("----------------------------------------------------------");
 	  
         //Graphen erstellen
-        for(int i = 10; i<=1000; i*=10){
+        for(int i = 10; i<=10000; i*=10){
             System.out.println("\n----------------------------------------------------------"); 
         	System.out.println("                  Anzahl der Knoten: " + i + "\n");
 	        Node<Integer> z = new Node<Integer>(i-1);
