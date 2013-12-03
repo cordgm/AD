@@ -15,26 +15,26 @@ public class Node<T> {
     //Attribute
     private List<Verbindung<T>> in;
     private List<Verbindung<T>> out;
-    private T info;
+    private T daten;
     
     
     //Konstruktor
     public Node(T info){
         this.in = new ArrayList<Verbindung<T>>();
         this.out = new ArrayList<Verbindung<T>>();
-        this.info = info;
+        this.daten = info;
     }
 
 
     //Methoden
     @Override
     public boolean equals(Object o){
-        return o instanceof Node<?> && this.info.equals(((Node<?>)o).getInfo());
+        return o instanceof Node<?> && this.daten.equals(((Node<?>)o).getInfo());
     }
     
     @Override
     public String toString(){
-        return "Info: " + this.info;
+        return "Info: " + this.daten;
     }
     
     /**
@@ -100,9 +100,9 @@ public class Node<T> {
     }
     
     public T getInfo() {
-        return info;
+        return daten;
     }
     public void setInfo(T info) {
-        this.info = info;
+        this.daten = info;
     }
 }

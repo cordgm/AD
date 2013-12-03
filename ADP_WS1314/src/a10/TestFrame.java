@@ -205,19 +205,13 @@ public class TestFrame {
         System.out.println("                   R   A   N   D   O   M");
         System.out.println("            D y k s t r a   M a t r i x   A O P");
         System.out.println("----------------------------------------------------------"); 
-        //Graphen erstellen
-
-        //Konten hinzufuegen
-//        dkmAOP.addKnoten(b); dkmAOP.addKnoten(c); dkmAOP.addKnoten(d); dkmAOP.addKnoten(e); dkmAOP.addKnoten(f); dkmAOP.addKnoten(g);
-//        char start = (char) ('a' + Math.random()*26);
-//        char ziel = (char) ('a' + Math.random()*26);
-//        int kosten = (int)(Math.random()*100);
         
+        //Graphen erstellen
         for(int i = 10; i<=1000; i*=10){
             System.out.println("\n----------------------------------------------------------"); 
         	System.out.println("                  Anzahl der Knoten: " + i + "\n");
 	        Node<Integer> z = new Node<Integer>(i-1);
-	        AopM<Integer> dkmAOP = new AopM<Integer>(z);
+	        WrapperDijkstraMatrix<Integer> dkmAOP = new WrapperDijkstraMatrix<Integer>(z);
 	        for(int j = 1; j<=i; j++){
 	        	dkmAOP.addKnoten(new Node<Integer>(j));
 	        }
@@ -260,7 +254,7 @@ public class TestFrame {
             System.out.println("\n----------------------------------------------------------"); 
         	System.out.println("                  Anzahl der Knoten: " + i + "\n");
 	        Node<Integer> z = new Node<Integer>(i-1);
-	        AopM<Integer> dklAOP = new AopM<Integer>(z);
+	        WrapperDijkstraMatrix<Integer> dklAOP = new WrapperDijkstraMatrix<Integer>(z);
 	        for(int j = 1; j<=i; j++){
 	        	dklAOP.addKnoten(new Node<Integer>(j));
 	        }
