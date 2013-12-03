@@ -10,7 +10,7 @@ package a10;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DykstraListe<T> implements IGraph<T>{
+public class DijkstraListe<T> implements IGraph<T>{
 
         //Attribute
         private GraphAListe<T> graph;
@@ -19,7 +19,7 @@ public class DykstraListe<T> implements IGraph<T>{
         public static final boolean AUSGABE = false;
         
         //Konstruktoren
-        public DykstraListe(Node<T> k){
+        public DijkstraListe(Node<T> k){
                 this.graph = new GraphAListe<T>(k);
                 this.start = new Wegpunkt<T>(k, this.start, 0, true);
                 this.start.setPrev(this.start);

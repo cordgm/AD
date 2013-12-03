@@ -10,7 +10,7 @@ package a10;
 import java.util.List;
 
 
-public class AopM<T> extends DykstraMatrix<T> {
+public class AopM<T> extends DijkstraMatrix<T> {
 
         //Attribute
         private long addZeit;
