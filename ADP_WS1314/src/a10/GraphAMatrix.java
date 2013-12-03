@@ -129,7 +129,7 @@ public class GraphAMatrix<T> implements IGraph<T>{
     /**
      * Gint den Index des ersten Vorkommenes Element in der Liste zurück, sonst -1. 
      * @param k
-     * @return
+     * @return pos
      */
     private int getIndex(Node<T> k){
         return this.nodes.indexOf(k);
