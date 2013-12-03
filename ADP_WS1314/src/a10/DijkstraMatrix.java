@@ -46,7 +46,7 @@ public class DijkstraMatrix<T> implements IGraph<T>{
     
     @Override
     public List<Node<T>> getOutNachbarknoten(Node<T> k) {
-        return this.getOutNachbarknoten(k);
+        return this.graph.getOutNachbarknoten(k);
     }
     
     @Override
@@ -73,7 +73,7 @@ public class DijkstraMatrix<T> implements IGraph<T>{
     }
     
     public void berechneWeg(){
-        List<Wegpunkt<T>> rand = new ArrayList<Wegpunkt<T>>();
+        List<Wegpunkt<T>> randmenge = new ArrayList<Wegpunkt<T>>();
         List<Wegpunkt<T>> fertig = new ArrayList<Wegpunkt<T>>();
         int aktuellerIndex = 0;
         fertig.add(this.start);
@@ -83,25 +83,25 @@ public class DijkstraMatrix<T> implements IGraph<T>{
             Wegpunkt<T> kandidat = null;
             
             //Nachbarn hinzufuegen
-            addNachbarnZuRand(rand, fertig.get(aktuellerIndex).getKnoten());
+            addNachbarnZuRand(randmenge, fertig.get(aktuellerIndex).getKnoten());
 
             //Kosten aktualisieren
-            for(Wegpunkt<T> w : rand){
+            for(Wegpunkt<T> w : randmenge){
                 kostenNeuberechnen(w, fertig.get(aktuellerIndex));
             }
             
             //Guenstigsten Nachbarn ermitteln
-            kandidat = schnellsterNachbar(rand);
+            kandidat = schnellsterNachbar(randmenge);
             
             //Guenstigsten Nachbarn markieren
             kandidat.setMarkiert(true);
             
             //Guenstigsten Nachbarn aus Rand loeschen und in Liste "fertig" aufnehmen
             fertig.add(kandidat);
-            rand.remove(kandidat);
+            randmenge.remove(kandidat);
             
             aktuellerIndex++;
-        }while(!(rand.isEmpty()));
+        }while(!(randmenge.isEmpty()));
         
         //Ausgabe
         if(AUSGABE){
@@ -154,7 +154,7 @@ public class DijkstraMatrix<T> implements IGraph<T>{
     }
     
     private void kostenNeuberechnen(Wegpunkt<T> wp, Wegpunkt<T> neuerWeg){
-        if(this.graph.istNachbarVon(wp.getKnoten(), neuerWeg.getKnoten())){   //istNachbarVon austauschen       DONE
+        if(this.graph.istNachbarVon(wp.getKnoten(), neuerWeg.getKnoten())){
             int neueKosten = neuerWeg.getKosten() + this.graph.getKosten(wp.getKnoten(), neuerWeg.getKnoten());
             int alteKosten = wp.getKosten();
             if(neueKosten < alteKosten){
