@@ -29,7 +29,7 @@ public class TestFrame {
 			long aufwand = treeLinked.getAufwandZaehler();
 			System.out.println(aufwand);//System.out.println("Aufwand für ein Baum mit " + j + " Elemente: " + aufwand + "");
     	}
-    	
+    	treeLinked.inorder(wurzelNode);
     	int zahl = treeLinked.summeZwischen(7, 10);
     	System.out.println("\nBeispiel Berechnungen:\nSumme zwischen 7 und 10: " + zahl);
     	zahl = treeLinked.summeZwischen(5, 15);

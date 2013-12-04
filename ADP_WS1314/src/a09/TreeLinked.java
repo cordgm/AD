@@ -13,6 +13,7 @@ public class TreeLinked<T> implements ITree<T> {
 	Node<T> amNachstenDran;
     private long aufwandZaehler;
     public static final boolean AUFWAND = true;
+    private int summeLast = 0;
     
 	/**
 	 * Der Konstruktor erwartet ein Wurzel-Node, auf den er den Baum aufsetzen kann.
@@ -34,28 +35,6 @@ public class TreeLinked<T> implements ITree<T> {
 		}
     	
     }
-	
-	/**
-	 * Rekursive Methode zur Berechnung der Summer aller Kleineren.
-	 * @param node Anfangs der Wurzel-Node, damit von Ihm aus alle kleineren vom uebergebenen Wert gefunden werden koennen.
-	 * @param wert Wert, von alle Kleineren addiert werden.
-	 * @return die Summe alles Kleineren
-	 */
-	private int summeAllerKleinerenRe(Node<T> node, int wert) {
-		if(AUFWAND) {aufwandZaehler++;};
-		int returnWert = 0;
-		if (node == null) {
-			return 0;
-		} else if (node.getKey() > wert) {
-			returnWert += summeAllerKleinerenRe(node.getLinks(), wert);
-		} else {
-			returnWert += summeAllerKleinerenRe(node.getLinks(), wert);
-			returnWert += summeAllerKleinerenRe(node.getRechts(), wert);
-			returnWert += node.getKey();
-		}
-		return returnWert;
-
-	}
 
 	/**
 	 * Rekursive Methode zur Berechnung der Summer aller Kleineren vom Knoten selber und aller Kinder.
@@ -63,14 +42,14 @@ public class TreeLinked<T> implements ITree<T> {
 	 */
 	public void summeAllerKleinerenAktualisierenRe(Node<T> node) {
 		if(AUFWAND) {aufwandZaehler++;};
-		node.setSummeAllerKleineren(summeAllerKleinerenRe(wurzel, node.getKey()));
 		if (node.getLinks() != null) {
 			summeAllerKleinerenAktualisierenRe(node.getLinks());
 		}
+		node.setSummeAllerKleineren(node.getKey()+summeLast);
+		summeLast = summeLast + node.getKey();
 		if (node.getRechts() != null) {
 			summeAllerKleinerenAktualisierenRe(node.getRechts());
 		}
-
 	}
 
 	/**
@@ -80,8 +59,9 @@ public class TreeLinked<T> implements ITree<T> {
 	 * @return Die Summe aller vorhandenen Werte zwischen m und M.
 	 */
 	public int summeZwischen(int m, int M) {
+		Node<T> amNachstenDran;
 		amNachstenDran = null;
-		sucheKleinM(wurzel, m);
+		amNachstenDran = sucheKleinM(wurzel, m);
 		int kleinM = 0;
 		//weil m in der SummeAllerKleineren mit einberechnet ist, muss m hier abgezogen werden -> damit m selber in der neuen Berechnung mit drin ist (m + ... + M)
 		if(amNachstenDran != null){
@@ -89,7 +69,7 @@ public class TreeLinked<T> implements ITree<T> {
 		}
 		
 		amNachstenDran = null;
-		sucheGrossM(wurzel, M);
+		amNachstenDran = sucheGrossM(wurzel, M);
 		int grossM = 0;
 		if(amNachstenDran != null){
 			grossM = amNachstenDran.getSummeAllerKleineren();
@@ -101,8 +81,9 @@ public class TreeLinked<T> implements ITree<T> {
 	 * Sucht den Knoten mit dem groeﬂten Wert, der noch kleiner gleich M ist
 	 * @param node Am Anfang Wuzel-Node
 	 * @param M M
+	 * @return TODO
 	 */
-	private void sucheGrossM(Node<T> node, int M) {
+	private Node<T> sucheGrossM(Node<T> node, int M) {
 		if(AUFWAND) {aufwandZaehler++;};
 		if (node != null) {
 			if (node.getKey() > M) {
@@ -114,14 +95,16 @@ public class TreeLinked<T> implements ITree<T> {
 				sucheGrossM(node.getRechts(), M);
 			}
 		}
+		return amNachstenDran;
 	}
 
 	/**
 	 * Sucht den Knoten mit dem kleinsten Wert der noch groeﬂer gleich m ist
 	 * @param node Am Anfang Wuzel-Node
 	 * @param m m
+	 * @return TODO
 	 */
-	private void sucheKleinM(Node<T> node, int m) {
+	private Node<T> sucheKleinM(Node<T> node, int m) {
 		if(AUFWAND) {aufwandZaehler++;};
 		if (node != null) {
 			if (node.getKey() < m) {
@@ -133,7 +116,7 @@ public class TreeLinked<T> implements ITree<T> {
 				sucheKleinM(node.getLinks(), m);
 			}
 		}
-
+		return amNachstenDran;
 	}
 	
 	@Override
@@ -146,6 +129,7 @@ public class TreeLinked<T> implements ITree<T> {
     	if(vater != null){
     		inorder(vater.getLinks());
     		System.out.print(vater.getDaten());
+//    		System.out.print(" "+ vater.getSummeAllerKleineren());
     		inorder(vater.getRechts());
     	}
     }

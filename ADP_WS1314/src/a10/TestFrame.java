@@ -203,7 +203,7 @@ public class TestFrame {
         
         System.out.println("\n----------------------------------------------------------");
         System.out.println("                   R   A   N   D   O   M");
-        System.out.println("            D y k s t r a   M a t r i x   A O P");
+        System.out.println("         D y k s t r a   M a t r i x   W R A P P E R");
         System.out.println("----------------------------------------------------------"); 
         
         //Graphen erstellen
@@ -211,42 +211,40 @@ public class TestFrame {
             System.out.println("\n----------------------------------------------------------"); 
         	System.out.println("                  Anzahl der Knoten: " + i + "\n");
 	        Node<Integer> z = new Node<Integer>(i-1);
-	        WrapperDijkstraMatrix<Integer> dkmAOP = new WrapperDijkstraMatrix<Integer>(z);
+	        WrapperDijkstraMatrix<Integer> dkmWrapper = new WrapperDijkstraMatrix<Integer>(z);
 	        for(int j = 1; j<=i; j++){
-	        	dkmAOP.addKnoten(new Node<Integer>(j));
+	        	dkmWrapper.addKnoten(new Node<Integer>(j));
 	        }
         	for(int j = 0; j<i; j++){//alle Verbindungen legen
-        		dkmAOP.addBeidseitigeVerbindung(dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//start
-        										dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//ziel
+        		dkmWrapper.addBeidseitigeVerbindung(dkmWrapper.getKnoten().get((int)(Math.random()*(i))),	//start
+        										dkmWrapper.getKnoten().get((int)(Math.random()*(i))),	//ziel
         										(int)(Math.random()*(i)));		     				//kosten
         	}
 	        
 //	        dkmAOP.showAll();
 //	        System.out.println("----------------------------------------------------------\n");
 	        
-	        dkmAOP.berechneWeg();
+	        dkmWrapper.berechneWeg();
 	        
-	        dkmAOP.removeKnoten(z);
+	        dkmWrapper.removeKnoten(z);
 	        
-	        dkmAOP.addEinseitigeVerbindung( dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//start
-	        								dkmAOP.getKnoten().get((int)(Math.random()*(i))),	//ziel
+	        dkmWrapper.addEinseitigeVerbindung( dkmWrapper.getKnoten().get((int)(Math.random()*(i))),	//start
+	        								dkmWrapper.getKnoten().get((int)(Math.random()*(i))),	//ziel
 	        								(int)(Math.random()*(i)));						    //kosten
 	            
 	        System.out.println("\nAuswertung:");
-	        System.out.println("AddZeit:\t\t\t" + dkmAOP.getAddZeit());
-	        System.out.println("RemoveZeit:\t\t\t" + dkmAOP.getRemoveZeit());
-	        System.out.println("BeidseitigeVerbindungZeit:\t" + dkmAOP.getBeidseitigeVerbindungZeit());
-	        System.out.println("EinseitigeVerbindungZeit:\t" + dkmAOP.getEinseitigeVerbindungZeit());
-//	        System.out.println("InNachbarnZeit:\t\t\t" + dkmAOP.getGetInNachbarnZeit());
-//	        System.out.println("OutNachbarnZeit:\t\t" + dkmAOP.getGetOutNachbarnZeit());
-	        System.out.println("NachbarnZeit:\t\t\t" + dkmAOP.getGetNachbarnZeit());
-	        System.out.println("BerechneWegZeit:\t\t" + dkmAOP.getBerechneWegZeit());
+	        System.out.println("AddZeit:\t\t\t" + dkmWrapper.getAddZeit());
+	        System.out.println("RemoveZeit:\t\t\t" + dkmWrapper.getRemoveZeit());
+	        System.out.println("BeidseitigeVerbindungZeit:\t" + dkmWrapper.getBeidseitigeVerbindungZeit());
+	        System.out.println("EinseitigeVerbindungZeit:\t" + dkmWrapper.getEinseitigeVerbindungZeit());
+	        System.out.println("NachbarnZeit:\t\t\t" + dkmWrapper.getGetNachbarnZeit());
+	        System.out.println("BerechneWegZeit:\t\t" + dkmWrapper.getBerechneWegZeit());
         }
                 
                 
         System.out.println("\n----------------------------------------------------------");
         System.out.println("                   R   A   N   D   O   M");
-        System.out.println("            D y k s t r a   L i s t e   A O P");
+        System.out.println("         D y k s t r a   L i s t e   W R A P P E R");
         System.out.println("----------------------------------------------------------");
 	  
         //Graphen erstellen
@@ -254,36 +252,34 @@ public class TestFrame {
             System.out.println("\n----------------------------------------------------------"); 
         	System.out.println("                  Anzahl der Knoten: " + i + "\n");
 	        Node<Integer> z = new Node<Integer>(i-1);
-	        WrapperDijkstraMatrix<Integer> dklAOP = new WrapperDijkstraMatrix<Integer>(z);
+	        WrapperDijkstraMatrix<Integer> dklWrapper = new WrapperDijkstraMatrix<Integer>(z);
 	        for(int j = 1; j<=i; j++){
-	        	dklAOP.addKnoten(new Node<Integer>(j));
+	        	dklWrapper.addKnoten(new Node<Integer>(j));
 	        }
         	for(int j = 0; j<(i-1); j++){//alle Verbindungen legen
-        		dklAOP.addBeidseitigeVerbindung(dklAOP.getKnoten().get((int)(Math.random()*(i))),	//start
-        										dklAOP.getKnoten().get((int)(Math.random()*(i))),	//ziel
+        		dklWrapper.addBeidseitigeVerbindung(dklWrapper.getKnoten().get((int)(Math.random()*(i))),	//start
+        										dklWrapper.getKnoten().get((int)(Math.random()*(i))),	//ziel
         										(int)(Math.random()*(i)));						    //kosten
         	}
 	  
 //	        dklAOP.showAll();
 //	        System.out.println("----------------------------------------------------------\n");
 		  
-	        dklAOP.berechneWeg();
+	        dklWrapper.berechneWeg();
 	        
-	        dklAOP.removeKnoten(z);
+	        dklWrapper.removeKnoten(z);
 	        
-	        dklAOP.addEinseitigeVerbindung(	dklAOP.getKnoten().get((int)(Math.random()*(i))),	//start
-									       	dklAOP.getKnoten().get((int)(Math.random()*(i))),	//ziel
+	        dklWrapper.addEinseitigeVerbindung(	dklWrapper.getKnoten().get((int)(Math.random()*(i))),	//start
+									       	dklWrapper.getKnoten().get((int)(Math.random()*(i))),	//ziel
 									       	(int)(Math.random()*(i)));						    //kosten
 		  
 	        System.out.println("\nAuswertung:");
-	        System.out.println("AddZeit:\t\t\t" + dklAOP.getAddZeit());
-	        System.out.println("RemoveZeit:\t\t\t" + dklAOP.getRemoveZeit());
-	        System.out.println("BeidseitigeVerbindungZeit:\t" + dklAOP.getBeidseitigeVerbindungZeit());
-	        System.out.println("EinseitigeVerbindungZeit:\t" + dklAOP.getEinseitigeVerbindungZeit());
-//	        System.out.println("InNachbarnZeit:\t\t\t" + dklAOP.getGetInNachbarnZeit());
-//	        System.out.println("OutNachbarnZeit:\t\t" + dklAOP.getGetOutNachbarnZeit());
-	        System.out.println("NachbarnZeit:\t\t\t" + dklAOP.getGetNachbarnZeit());
-		  	System.out.println("BerechneWegZeit:\t\t" + dklAOP.getBerechneWegZeit());
+	        System.out.println("AddZeit:\t\t\t" + dklWrapper.getAddZeit());
+	        System.out.println("RemoveZeit:\t\t\t" + dklWrapper.getRemoveZeit());
+	        System.out.println("BeidseitigeVerbindungZeit:\t" + dklWrapper.getBeidseitigeVerbindungZeit());
+	        System.out.println("EinseitigeVerbindungZeit:\t" + dklWrapper.getEinseitigeVerbindungZeit());
+	        System.out.println("NachbarnZeit:\t\t\t" + dklWrapper.getGetNachbarnZeit());
+		  	System.out.println("BerechneWegZeit:\t\t" + dklWrapper.getBerechneWegZeit());
         }
     }
 }
