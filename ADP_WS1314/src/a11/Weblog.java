@@ -14,66 +14,65 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Weblog implements Serializable{
         
-        //Attributes
-        private String key;
-        private List<Webinfo> infoList;
+    //Attribute
+    private String key;
+    private List<Webinfo> infoList;
+    
+    //Konstruktor
+    public Weblog(String key, String info){
+        this.key = key;
+        this.infoList = new ArrayList<Webinfo>();
+        this.infoList.add(new Webinfo(info));
+    }
+    
+    
+    //Methoden
+    @Override
+    public int hashCode(){
+        return parseKeyToInteger();
+    }
+    
+    private int parseKeyToInteger(){
+        String tmp = key.replaceAll("[.]*", "");
         
-        
-        //Constructors
-        public Weblog(String key, String info){
-                this.key = key;
-                this.infoList = new ArrayList<Webinfo>();
-                this.infoList.add(new Webinfo(info));
+        return (Integer.parseInt(tmp) % 100);
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof Weblog)){
+            return false;    
         }
         
-        
-        //Methods
-        @Override
-        public int hashCode(){
-                return parseKeyToInteger();
+        return this.hashCode() == o.hashCode();
+    }
+    
+    public void addWebinfo(Webinfo wi){
+        if(!infoList.contains(wi)){
+            this.infoList.add(wi);
         }
-        
-        private int parseKeyToInteger(){
-                String tmp = key.replaceAll("[.]*", "");
-                
-                return (Integer.parseInt(tmp) % 100);
+    }
+    
+    public String getContent(){
+        String content = this.key + "\n\n";
+        int i = 1;
+        for(Webinfo wi : infoList){
+            content += "Weblog " + i + ":\n" + wi.getInfo() + "\n\n";
+            i++;
         }
-        
-        @Override
-        public boolean equals(Object o){
-                if(!(o instanceof Weblog)){
-                    return false;    
-                }
-                
-                return this.hashCode() == o.hashCode();
-        }
-        
-        public void addWebinfo(Webinfo wi){
-                if(!infoList.contains(wi)){
-                        this.infoList.add(wi);
-                }
-        }
-        
-        public String getContent(){
-                String content = this.key + "\n\n";
-                int i = 1;
-                for(Webinfo wi : infoList){
-                        content += "Weblog " + i + ":\n" + wi.getInfo() + "\n\n";
-                        i++;
-                }
-                return content;
-        }
-        
-        public List<Webinfo> getInfoList(){
-                return this.infoList;
-        }
-        
-        public String toString(){
-                return "Key: " + this.key + "\tAnzahlInhalte: " + this.infoList.size();
-        }
-        
-        public String getKey(){
-                return this.key;
-        }
+        return content;
+    }
+    
+    public List<Webinfo> getInfoList(){
+        return this.infoList;
+    }
+    
+    public String toString(){
+        return "Key: " + this.key + "\tAnzahlInhalte: " + this.infoList.size();
+    }
+    
+    public String getKey(){
+        return this.key;
+    }
 
 }

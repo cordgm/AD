@@ -12,21 +12,19 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Webinfo implements Serializable{
         
-        //Attributes
+        //Attribute
         private String info;
         
-        
-        //Constructors
+        //Konstruktor
         public Webinfo(String info){
-                this.info = info;
+            this.info = info;
         }
 
-
-        //Methode
+        //Methoden
         public String getInfo() {
-                return info;
+            return info;
         }
         public void setInfo(String info) {
-                this.info = info;
+            this.info = info;
         }
 }
