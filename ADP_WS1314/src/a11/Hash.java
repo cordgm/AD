@@ -30,6 +30,14 @@ public class Hash<T> implements IHash<T>, Serializable {
     }
     
     //Methoden
+    /**Hashfunktion
+     * Offene Adressierung: Wenn eine Kollision stattfindet, wird eine weitere Hashfunktion probiert.
+     * double hashing als Sondierungsmethode: Eine 2. undabhängige Hashfunktion, um die Wahrscheinlichkeit auf eine Kollision unabhängig zu machen.
+     * @param key Schluessel
+     * @param a Daten Array
+     * @param isWriting
+     * @return
+     */
     private int hash(int key, T[] a, boolean isWriting){
         int index = -1;
         int i = 0;
