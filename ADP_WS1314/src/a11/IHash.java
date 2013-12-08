@@ -7,7 +7,7 @@
 
 package a11;
 
-public interface IMyHash<T>{
+public interface IHash<T>{
     
     /*
      * Fuegt das Element "info" mit dem Schluessel "key" ein.

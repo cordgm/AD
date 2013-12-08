@@ -19,7 +19,7 @@ public class TestFrame {
         
         new Gui(wc.getLogs());
         
-        MyHash<Weblog> h = new MyHash<Weblog>(8);
+        Hash<Weblog> h = new Hash<Weblog>(8);
         Weblog w;
         
         w = new Weblog("4", "vier");

@@ -12,19 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("serial")
-public class MyHash<T> implements IMyHash<T>, Serializable {
+public class Hash<T> implements IHash<T>, Serializable {
 
     //Attribute
     private T[] dataArray;
     private int size;
     
     //Konstruktor
-    public MyHash(){
+    public Hash(){
         this(16);
     }
     
     @SuppressWarnings("unchecked")
-    public MyHash(int size){
+    public Hash(int size){
         this.dataArray = (T[]) new Object[size];
         this.size = 0;
     }

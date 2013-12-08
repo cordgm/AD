@@ -31,7 +31,7 @@ public class Gui {
     private ChooseArea choArea;
     
     //Kontruktor
-    public Gui(MyHash<Weblog> logs){
+    public Gui(Hash<Weblog> logs){
         this.frame = new JFrame("IP-Listing");
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.setSize(700, 500);
@@ -81,10 +81,10 @@ public class Gui {
         private JList<String> ipList;
         private DefaultListModel<String> dlm;
         private String[] ips;
-        private MyHash<Weblog> logs;
+        private Hash<Weblog> logs;
         
         //Konstruktor
-        public ChooseArea(ContentArea ca, MyHash<Weblog> logs){
+        public ChooseArea(ContentArea ca, Hash<Weblog> logs){
             this.setLayout(new BorderLayout());
             
             this.ca = ca;

@@ -18,12 +18,12 @@ public class WeblogCreator {
         
     //Attribute
     private String path;
-    private MyHash<Weblog> logs;
+    private Hash<Weblog> logs;
     
     //Konstruktor
     public WeblogCreator(String path){
         this.path = path;
-        this.logs = new MyHash<Weblog>();
+        this.logs = new Hash<Weblog>();
         
         createLogs();
     }
@@ -33,7 +33,7 @@ public class WeblogCreator {
     public void readLogs(){
         try {
             ObjectInputStream oip = new ObjectInputStream(new FileInputStream(path));
-            this.logs = (MyHash<Weblog>)oip.readObject();
+            this.logs = (Hash<Weblog>)oip.readObject();
             oip.close();
         } catch (IOException e) {
             System.err.println("Unable to read Logs!");
@@ -133,7 +133,7 @@ public class WeblogCreator {
 
 
     //Getter-Setter
-    public MyHash<Weblog> getLogs() {
+    public Hash<Weblog> getLogs() {
         return logs;
     }
     
