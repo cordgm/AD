@@ -28,7 +28,7 @@ public class TestFrame {
         Weblog w;
         long zugriffszeit;
         
-        for(int j = 10; j<=MAX_DATEI_GROESSE; j*=10){//legt Dateigroesse fest
+        for(int j = 10; j<=MAX_DATEI_GROESSE; j*=10){//j+=5000){//legt Dateigroesse fest
         	int i = 0;
 	        for(; i<j; i++){//legt soviele Elemente entsprechend der Dateigroesse in die Hashtabelle
 	            w = new Weblog(String.valueOf(i), "bla bla");
@@ -39,13 +39,15 @@ public class TestFrame {
 	        zugriffszeit = System.nanoTime();
         	h.add(w.hashCode(), w);
 	        zugriffszeit = System.nanoTime() - zugriffszeit;
-	        System.out.print("Zugriffszeit bei " + j + " Elementen für add(): \t" + zugriffszeit);
+	        System.out.println("Zugriffszeit bei " + j + " Elementen für add(): \t" + zugriffszeit);
+//	        System.out.println(zugriffszeit);//fuer Exel
 	        
 	        //get() Zugriffszeit messen
-	        zugriffszeit = System.nanoTime();
-        	h.get(i);
-	        zugriffszeit = System.nanoTime() - zugriffszeit;
-	        System.out.println("\tfür get(): " + zugriffszeit);
+//	        zugriffszeit = System.nanoTime();
+//        	h.get(i);
+//	        zugriffszeit = System.nanoTime() - zugriffszeit;
+//	        System.out.println("\tfür get(): " + zugriffszeit);
+//	        System.out.println(zugriffszeit);//fuerExel
         }
         
 //        w = new Weblog("4", "vier");
