@@ -9,7 +9,7 @@ package a11;
 
 public class TestFrame {
 
-	private static final int MAX_DATEI_GROESSE = 10000000;
+	private static final int MAX_DATEI_GROESSE = 1000000;
 	private static final boolean GUI = false;
 	
     public static void main(String[] args) {
@@ -28,17 +28,24 @@ public class TestFrame {
         Weblog w;
         long zugriffszeit;
         
-        for(int j = 10; j<=MAX_DATEI_GROESSE; j*=10){
+        for(int j = 10; j<=MAX_DATEI_GROESSE; j*=10){//legt Dateigroesse fest
         	int i = 0;
-	        for(; i<j; i++){
+	        for(; i<j; i++){//legt soviele Elemente entsprechend der Dateigroesse in die Hashtabelle
 	            w = new Weblog(String.valueOf(i), "bla bla");
 	        	h.add(w.hashCode(), w);
 	        }
+	        //add() Zugriffszeit messen
             w = new Weblog(String.valueOf(i), "bla bla");
 	        zugriffszeit = System.nanoTime();
-        	h.add(w.hashCode(), new Weblog(String.valueOf(i), "bla bla"));
+        	h.add(w.hashCode(), w);
 	        zugriffszeit = System.nanoTime() - zugriffszeit;
-	        System.out.println("Zugriffszeit bei " + j + " Elementen für add(): " + zugriffszeit);
+	        System.out.print("Zugriffszeit bei " + j + " Elementen für add(): \t" + zugriffszeit);
+	        
+	        //get() Zugriffszeit messen
+	        zugriffszeit = System.nanoTime();
+        	h.get(i);
+	        zugriffszeit = System.nanoTime() - zugriffszeit;
+	        System.out.println("\tfür get(): " + zugriffszeit);
         }
         
 //        w = new Weblog("4", "vier");
