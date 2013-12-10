@@ -15,7 +15,7 @@ public class TestFrame {
     public static void main(String[] args) {
         
     	if(GUI){
-	        WeblogCreator wc = new WeblogCreator("./src/a11/logs");
+	        WeblogCreator wc = new WeblogCreator("./src/a11/logs", 1000);
 	        
 	        wc.writeLogs();
 	        
@@ -24,27 +24,34 @@ public class TestFrame {
 	        new Gui(wc.getLogs());
     	}
         
-        Hash<Weblog> h = new Hash<Weblog>(8);
         Weblog w;
         long zugriffszeit;
         
-        for(int j = 10; j<=MAX_DATEI_GROESSE; j*=10){//j+=5000){//legt Dateigroesse fest
-        	int i = 0;
-	        for(; i<j; i++){//legt soviele Elemente entsprechend der Dateigroesse in die Hashtabelle
-	            w = new Weblog(String.valueOf(i), "bla bla");
-	        	h.add(w.hashCode(), w);
-	        }
+        for(int j = 10; j<=MAX_DATEI_GROESSE; j*=10){//legt Dateigroesse fest
+        	
+        	WeblogCreator wc = new WeblogCreator("./src/a11/logs", j);
+	        
+	        wc.writeLogs();
+	        
+	        wc.readLogs();
+
+	        Hash<Weblog> h = wc.getLogs();
+//        	int i = 0;
+//	        for(; i<j; i++){//legt soviele Elemente entsprechend der Dateigroesse in die Hashtabelle
+//	            w = new Weblog(String.valueOf(i), "bla bla");
+//	        	h.add(w.hashCode(), w);
+//	        }
 	        //add() Zugriffszeit messen
-            w = new Weblog(String.valueOf(i), "bla bla");
+//            w = new Weblog(String.valueOf(i), "bla bla");
 	        zugriffszeit = System.nanoTime();
-        	h.add(w.hashCode(), w);
+        	wc.addWeblog("18.5.0.9", "HI");
 	        zugriffszeit = System.nanoTime() - zugriffszeit;
 	        System.out.println("Zugriffszeit bei " + j + " Elementen für add(): \t" + zugriffszeit);
 //	        System.out.println(zugriffszeit);//fuer Exel
 	        
 	        //get() Zugriffszeit messen
 //	        zugriffszeit = System.nanoTime();
-//        	h.get(i);
+//        	h.get(j/2);
 //	        zugriffszeit = System.nanoTime() - zugriffszeit;
 //	        System.out.println("\tfür get(): " + zugriffszeit);
 //	        System.out.println(zugriffszeit);//fuerExel

@@ -21,11 +21,11 @@ public class WeblogCreator {
     private Hash<Weblog> logs;
     
     //Konstruktor
-    public WeblogCreator(String path){
+    public WeblogCreator(String path, int anzahlWeblog){
         this.path = path;
         this.logs = new Hash<Weblog>();
         
-        createLogs();
+        createLogs(anzahlWeblog);
     }
     
     //Methoden
@@ -43,8 +43,8 @@ public class WeblogCreator {
         }
     }
     
-    private void addWeblog(String key, String info){
-        Weblog tmp = new Weblog(key, info);
+    public void addWeblog(String key, String info){
+        Weblog tmp = new Weblog(key, info);        
         if(logs.containsKey(tmp.hashCode())){
             logs.get(tmp.hashCode()).addWebinfo(new Webinfo(info));
         }else{
@@ -67,7 +67,7 @@ public class WeblogCreator {
             
     }
     
-    private void createLogs(){
+    private void createLogs(int anzahlWeblog){
         addWeblog("209.131.40.83", " Sie liegt im östlichen Teil des Tarimbeckens im Uigurischen Autonomen \n" +
         		                       "Gebiet Xinjiang und ist etwa 47.000 Quadratkilometer groß. Sie ist im \n" +
         		                       "Westen als Sandwüste, im Osten als Salzwüste geprägt. Der Boden erhitzt \n" +
@@ -129,6 +129,24 @@ public class WeblogCreator {
         addWeblog("60.91.78.61", "Die Gefühlsaufwallungen dieser Jahre beeinflussten Goethes Schreibstil; hatte er zuvor schon Gedichte im regel-\n" +
         		                "gerechten Stil des Rokoko verfasst, so wurde ihr Tonfall nun freier und stürmischer. Eine Sammlung von 19 \n" +
         		                "Gedichten, abgeschrieben und illustriert von seinem Freund Ernst Wolfgang Behrisch, ergab das Buch Annette.");
+    
+	    for(int i=0; i<anzahlWeblog;i++){
+	    	addWeblog(
+	    			String.valueOf((int)(10+(Math.random()*(255)))) + "." +
+	    			String.valueOf((int)(10+(Math.random()*(9)))) + "." +
+	    		    String.valueOf((int)(10+(Math.random()*(9)))) + "." +
+	    		    String.valueOf((int)(10+(Math.random()*(9)))) + "." 
+	    		    , 
+	    		    "Die Gefühlsaufwallungen dieser Jahre beeinflussten Goethes Schreibstil; hatte er zuvor schon Gedichte im regel-\n" +
+    		        "gerechten Stil des Rokoko verfasst, so wurde ihr Tonfall nun freier und stürmischer. Eine Sammlung von 19 \n" +
+    		        "Gedichten, abgeschrieben und illustriert von seinem Freund Ernst Wolfgang Behrisch, ergab das Buch Annette." +
+	    		    String.valueOf((int)(33+(Math.random()*(90)))) + "fsds " +
+	    		    String.valueOf((int)(33+(Math.random()*(90)))) + " \n" +
+	    		    String.valueOf((int)(33+(Math.random()*(90)))) + " " +
+	    		    String.valueOf((int)(33+(Math.random()*(90))))
+	    		    );
+	    }
+    
     }
 
 
