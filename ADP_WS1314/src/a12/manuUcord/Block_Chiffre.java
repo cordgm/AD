@@ -29,9 +29,27 @@ public class Block_Chiffre implements IBlock_Chiffre {
 	}
 
 	@Override
-	public int[] getIntKryptArray() {
-		// TODO Auto-generated method stub
-		return null;
+	public void createIntKryptArray() {
+	    
+        int[] tmp = new int[this.intClearArray.length+8];
+        
+        for(int i = 0; i < this.intClearArray.length; i++){
+            tmp[i] = this.intClearArray[i];
+        }
+        
+        this.intKryptArray = tmp;
+    }
+	   
+	public void ausgeben() {
+	    
+	    for(int i=0; i < intClearArray.length; i++) {
+	        
+	    }
+	    
+	    for(int i=0; i < intKryptArray.length; i++) {
+            
+        }
 	}
+	
 
 }
