@@ -8,6 +8,10 @@ public class TestFrame {
 		for(int i = 0; i<iA.length; i++){
 			System.out.println(iA[i]);
 		}
+		
+		blockChiffre.createIntKryptArray();
+		blockChiffre.ausgeben();
+		
 	}
 
 }

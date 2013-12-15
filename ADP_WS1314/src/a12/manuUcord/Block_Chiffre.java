@@ -42,12 +42,14 @@ public class Block_Chiffre implements IBlock_Chiffre {
 	   
 	public void ausgeben() {
 	    
+	    System.out.println("intClearArray groesse: " + intClearArray.length);
 	    for(int i=0; i < intClearArray.length; i++) {
-	        
+	        System.out.print(intClearArray[i] +": ");
 	    }
 	    
+        System.out.println("intKryptArray groesse: " + intKryptArray.length);
 	    for(int i=0; i < intKryptArray.length; i++) {
-            
+	        System.out.print(intKryptArray[i] +": ");
         }
 	}
 	
