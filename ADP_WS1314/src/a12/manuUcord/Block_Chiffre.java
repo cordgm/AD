@@ -9,8 +9,9 @@ public class Block_Chiffre implements IBlock_Chiffre {
 	@Override
 	public int[] convertText(String text) {
 		char[] charClearArray = text.toCharArray();//a newly allocated character array whose length is the length of this string
+		intClearArray = new int[charClearArray.length];
 		for(int i = 0; i<charClearArray.length; i++){
-			intClearArray[i] = ((int) charClearArray[i]) - 32;
+			intClearArray[i] = (int)charClearArray[i] - 32;
 		}
 		return intClearArray;
 	}
