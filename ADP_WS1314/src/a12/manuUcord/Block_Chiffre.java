@@ -5,6 +5,8 @@ public class Block_Chiffre implements IBlock_Chiffre {
 	//Attribute
 	private int[] intKryptArray;
 	private int[] intClearArray;
+	private int s0;
+	private int s1;
 
 	@Override
 	public int[] convertText(String text) {
@@ -18,14 +20,12 @@ public class Block_Chiffre implements IBlock_Chiffre {
 
 	@Override
 	public int createSessionKeyS0() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)(1+(Math.random()*(94)));
 	}
 
 	@Override
 	public int createSessionKeyS1() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int)(1+(Math.random()*(94)));
 	}
 
 	@Override
