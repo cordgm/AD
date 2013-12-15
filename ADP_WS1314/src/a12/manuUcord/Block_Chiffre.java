@@ -5,17 +5,25 @@ public class Block_Chiffre implements IBlock_Chiffre {
 	//Attribute
 	private int[] intKryptArray;
 	private int[] intClearArray;
-	private int s0;
-	private int s1;
 
-	@Override
-	public int[] convertText(String text) {
+	/**
+	 * Umwandlung Text in Int-Array.
+	 */
+	private int[] convertText(String text) {
 		char[] charClearArray = text.toCharArray();//a newly allocated character array whose length is the length of this string
 		intClearArray = new int[charClearArray.length];
 		for(int i = 0; i<charClearArray.length; i++){
 			intClearArray[i] = (int)charClearArray[i] - 32;
 		}
 		return intClearArray;
+	}
+
+	private String deConvertText(int[] intText) {
+		char[] charClearArray = new char[intText.length];
+		for(int i = 0; i<intText.length; i++){
+			charClearArray[i] = (char) (intText[i] + 32);
+		}
+		return intClearArray.toString();
 	}
 
 	@Override
@@ -28,17 +36,40 @@ public class Block_Chiffre implements IBlock_Chiffre {
 		return (int)(1+(Math.random()*(94)));
 	}
 
-	@Override
-	public void createIntKryptArray() {
-	    
-        int[] tmp = new int[this.intClearArray.length+8];
-        
-        for(int i = 0; i < this.intClearArray.length; i++){
-            tmp[i] = this.intClearArray[i];
-        }
-        
-        this.intKryptArray = tmp;
+	/**
+     * Erzeugt ein um 8 Stellen groesseres Integer Array und
+     * fuegt an Stelle [0] den SessionKey S0 und an Stelle [1] den SessionKey S1 ein.
+     * Vorher muss convertText ausgefuehrt werden.
+     */
+	private void createIntKryptArray() {
+		this.intKryptArray = new int[this.intClearArray.length+8];
+		intKryptArray[0] = createSessionKeyS0();
+		intKryptArray[1] = createSessionKeyS1();
     }
+
+	@Override
+	public void encrypt(String text) {
+		convertText(text);
+		createIntKryptArray();
+		for(int i = 0; i<intClearArray.length; i+=2){
+			intKryptArray[i + 8] = (intClearArray[i] + intKryptArray[0]) % 95;
+			if(i<intClearArray.length-1){//Schutz vor Speicherueberlauf
+				intKryptArray[i+1 + 8] = (intClearArray[i+1] + intKryptArray[1]) % 95;
+			}
+		}
+	}
+
+	@Override
+	public String decrypt() {
+		for(int i = 0; i<intClearArray.length; i+=2){
+			intClearArray[i] = (intKryptArray[i + 8] - intKryptArray[0]) % 95;
+			if(i<intClearArray.length-1){//Schutz vor Speicherueberlauf
+				intClearArray[i+1] = (intKryptArray[i+1 + 8] - intKryptArray[1]) % 95;
+			}
+		}
+		return deConvertText(intClearArray);
+	}
+
 	   
 	public void ausgeben() {
 	    
@@ -53,6 +84,5 @@ public class Block_Chiffre implements IBlock_Chiffre {
 	        System.out.print(intKryptArray[i] +": ");
         }
 	}
-	
 
 }

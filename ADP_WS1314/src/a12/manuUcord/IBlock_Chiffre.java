@@ -8,17 +8,12 @@ package a12.manuUcord;
  *
  */
 public interface IBlock_Chiffre {
-
-
-    /**
-     * Umwandlung Text in Int-Array. 
-     * @return int[].
-     */
-    public int[] convertText(String text);
     
     public int createSessionKeyS0();
     
     public int createSessionKeyS1();
     
-    public void createIntKryptArray();
+    public void encrypt(String text);
+    
+    public String decrypt();
 }
