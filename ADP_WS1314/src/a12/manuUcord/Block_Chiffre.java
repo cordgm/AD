@@ -47,6 +47,7 @@ public class Block_Chiffre implements IBlock_Chiffre {
 	        System.out.print(intClearArray[i] +": ");
 	    }
 	    
+	    System.out.println();
         System.out.println("intKryptArray groesse: " + intKryptArray.length);
 	    for(int i=0; i < intKryptArray.length; i++) {
 	        System.out.print(intKryptArray[i] +": ");
