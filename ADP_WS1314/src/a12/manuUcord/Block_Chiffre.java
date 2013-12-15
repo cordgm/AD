@@ -1,5 +1,10 @@
 package a12.manuUcord;
 
+/**
+ * 
+ * @author Manuel Meyer und Cord Godehus-Meyer
+ *
+ */
 public class Block_Chiffre implements IBlock_Chiffre {
 	
 	//Attribute
@@ -23,7 +28,7 @@ public class Block_Chiffre implements IBlock_Chiffre {
 		for(int i = 0; i<intText.length; i++){
 			charClearArray[i] = (char) (intText[i] + 32);
 		}
-		return intClearArray.toString();
+		return String.valueOf(charClearArray);
 	}
 
 	@Override
@@ -52,9 +57,9 @@ public class Block_Chiffre implements IBlock_Chiffre {
 		convertText(text);
 		createIntKryptArray();
 		for(int i = 0; i<intClearArray.length; i+=2){
-			intKryptArray[i + 8] = (intClearArray[i] + intKryptArray[0]) % 95;
+			intKryptArray[i + 8] = intClearArray[i] + intKryptArray[0] % 95;
 			if(i<intClearArray.length-1){//Schutz vor Speicherueberlauf
-				intKryptArray[i+1 + 8] = (intClearArray[i+1] + intKryptArray[1]) % 95;
+				intKryptArray[i+1 + 8] = intClearArray[i+1] + intKryptArray[1] % 95;
 			}
 		}
 	}
@@ -62,15 +67,19 @@ public class Block_Chiffre implements IBlock_Chiffre {
 	@Override
 	public String decrypt() {
 		for(int i = 0; i<intClearArray.length; i+=2){
-			intClearArray[i] = (intKryptArray[i + 8] - intKryptArray[0]) % 95;
+			intClearArray[i] = intKryptArray[i + 8] - intKryptArray[0] % 95;
 			if(i<intClearArray.length-1){//Schutz vor Speicherueberlauf
-				intClearArray[i+1] = (intKryptArray[i+1 + 8] - intKryptArray[1]) % 95;
+				intClearArray[i+1] = intKryptArray[i+1 + 8] - intKryptArray[1] % 95;
 			}
 		}
 		return deConvertText(intClearArray);
 	}
 
-	   
+	@Override  
+	public int[] getIntKryptArray() {
+		return intKryptArray;
+	}
+
 	public void ausgeben() {
 	    
 	    System.out.println("intClearArray groesse: " + intClearArray.length);

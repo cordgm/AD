@@ -1,17 +1,25 @@
 package a12.manuUcord;
 
+/**
+ * 
+ * @author Manuel Meyer und Cord Godehus-Meyer
+ *
+ */
 public class TestFrame {
 
 	public static void main(String[] args) {
 		Block_Chiffre blockChiffre = new Block_Chiffre();
-		blockChiffre.encrypt("Hallo");
-		System.out.println(blockChiffre.decrypt());
-//		for(int i = 0; i<10; i++){
-//			System.out.print(" " + blockChiffre.createSessionKeyS0());
-//		}
+		String string1 = "Hallo";
+		blockChiffre.encrypt(string1);
+		System.out.println("zu verschlüsseln: " + string1);
+		System.out.println("entschlüsselt:    " + blockChiffre.decrypt());
 		
-//		blockChiffre.ausgeben();
-		
+		//fuer Jannik und Rutkay, diese Zeile kopieren.
+		System.out.println("\nDie verschluesselten Daten:");
+		int[] intKryptArray = blockChiffre.getIntKryptArray();
+		for(int i = 0; i < blockChiffre.getIntKryptArray().length; i++){
+			System.out.print(intKryptArray[i]);
+		}
 	}
 
 }
