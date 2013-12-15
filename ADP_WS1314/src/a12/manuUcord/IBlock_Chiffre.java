@@ -20,5 +20,5 @@ public interface IBlock_Chiffre {
     
     public int createSessionKeyS1();
     
-    public int[] getIntKryptArray();
+    public void createIntKryptArray();
 }
