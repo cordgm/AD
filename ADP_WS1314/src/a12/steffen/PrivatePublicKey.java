@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Offentlicher Schlussel Haupmodul und e
  * 
- * @author brede
+ * @author Steffen Bredemeier
  * @param <T>
  *            e - Verschlusselungsexponent; d - Entschlusselungexponent;
  *            hauptmodul - bildet mit e den offentlichen Schlussel; nebenmodul -
@@ -109,14 +109,13 @@ public class PrivatePublicKey<T> implements IPrivatePublicKey<T> {
 	@Override
 	public String decode(ArrayList<Long> crypt) {
 		String tmpString = "";
-
 		for (int i = 0; i < crypt.size(); i++) {
 			long tmp = crypt.get(i);
 
 			for (int j = 1; j < this.d; j++) {
 				tmp = (tmp * crypt.get(i)) % getMainmodul();
 			}
-			tmpString += (char) tmp;
+			tmpString += (char) ((tmp%128));
 		}
 		return tmpString;
 	}

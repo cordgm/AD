@@ -12,7 +12,7 @@ public class TestFrame {
 	}
 
 	private void start() {
-		PrivatePublicKey<Character> obj = new PrivatePublicKey<>();
+		PrivatePublicKey<Character> obj = new PrivatePublicKey<Character>();
 		System.out.println("Primzahlen: " + obj.getPrim1() + "|"
 				+ obj.getPrim2());
 		System.out.println("Mainmodul: "

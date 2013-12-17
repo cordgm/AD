@@ -11,8 +11,8 @@ public class TestFrame {
 		Block_Chiffre blockChiffre = new Block_Chiffre();
 		String string1 = "Hallo";
 		blockChiffre.encrypt(string1);
-		System.out.println("zu verschlüsseln: " + string1);
-		System.out.println("entschlüsselt:    " + blockChiffre.decrypt());
+		System.out.println("zu verschluesseln: " + string1);
+		System.out.println("entschluesselt:    " + blockChiffre.decrypt());
 		
 		//fuer Jannik und Rutkay, diese Zeile kopieren.
 		System.out.println("\nDie verschluesselten Daten:");

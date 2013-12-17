@@ -94,4 +94,8 @@ public class Block_Chiffre implements IBlock_Chiffre {
         }
 	}
 
+	public void setIntKryptArray(int[] intKryptArray) {
+		this.intKryptArray = intKryptArray;
+	}
+
 }
