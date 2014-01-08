@@ -1,9 +1,9 @@
-package a12.jannikUrutkay;
+package a12.a3_hybrides_Verfahren;
 
 import java.util.ArrayList;
 
-import a12.manuUcord.Block_Chiffre;
-import a12.steffen.PrivatePublicKey;
+import a12.a1_unsymmetrisches_Verfahren.PrivatePublicKey;
+import a12.a2_symmetrisches_Verfahren.Block_Chiffre;
 
 /**
  * 

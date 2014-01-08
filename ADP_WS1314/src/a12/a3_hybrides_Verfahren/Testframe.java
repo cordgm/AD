@@ -1,4 +1,4 @@
-package a12.jannikUrutkay;
+package a12.a3_hybrides_Verfahren;
 
 
 public class Testframe {

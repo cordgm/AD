@@ -9,7 +9,7 @@ package a11;
 
 public class TestFrame {
 
-	private static final int MAX_DATEI_GROESSE = 1000000;
+	private static final int MAX_DATEI_GROESSE = 10000;
 	private static final boolean GUI = false;
 	
     public static void main(String[] args) {
@@ -86,7 +86,7 @@ public class TestFrame {
 //        h.add(w.hashCode(), w);
 //        w = new Weblog("90", "neunzig");
 //        h.add(w.hashCode(), w);
-//        w = new Weblog("0", "nullll");
+//        w = new Weblog("0", "null");
 //        h.add(w.hashCode(), w);
 //
 //        h.showArray();

@@ -1,5 +1,5 @@
 
-package a12.steffen;
+package a12.a1_unsymmetrisches_Verfahren;
 
 import java.util.ArrayList;
 

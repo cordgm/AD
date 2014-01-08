@@ -1,4 +1,4 @@
-package a12.manuUcord;
+package a12.a2_symmetrisches_Verfahren;
 
 /**
  * 
